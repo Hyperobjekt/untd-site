@@ -44,14 +44,6 @@ const Header = ({ siteTitle, location }) => {
     logoSizeHandler()
   })
 
-  // menu.forEach((item, index) => {
-  //   if (item.path === location.pathname) {
-  //     item.active = true
-  //   } else {
-  //     item.active = false
-  //   }
-  // })
-
   return (
     <header
       className={
