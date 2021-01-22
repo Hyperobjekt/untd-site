@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import 'typeface-lato'
@@ -6,6 +6,7 @@ import 'typeface-muli'
 
 import Header from './molecules/header/header'
 import Footer from './molecules/footer/footer'
+import SlideoutMenu from './molecules/SlideoutMenu/SlideoutMenu'
 import './../theme/styles.scss'
 import './layout.scss'
 
@@ -25,17 +26,27 @@ const Layout = ({ location, pageType, children }) => {
     }
   `)
 
+  const [showMenu, setShowMenu] = useState(false)
+
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
+      {pageType !== 'explorer' && (
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          location={location}
+          setShowMenu={setShowMenu}
+        />
+      )}
+      <SlideoutMenu
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
         location={location}
         menu={data.site.siteMetadata.menu}
-      />
+      ></SlideoutMenu>
       <main className={`page-type-${pageType ? pageType : 'null'}`}>
         {children}
       </main>
-      <Footer data={data} />
+      {pageType !== 'explorer' && <Footer data={data} />}
     </>
   )
 }

@@ -1,19 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Explorer from 'untd-map'
 
-// allMdx {
-//   edges {
-//     node {
-//       frontmatter {
-//         title
-//         path
-//         date(formatString: "MMMM DD, YYYY")
-//       }
-//     }
-//   }
-// }
-//
-//   query($pathSlug: String!)
+import Layout from '../components/layout'
+import SEO from '../components/atoms/seo'
 
 export const query = graphql`
   query {
@@ -47,10 +37,29 @@ export const query = graphql`
   }
 `
 
-const ExplorerPage = ({ data, ...props }) => {
+const ExplorerPage = ({ data, location }) => {
   console.log('explorer query, ', data)
+  const pageMeta = {
+    title: 'Explorer',
+    type: 'explorer',
+    location: location,
+    description: null,
+    keywords: `TODO`,
+    image: null,
+    url: `${location.href}`,
+  }
   const json = JSON.parse(data.allFile.edges[0].node.internal.content)
-  return <p>Explorer page</p>
+  const toggleMenu = () => {
+    // TODO: Pass into the explorer the ability to toggle the nav menu.
+    // console.log('demo page toggle menu blah')
+    return null
+  }
+  return (
+    <Layout location={pageMeta.location} pageType={pageMeta.type}>
+      <SEO meta={{ ...pageMeta }} />
+      <Explorer lang="en_US" langSet={json} toggleMenu={toggleMenu} />
+    </Layout>
+  )
 }
 
 export default ExplorerPage

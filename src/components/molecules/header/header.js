@@ -12,7 +12,7 @@ import {
 
 import './header.scss'
 
-const Header = ({ siteTitle, menu, location }) => {
+const Header = ({ siteTitle, location }) => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => setIsOpen(!isOpen)
 
@@ -44,13 +44,13 @@ const Header = ({ siteTitle, menu, location }) => {
     logoSizeHandler()
   })
 
-  menu.forEach((item, index) => {
-    if (item.path === location.pathname) {
-      item.active = true
-    } else {
-      item.active = false
-    }
-  })
+  // menu.forEach((item, index) => {
+  //   if (item.path === location.pathname) {
+  //     item.active = true
+  //   } else {
+  //     item.active = false
+  //   }
+  // })
 
   return (
     <header
@@ -63,20 +63,6 @@ const Header = ({ siteTitle, menu, location }) => {
       <Navbar color="light" light expand="md" fixed="top">
         <NavbarBrand href="/">LOGO</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            {menu.map((item, index) => (
-              <NavItem key={`nav_link_${index}`}>
-                <NavLink
-                  href={item.path}
-                  className={item.active ? `active` : null}
-                >
-                  {item.title}
-                </NavLink>
-              </NavItem>
-            ))}
-          </Nav>
-        </Collapse>
       </Navbar>
     </header>
   )
