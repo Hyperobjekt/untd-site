@@ -1,0 +1,26 @@
+# UNTD SITE
+
+Gatsby repo for UNTD Opportunity Mapping Project
+
+## Develop
+
+```shell
+gatsby develop
+```
+
+## Build
+
+```shell
+gatsby build
+```
+
+## Features and Dependencies
+
+- Right now this repo runs on Node 12. Node 10 and below not supported.
+- Update menu items by editing the menu array in `./gatsby-config.js`
+- Update Bootstrap variables in `./src/components/theme/_variables.scss`
+- Additional styles also reside in `./src/theme/`. See `./src/theme/styles.scss` to see what else is loaded into the `layout.js`.
+
+## 💫 Deploy
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)

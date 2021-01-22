@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import 'utilities/utilities';
+
+// Components
+@import 'components/footer';
+
+// Pages
+@import 'pages/home';
+@import 'pages/404';

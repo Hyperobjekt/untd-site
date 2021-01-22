@@ -1,0 +1,73 @@
+{
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "bootstrap": "^4.6.0",
+    "clean-react-props": "^0.3.4",
+    "dotenv": "^8.2.0",
+    "formik": "^2.2.6",
+    "gatsby": "^2.31.1",
+    "gatsby-background-image": "^0.10.2",
+    "gatsby-cli": "^2.18.0",
+    "gatsby-image": "^2.10.0",
+    "gatsby-plugin-google-analytics": "^2.10.0",
+    "gatsby-plugin-manifest": "^2.11.0",
+    "gatsby-plugin-mdx": "^1.9.0",
+    "gatsby-plugin-offline": "^3.9.0",
+    "gatsby-plugin-postcss": "^2.3.13",
+    "gatsby-plugin-react-helmet": "^3.9.0",
+    "gatsby-plugin-robots-txt": "^1.5.5",
+    "gatsby-plugin-sass": "^2.8.0",
+    "gatsby-plugin-sharp": "^2.13.1",
+    "gatsby-plugin-sitemap": "^2.11.0",
+    "gatsby-source-filesystem": "^2.10.0",
+    "gatsby-transformer-json": "^2.10.0",
+    "gatsby-transformer-sharp": "^2.11.0",
+    "intersection-observer": "^0.7.0",
+    "load-google-maps-api": "^2.0.2",
+    "moment": "^2.29.1",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-add-to-calendar": "^0.1.5",
+    "react-dom": "^16.14.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.11.0",
+    "react-load-script": "0.0.6",
+    "react-maps-google": "^0.3.2",
+    "reactstrap": "^8.9.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "styled-components": "^5.2.1",
+    "typeface-lato": "0.0.75",
+    "typeface-muli": "^1.1.13",
+    "yup": "^0.28.5"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
