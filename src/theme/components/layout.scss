@@ -1,0 +1,15 @@
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  margin-top: $headerHeight;
+  &.page-type-explorer {
+    margin-top: 0;
+  }
+  min-height: 75vh;
+}

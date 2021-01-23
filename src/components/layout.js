@@ -4,11 +4,11 @@ import { useStaticQuery, graphql } from 'gatsby'
 import 'typeface-lato'
 import 'typeface-muli'
 
-import Header from './molecules/header/header'
-import Footer from './molecules/footer/footer'
-import SlideoutMenu from './molecules/SlideoutMenu/SlideoutMenu'
+import Header from './molecules/header'
+import Footer from './molecules/footer'
+import SlideoutMenu from './molecules/SlideoutMenu'
+
 import './../theme/styles.scss'
-import './layout.scss'
 
 const Layout = ({ location, pageType, children }) => {
   const data = useStaticQuery(graphql`
@@ -26,20 +26,12 @@ const Layout = ({ location, pageType, children }) => {
     }
   `)
 
-  const [showMenu, setShowMenu] = useState(false)
-
   return (
     <>
       {pageType !== 'explorer' && (
-        <Header
-          siteTitle={data.site.siteMetadata.title}
-          location={location}
-          setShowMenu={setShowMenu}
-        />
+        <Header siteTitle={data.site.siteMetadata.title} location={location} />
       )}
       <SlideoutMenu
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
         location={location}
         menu={data.site.siteMetadata.menu}
       ></SlideoutMenu>

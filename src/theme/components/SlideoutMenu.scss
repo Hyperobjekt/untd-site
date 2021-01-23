@@ -1,0 +1,23 @@
+.menu-slideout {
+  height: 100vh;
+  width: 350px;
+  right: -350px;
+  transition: right 0.35s linear 0s !important;
+  top: 0;
+  z-index: 1300;
+  position: absolute;
+  background-color: $white;
+  padding: 6rem;
+  font-size: 2.6rem;
+  box-shadow: 1px 1px 3px #ccc;
+  &.show {
+    right: -0px;
+    transition: right 0.35s linear 0s !important;
+  }
+  .btn-close {
+    position: absolute;
+    font-size: 2rem;
+    right: 2rem;
+    top: 2rem;
+  }
+}

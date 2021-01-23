@@ -1,0 +1,11 @@
+header {
+  nav.navbar {
+    height: $headerHeight;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0 2.2rem;
+    .btn-menu {
+      font-size: 2rem;
+    }
+  }
+}

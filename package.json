@@ -9,6 +9,7 @@
     "@mdx-js/react": "^1.6.22",
     "bootstrap": "^4.6.0",
     "clean-react-props": "^0.3.4",
+    "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
     "gatsby": "^2.31.1",
@@ -46,7 +47,8 @@
     "typeface-lato": "0.0.75",
     "typeface-muli": "^1.1.13",
     "untd-map": "0.0.1",
-    "yup": "^0.28.5"
+    "yup": "^0.28.5",
+    "zustand": "^3.3.1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Navbar, NavbarBrand, Button } from 'reactstrap'
 import { MdMenu } from 'react-icons/md'
 
-import './header.scss'
+import { useStore } from './../../utils/store'
 
 const Header = ({ siteTitle, location }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const toggleShowMenu = useStore(state => state.toggleShowMenu)
 
   return (
     <header>
       <Navbar color="light" light expand="md" fixed="top">
         <NavbarBrand href="/">LOGO</NavbarBrand>
-        <Button color="link" className="align-self-end">
+        <Button color="link" className="btn-menu" onClick={toggleShowMenu}>
           <MdMenu />
         </Button>
       </Navbar>
@@ -22,7 +22,7 @@ const Header = ({ siteTitle, location }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  menu: PropTypes.array,
+  location: PropTypes.object,
 }
 
 Header.defaultProps = {

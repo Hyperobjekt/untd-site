@@ -20,3 +20,4 @@ gatsby build
 - Right now this repo runs on Node 12. Node 10 and below not supported.
 - Update menu items by editing the menu array in `./gatsby-config.js`
 - Additional styles also reside in `./src/theme/`. See `./src/theme/styles.scss` to see what else is loaded into the `layout.js`.
+- Use zustand to add state values and state value setters in `./src/utils/store.js`.

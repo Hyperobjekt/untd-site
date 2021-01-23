@@ -1,8 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import 'utilities/utilities';
+@import 'utilities/variables';
 
 // Components
+@import 'components/layout';
+@import 'components/header';
 @import 'components/footer';
+@import 'components/contactForm';
+@import 'components/SlideoutMenu';
 
 // Pages
 @import 'pages/home';
