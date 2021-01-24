@@ -47,9 +47,9 @@ const FaqPage = ({ location }) => {
       </Row>
       <Row>
         <Col>
-          {pageData.frontmatter.content_items.map(el => {
+          {pageData.frontmatter.content_items.map((el, i) => {
             return (
-              <div className="item" key={el.label.replaceAll(' ', '-')}>
+              <div className="item" key={`faq-item-${i}`}>
                 <h3>{el.label}</h3>
                 <ParseMarkdown>{el.content}</ParseMarkdown>
               </div>

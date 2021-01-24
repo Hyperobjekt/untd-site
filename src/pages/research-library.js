@@ -38,7 +38,7 @@ const SessionsPage = ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  console.log('research-lib pageData', pageData)
+  // console.log('research-lib pageData', pageData)
   const pageMeta = getPageMeta('research-library', pageData, location)
 
   return (

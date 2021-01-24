@@ -27,7 +27,11 @@ gatsby clean # Cleans your local site cache (try this if something's not updatin
   - Use semantic tags where appropriate (no `<div>`s for `<p>`s)
   - Use Bootstrap according to accepted conventions (don't nest rows inside rows, don't nest columns inside columns)
   - Use [Lighthouse](https://developers.google.com/web/tools/lighthouse/) or [pa11y](https://pa11y.org/), along with a screen reader, to check for accessibility issues
-  - Ask questions if you aren't certain or can't find it on a search engine! :)
+- Implement Google Analytics custom event tracking using [gatsby-plugin-google-gtag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/?=gtag):
+```javascript
+window.gtag("event", "click", { ...data })
+```
+- Ask questions if you aren't certain or can't find it on a search engine! :)
 
 ## Features and Dependencies
 
