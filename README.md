@@ -31,7 +31,17 @@ gatsby clean # Cleans your local site cache (try this if something's not updatin
 ```javascript
 window.gtag("event", "click", { ...data })
 ```
+- You need a `.env.development` file for various features to work locally. It should contain the following values:
+```bash
+GATSBY_GOOGLE_ANALYTICS_TRACKING_ID=***
+GATSBY_MAPBOX_USER=***
+GATSBY_MAPBOX_API_TOKEN=***
+GATSBY_NODE_ENV=development
+GATSBY_DATA_ENDPOINT=***
+GATSBY_DATA_BRANCH=***
+```
 - Ask questions if you aren't certain or can't find it on a search engine! :)
+
 
 ## Features and Dependencies
 
