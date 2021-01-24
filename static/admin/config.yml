@@ -89,7 +89,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'about'
-        label: 'about'
+        label: 'About'
         file: 'content/pages/about.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -109,7 +109,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'contact'
-        label: 'contact'
+        label: 'Contact'
         file: 'content/pages/contact.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -129,7 +129,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'explorer'
-        label: 'explorer'
+        label: 'Explorer'
         file: 'content/pages/explorer.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -149,7 +149,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'faq'
-        label: 'faq'
+        label: 'FAQ'
         file: 'content/pages/faq.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -169,7 +169,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'home'
-        label: 'home'
+        label: 'Home'
         file: 'content/pages/home.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -189,7 +189,7 @@ collections:
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'research-library'
-        label: 'research-library'
+        label: 'Research Library'
         file: 'content/pages/research-library.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
@@ -214,7 +214,7 @@ collections:
             label: 'Research Items'
             widget: 'list'
             fields:
-              - { name: 'label', label: 'Label for article', widget: 'string' }
+              - { name: 'label', label: 'Label for ', widget: 'string' }
               - { name: 'topic_area', label: 'Topic area', widget: 'string' }
               - { name: 'type', label: 'Type', widget: 'string' }
               - { name: 'link', label: 'Link', widget: 'string' }
@@ -231,7 +231,7 @@ collections:
                   widget: 'string',
                 }
       - name: 'use-cases'
-        label: 'use-cases'
+        label: 'Use Cases'
         file: 'content/pages/use-cases.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
