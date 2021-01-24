@@ -1,20 +1,40 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import { Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
+import { getPageMeta } from './../utils/utils'
+import ParseMarkdown from '../components/ParseMarkdown'
 
 export default ({ location }) => {
-  const pageMeta = {
-    title: 'Use Cases',
-    type: 'use-cases',
-    location: location,
-    description: null,
-    keywords: `TODO`,
-    image: null,
-    url: `${location.href}`,
-  }
+  const getPageData = useStaticQuery(graphql`
+    {
+      allMdx(filter: { fileAbsolutePath: { regex: "/use-cases/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              date
+              subtitle
+              title
+              description
+              keywords
+              socialShareImage
+              use_cases {
+                label
+                uc_body
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const pageData = getPageData.allMdx.edges[0].node
+
+  const pageMeta = getPageMeta('use-cases', pageData, location)
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
@@ -26,7 +46,8 @@ export default ({ location }) => {
           md={{ size: 8, offset: 2 }}
           lg={{ size: 6, offset: 3 }}
         >
-          <h1>{pageMeta.title}</h1>
+          <h1>{pageData.frontmatter.title}</h1>
+          <h2>{pageData.frontmatter.subtitle}</h2>
         </Col>
       </Row>
       <Row className="align-items-center">
@@ -37,7 +58,16 @@ export default ({ location }) => {
           lg={{ size: 5, offset: 1 }}
           xl={{ size: 5, offset: 1 }}
         >
-          <p>Content</p>
+          <div className="use-cases">
+            {pageData.frontmatter.use_cases.map((el, i) => {
+              return (
+                <div className="use-case" key={`use-case-${i}`}>
+                  <h3>{el.label}</h3>
+                  <ParseMarkdown>{el.uc_body}</ParseMarkdown>
+                </div>
+              )
+            })}
+          </div>
         </Col>
       </Row>
     </Layout>

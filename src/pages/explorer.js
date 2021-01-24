@@ -4,6 +4,8 @@ import Explorer from 'untd-map'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
+import { useStore } from './../utils/store'
+import { getPageMeta } from './../utils/utils'
 
 export const query = graphql`
   query {
@@ -23,7 +25,7 @@ export const query = graphql`
       filter: {
         extension: { eq: "json" }
         dir: { regex: "/lang/g" }
-        base: { eq: "lang.json" }
+        base: { eq: "explorer.json" }
       }
     ) {
       edges {
@@ -38,26 +40,20 @@ export const query = graphql`
 `
 
 const ExplorerPage = ({ data, location }) => {
-  console.log('explorer query, ', data)
-  const pageMeta = {
-    title: 'Explorer',
-    type: 'explorer',
-    location: location,
-    description: null,
-    keywords: `TODO`,
-    image: null,
-    url: `${location.href}`,
-  }
+  const pageData = data.allMdx.edges[0].node
+
+  const pageMeta = getPageMeta('explorer', pageData, location)
+
+  // Set up JSON to pass lang strings to map app.
   const json = JSON.parse(data.allFile.edges[0].node.internal.content)
-  const toggleMenu = () => {
-    // TODO: Pass into the explorer the ability to toggle the nav menu.
-    // console.log('demo page toggle menu blah')
-    return null
-  }
+
+  // Toggle menu from store.
+  const toggleShowMenu = useStore(state => state.toggleShowMenu)
+
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
-      <Explorer lang="en_US" langSet={json} toggleMenu={toggleMenu} />
+      <Explorer lang="en_US" langSet={json} toggleMenu={toggleShowMenu} />
     </Layout>
   )
 }

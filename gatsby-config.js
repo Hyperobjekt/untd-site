@@ -9,10 +9,38 @@ module.exports = {
     description: `SITE DESCRIPTION`,
     keywords: `TODO`,
     siteUrl: `https://TODO.netlify.com`,
-    socialMediaImage: `TODO.jpg`, // resides in ./src/images
+    socialShareImage: `TODO.jpg`, // resides in ./src/images
     copyrightDate: `2018`,
     facebookAppID: `TODO`,
     menu: [
+      // Items for slideout menu.
+      {
+        title: `Explorer`,
+        path: `/explorer/`,
+      },
+      {
+        title: `Research Library`,
+        path: `/research-library/`,
+      },
+      {
+        title: `Use Cases`,
+        path: `/use-cases/`,
+      },
+      {
+        title: `FAQ`,
+        path: `/faq/`,
+      },
+      {
+        title: `About`,
+        path: `/about/`,
+      },
+      {
+        title: `Contact`,
+        path: `/contact/`,
+      },
+    ],
+    footerMenu: [
+      // Menu items for the footer (if it differs from slideout menu)
       {
         title: `Explorer`,
         path: `/explorer/`,
@@ -51,6 +79,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `uploads`,
+        path: `${__dirname}/src/content/uploads`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `events`,
         path: `${__dirname}/src/content/pages`,
       },
@@ -66,6 +101,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx`,
+    'gatsby-plugin-mdx-frontmatter',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -157,6 +193,7 @@ module.exports = {
           }),
       },
     },
+    `gatsby-plugin-netlify-cms`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -4,11 +4,12 @@ import { MdKeyboardArrowUp } from 'react-icons/md'
 import { FiFacebook, FiMail } from 'react-icons/fi'
 import smoothscroll from 'smoothscroll-polyfill'
 
-const Footer = ({ data }) => {
-  // addIcons(bundle)
+import { useStore } from './../../utils/store'
 
+const Footer = ({ data }) => {
   const [isScrolled, setIsScrolled] = useState(true)
-  const headerHeight = 89
+
+  const headerHeight = useStore(state => state.headerHeight)
 
   const scrollToTop = () => {
     // console.log('scrollToTop');
@@ -45,7 +46,7 @@ const Footer = ({ data }) => {
     >
       <div className="row">
         <div className="col col-icons col-10 offset-1 order-sm-2 col-lg-6 offset-lg-0">
-          <a href="mailto:TODO" alt="Email Morel">
+          <a href="mailto:TODO" alt="Email us">
             <FiMail />
           </a>
           <a href="https://www.facebook.com/TODO" alt="Follow TODO">

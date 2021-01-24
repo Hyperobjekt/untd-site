@@ -1,20 +1,45 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import { Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
+import { getPageMeta } from './../utils/utils'
 
 const SessionsPage = ({ location }) => {
-  const pageMeta = {
-    title: 'Research Library',
-    type: 'research-library',
-    location: location,
-    description: null,
-    keywords: `research, library, research library`,
-    image: null,
-    url: `${location.href}`,
-  }
+  const getPageData = useStaticQuery(graphql`
+    {
+      allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              date
+              subtitle
+              title
+              description
+              keywords
+              socialShareImage
+              researchItems {
+                label
+                topic_area
+                type
+                link
+                quick_citation
+                authors
+                year
+                full_citation
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const pageData = getPageData.allMdx.edges[0].node
+  console.log('research-lib pageData', pageData)
+  const pageMeta = getPageMeta('research-library', pageData, location)
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
@@ -34,7 +59,24 @@ const SessionsPage = ({ location }) => {
           md={{ size: 8, offset: 2 }}
           lg={{ size: 6, offset: 3 }}
         >
-          <p>content</p>
+          {pageData.frontmatter.researchItems.map((el, i) => {
+            return (
+              <div className="research-item" key={`research-item-${i}`}>
+                <h4>
+                  {el.label} <span className="tag-topic">{el.topic_area}</span>
+                </h4>
+
+                <a
+                  className="tag-topic"
+                  href={el.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {el.link}
+                </a>
+              </div>
+            )
+          })}
         </Col>
       </Row>
     </Layout>

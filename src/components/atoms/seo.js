@@ -11,6 +11,7 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 function SEO({ meta }) {
+  // console.log('SEO, ', meta)
   const { site, placeholderImage } = useStaticQuery(
     graphql`
       query {
@@ -20,7 +21,7 @@ function SEO({ meta }) {
             description
             keywords
             siteUrl
-            socialMediaImage
+            socialShareImage
             facebookAppID
           }
         }

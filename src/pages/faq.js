@@ -1,32 +1,64 @@
 import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { Row, Col } from 'reactstrap'
 
 import Layout from '../components/layout'
+import ParseMarkdown from '../components/ParseMarkdown'
 import SEO from '../components/atoms/seo'
+import { getPageMeta } from './../utils/utils'
 
-const EventsPage = ({ location }) => {
-  const pageMeta = {
-    title: 'FAQ',
-    type: 'faq',
-    location: location,
-    description: null,
-    keywords: `faq`,
-    image: null,
-    url: `${location.href}`,
-  }
+const FaqPage = ({ location }) => {
+  const getPageData = useStaticQuery(graphql`
+    {
+      allMdx(filter: { fileAbsolutePath: { regex: "/faq/" } }) {
+        edges {
+          node {
+            id
+            body
+            frontmatter {
+              date
+              subtitle
+              title
+              description
+              keywords
+              socialShareImage
+              content_items {
+                content
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const pageData = getPageData.allMdx.edges[0].node
+
+  const pageMeta = getPageMeta('faq', pageData, location)
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
       <Row className="heading">
         <Col xs={{ size: 12, offset: 0 }} sm={{ size: 10, offset: 1 }}>
-          <h1>FAQ</h1>
+          <h1>{pageData.frontmatter.title}</h1>
         </Col>
       </Row>
-      <p>FAQ page</p>
+      <Row>
+        <Col>
+          {pageData.frontmatter.content_items.map(el => {
+            return (
+              <div className="item" key={el.label.replaceAll(' ', '-')}>
+                <h3>{el.label}</h3>
+                <ParseMarkdown>{el.content}</ParseMarkdown>
+              </div>
+            )
+          })}
+        </Col>
+      </Row>
     </Layout>
   )
 }
 
-export default EventsPage
+export default FaqPage

@@ -1,0 +1,252 @@
+backend:
+  name: git-gateway
+  branch: master # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
+
+local_backend: true # Switch off when deployed.
+
+media_folder: content/uploads
+public_folder: /uploads
+
+collections:
+  - label: 'Language Pack'
+    name: 'language'
+    extension: json
+    editor:
+      preview: false
+    files:
+      - label: 'Site Language Pack'
+        name: 'site'
+        file: 'content/lang/site.json'
+        fields:
+          - {
+              label: 'English',
+              name: 'en_US',
+              widget: 'object',
+              fields:
+                [
+                  {
+                    label: 'Site title',
+                    name: 'SITE_TITLE',
+                    widget: string,
+                    hint: 'Site title in English, displayed in explorer',
+                  },
+                ],
+            }
+      - label: 'Explorer Language Pack'
+        name: 'explorer'
+        file: 'content/lang/explorer.json'
+        fields:
+          - {
+              label: 'English',
+              name: 'en_US',
+              widget: 'object',
+              fields:
+                [
+                  {
+                    label: 'Site title',
+                    name: 'SITE_TITLE',
+                    widget: string,
+                    hint: 'Site title in English, displayed in explorer',
+                  },
+                  {
+                    label: 'Map loading notification',
+                    name: 'MAP_LOADING_DATA',
+                    widget: string,
+                    hint: 'Map loading notification string, displayed in explorer while map data is loading',
+                  },
+                  {
+                    label: 'Custom attribution for map',
+                    name: 'MAP_UI_POWERED_BY',
+                    widget: string,
+                    hint: 'Custom attribution displayed on margin of map',
+                  },
+                ],
+            }
+  - label: 'Content pages'
+    name: 'pages'
+    extensions: mdx
+    editor:
+      preview: true
+    files:
+      - name: '404'
+        label: '404'
+        file: 'content/pages/404.mdx'
+        fields:
+          - { name: title, label: 'Page title', widget: string }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'about'
+        label: 'about'
+        file: 'content/pages/about.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'contact'
+        label: 'contact'
+        file: 'content/pages/contact.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'explorer'
+        label: 'explorer'
+        file: 'content/pages/explorer.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'faq'
+        label: 'faq'
+        file: 'content/pages/faq.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'home'
+        label: 'home'
+        file: 'content/pages/home.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }
+      - name: 'research-library'
+        label: 'research-library'
+        file: 'content/pages/research-library.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - name: 'body'
+            label: 'Body'
+            widget: 'markdown'
+          - name: 'researchItems'
+            label: 'Research Items'
+            widget: 'list'
+            fields:
+              - { name: 'label', label: 'Label for article', widget: 'string' }
+              - { name: 'topic_area', label: 'Topic area', widget: 'string' }
+              - { name: 'type', label: 'Type', widget: 'string' }
+              - { name: 'link', label: 'Link', widget: 'string' }
+              - {
+                  name: 'quick_citation',
+                  label: 'Quick citation',
+                  widget: 'string',
+                }
+              - { name: 'authors', label: 'Authors', widget: 'string' }
+              - { name: 'year', label: 'Year', widget: 'string' }
+              - {
+                  name: 'full_citation',
+                  label: 'Full citation',
+                  widget: 'string',
+                }
+      - name: 'use-cases'
+        label: 'use-cases'
+        file: 'content/pages/use-cases.mdx'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
+          - { name: date, label: Date, widget: datetime }
+          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: keywords,
+              label: 'Page keywords',
+              widget: list,
+              default: ['page', 'keywords', 'listed', 'here'],
+            }
+          - {
+              name: 'socialShareImage',
+              label: 'Social share image for this page',
+              widget: 'image',
+            }
+          - { name: body, label: Body, widget: markdown }

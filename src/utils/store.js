@@ -7,4 +7,6 @@ export const useStore = create(set => ({
   showMenu: false,
   // Toggles showMenu.
   toggleShowMenu: val => set(state => ({ showMenu: !state.showMenu })),
+  // Height of header.
+  headerHeight: '56px',
 }))

@@ -1,3 +1,14 @@
+// Imports angie-sans and halyard-text-text.
+//  @import url('https://use.typekit.net/alo0hmm.css');
+
+// * {
+//   font-family: halyard-text;
+// }
+
+html {
+  font-size: 62.5%; // sets sitewide font sizes based on user's font size in browser
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
 @import 'utilities/utilities';
 @import 'utilities/variables';

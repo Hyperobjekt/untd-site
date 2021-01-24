@@ -1,46 +1,43 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
+import { getPageMeta } from './../utils/utils'
 
 const IndexPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
-      site {
-        siteMetadata {
-          title
-          subtitle
-          copyrightDate
-          description
-          menu {
-            path
-            title
+      allMdx(filter: { fileAbsolutePath: { regex: "/home/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              date
+              subtitle
+              title
+              description
+              keywords
+              socialShareImage
+            }
           }
         }
       }
     }
   `)
 
-  const pageMeta = {
-    title: 'Home',
-    type: 'home',
-    location: location,
-    description: null,
-    keywords: `TODO`,
-    image: null,
-    url: `${location.href}`,
-  }
+  const pageData = getPageData.allMdx.edges[0].node
+
+  const pageMeta = getPageMeta('home', pageData, location)
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
       <Row className="jumbotron align-items-center">
         <Col>
-          <h1>{getPageData.site.siteMetadata.title}</h1>
-          <p>{getPageData.site.siteMetadata.subtitle}</p>
+          <h1>{pageData.frontmatter.title}</h1>
+          <p>{pageData.frontmatter.subtitle}</p>
         </Col>
       </Row>
       <Row className="testimonials">
