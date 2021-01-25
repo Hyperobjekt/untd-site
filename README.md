@@ -7,7 +7,7 @@ Gatsby repo for UNTD Economic Opportunity Mapping Project
 ```shell
 npm run start # Start the development server and the local netlify CMS
 gatsby develop # Start the development server
-gatsby build # Build the gatsby site (run this locally before pushing to conserve build minutes)
+gatsby build # Build the gatsby site (run this locally before pushing to staging or production to conserve build minutes)
 gatsby clean # Cleans your local site cache (try this if something's not updating like you think it should)
 ```
 

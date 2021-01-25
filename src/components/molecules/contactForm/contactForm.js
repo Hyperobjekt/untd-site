@@ -203,16 +203,13 @@ const ContactForm = () => {
         ) : null}
         {isSubmitted ? (
           <div className="alert alert-success" role="alert">
-            Messsage received! Thanks for contacting Morel.
+            Messsage received! Thanks for contacting us.
           </div>
         ) : null}
         {isSubmittedError ? (
           <div className="alert alert-danger" role="alert">
             Sorry, something went wrong with the form submission. If you like
-            you can still{' '}
-            <a href="mailto:morel@morelstackhouse.com">
-              contact Morel by email.
-            </a>
+            you can still <a href="mailto:TODO.com">contact us by email.</a>
           </div>
         ) : null}
       </div>
