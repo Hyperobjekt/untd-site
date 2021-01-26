@@ -40,6 +40,7 @@ GATSBY_NODE_ENV=development
 GATSBY_DATA_ENDPOINT=***
 GATSBY_DATA_BRANCH=***
 ```
+- Images used in internal development (not editable by the CMS) can go in `./src/images`. Images updated by the CMS should go in `./src/content/uploads`.
 - Ask questions if you aren't certain or can't find it on a search engine! :)
 
 

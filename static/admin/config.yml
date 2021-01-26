@@ -4,7 +4,7 @@ backend:
 
 local_backend: true # Switch off when deployed.
 
-media_folder: content/uploads
+media_folder: ./src/content/uploads
 public_folder: /uploads
 
 collections:
@@ -16,7 +16,7 @@ collections:
     files:
       - label: 'Site Language Pack'
         name: 'site'
-        file: 'content/lang/site.json'
+        file: './src/content/lang/site.json'
         fields:
           - {
               label: 'English',
@@ -34,7 +34,7 @@ collections:
             }
       - label: 'Explorer Language Pack'
         name: 'explorer'
-        file: 'content/lang/explorer.json'
+        file: './src/content/lang/explorer.json'
         fields:
           - {
               label: 'English',
@@ -64,13 +64,17 @@ collections:
             }
   - label: 'Content pages'
     name: 'pages'
+    create: false
+    format: frontmatter
     extensions: mdx
+    media_folder: ./../uploads
+    public_folder: /uploads
     editor:
       preview: true
     files:
-      - name: '404'
-        label: '404'
-        file: 'content/pages/404.mdx'
+      - label: '404'
+        name: '404'
+        file: './src/content/pages/404.mdx'
         fields:
           - { name: title, label: 'Page title', widget: string }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -90,7 +94,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'about'
         label: 'About'
-        file: 'content/pages/about.mdx'
+        file: './src/content/pages/about.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -110,7 +114,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'contact'
         label: 'Contact'
-        file: 'content/pages/contact.mdx'
+        file: './src/content/pages/contact.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -130,7 +134,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'explorer'
         label: 'Explorer'
-        file: 'content/pages/explorer.mdx'
+        file: './src/content/pages/explorer.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -150,7 +154,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'faq'
         label: 'FAQ'
-        file: 'content/pages/faq.mdx'
+        file: './src/content/pages/faq.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -170,7 +174,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'home'
         label: 'Home'
-        file: 'content/pages/home.mdx'
+        file: './src/content/pages/home.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -190,7 +194,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'research-library'
         label: 'Research Library'
-        file: 'content/pages/research-library.mdx'
+        file: './src/content/pages/research-library.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -232,7 +236,7 @@ collections:
                 }
       - name: 'use-cases'
         label: 'Use Cases'
-        file: 'content/pages/use-cases.mdx'
+        file: './src/content/pages/use-cases.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }

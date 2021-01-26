@@ -86,7 +86,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `events`,
+        name: `pages`,
         path: `${__dirname}/src/content/pages`,
       },
     },
