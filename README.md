@@ -41,6 +41,14 @@ GATSBY_DATA_ENDPOINT=***
 GATSBY_DATA_BRANCH=***
 ```
 - Images used in internal development (not editable by the CMS) can go in `./src/images`. Images updated by the CMS should go in `./src/content/uploads`.
+- To run the CMS locally, change the following in `./static/admin/config.yml`, and run `npm run cms` in a separate terminal window:
+```yaml
+backend:
+  name: git-gateway
+  branch: master # <--- Change to the branch you're working in.
+
+local_backend: true # <--- Switch off when deployed.
+```
 - Ask questions if you aren't certain or can't find it on a search engine! :)
 
 
