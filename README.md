@@ -49,6 +49,7 @@ backend:
 
 local_backend: true # <--- Switch off when deployed.
 ```
+- If you will use something more than once, make a component.
 - Animations should be done using [framer-motion](https://www.framer.com/motion/).
 - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) should be used for scrollytelling visibility detection.
 - Salesforce signup integration should be done using a [Netlify Function](https://functions.netlify.com/) or [AWS Lambda](https://aws.amazon.com/lambda/), not by dropping additional forms into the page. Ideally a Node script that makes a call to the web-to-lead API from a Netlify Function, returning success to the JS managing the form in the calling page. There is a good working example in [seda-site](https://github.com/Hyperobjekt/seda-site/blob/master/src/subscribe-users.js). (Basically, avoid using front-end hacks to do things that can be done more gracefully with back-end scripting easily suppored by JAMStack.)
