@@ -11,6 +11,10 @@ gatsby build # Build the gatsby site (run this locally before pushing to staging
 gatsby clean # Cleans your local site cache (try this if something's not updating like you think it should)
 ```
 
+## Staging
+
+- `staging` branch and `production` branch are built and deployed on Netlify. For more information about the domains where they reside, see the Nelify build settings.
+
 ## Contributing
 
 - Update menu items by editing the menu arrays in `./gatsby-config.js`
