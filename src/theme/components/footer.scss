@@ -1,3 +1,78 @@
 // Footer
-footer {
+.footer {
+  > div {
+    padding: 75px 0;
+  }
+
+  h2 {
+    font-size: 3.8rem;
+    line-height: 3.4rem;
+    margin: 0 0 3.5rem;
+    color: $black;
+  }
+
+  form {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    padding: 0 2rem 1rem;
+    border-bottom: 1px solid $black;
+
+    input {
+      border: 0;
+      background: 0;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      color: $black;
+      width: calc(100% - 40px);
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0.5rem;
+      border: 0;
+      background: 0;
+      width: 4rem;
+      height: 3rem;
+      margin: 0;
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &__links {
+    margin-bottom: 2.5rem;
+
+    a {
+      color: $black;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      margin-right: 2.4rem;
+      letter-spacing: 2px;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+
+    span {
+      // margin: 0 2.6rem;
+      opacity: 0;
+      margin-right: 100%;
+
+      @include media-breakpoint-up(md) {
+        opacity: 1;
+        margin: 0 2.6rem;
+      }
+    }
+  }
 }
