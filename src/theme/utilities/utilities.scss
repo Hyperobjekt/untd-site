@@ -1,14 +1,72 @@
 @mixin grayscale {
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
   filter: blur(0.15px) grayscale(98%);
 }
 
 @mixin grayscalelight {
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
   // filter: blur(0.15px) grayscale(98%) brightness(1.12); // Removed blur at client request.
   filter: grayscale(98%) brightness(1.12);
 }
 
 @mixin brighten {
   filter: brightness(1.22) contrast(88%);
+}
+
+a.highlight {
+  &:before {
+    content: '';
+    height: 50%;
+    width: 105%;
+    position: absolute;
+    z-index: -1;
+    background-color: #f1f1ad;
+    opacity: 0.7;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, 0%);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  }
+
+  &:hover:before {
+    transform: translate(-50%, -10%);
+    opacity: 1;
+  }
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.bg-darkgray {
+  background-color: $darkgray;
+}
+
+.dotted-bottom {
+  background-image: repeating-linear-gradient(
+    90deg,
+    $black,
+    $black 1px,
+    transparent 0,
+    transparent 4px
+  );
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+.knockout {
+  font-family: $knockoutReg !important;
+}
+
+.knockout-bold {
+  font-family: $knockoutBold !important;
+}
+
+.gotham {
+  font-family: $gotham !important;
+}
+
+.caslon {
+  font-family: $caslon !important;
 }

@@ -1,17 +1,11 @@
-// Imports angie-sans and halyard-text-text.
+// Imports knockout, gotcham book and adobe caslon.
 //  @import url('https://use.typekit.net/alo0hmm.css');
-
-// * {
-//   font-family: halyard-text;
-// }
-
-html {
-  font-size: 62.5%; // sets sitewide font sizes based on user's font size in browser
-}
+@import url('https://cloud.typography.com/6135894/7078832/css/fonts.css');
+@import url('https://use.typekit.net/ide5yeh.css');
 
 @import '~bootstrap/scss/bootstrap.scss';
-@import 'utilities/utilities';
 @import 'utilities/variables';
+@import 'utilities/utilities';
 
 // Components
 @import 'components/layout';
@@ -23,3 +17,23 @@ html {
 // Pages
 @import 'pages/home';
 @import 'pages/404';
+
+* {
+  font-family: 'Gotham A', 'Gotham B', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  * {
+    font-family: inherit !important;
+    color: inherit !important;
+  }
+}
+
+html {
+  font-size: 62.5%; // sets sitewide font sizes based on user's font size in browser
+}
