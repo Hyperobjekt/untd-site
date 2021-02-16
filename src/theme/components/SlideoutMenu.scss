@@ -1,23 +1,38 @@
 .menu-slideout {
   height: 100vh;
-  width: 350px;
-  right: -350px;
-  transition: right 0.35s linear 0s !important;
+  width: 100%;
+  // right: -350px;
+  right: 0;
+  // transition: right 0.35s linear 0s !important;
+  transform: translateX(100%);
+  transition: transform 0.35s ease-out 0s !important;
   top: 0;
   z-index: 1300;
-  position: absolute;
+  position: fixed;
   background-color: $white;
   padding: 6rem;
   font-size: 2.6rem;
   box-shadow: 1px 1px 3px #ccc;
+
+  @include media-breakpoint-up(sm) {
+    width: 350px;
+  }
+
   &.show {
-    right: -0px;
-    transition: right 0.35s linear 0s !important;
+    // right: -0px;
+    transform: translateX(0%);
+    // transition: right 0.35s linear 0s !important;
   }
   .btn-close {
     position: absolute;
     font-size: 2rem;
     right: 2rem;
     top: 2rem;
+  }
+
+  a {
+    font-family: $knockoutBold !important;
+    text-transform: uppercase;
+    color: $black !important;
   }
 }

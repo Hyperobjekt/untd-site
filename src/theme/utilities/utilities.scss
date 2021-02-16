@@ -13,7 +13,7 @@
   filter: brightness(1.22) contrast(88%);
 }
 
-a.highlight {
+@mixin highlight {
   &:before {
     content: '';
     height: 50%;
@@ -32,6 +32,10 @@ a.highlight {
     transform: translate(-50%, -10%);
     opacity: 1;
   }
+}
+
+a.highlight {
+  @include highlight;
 }
 
 .bg-gray {

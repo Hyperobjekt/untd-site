@@ -191,15 +191,73 @@ collections:
               label: 'Social share image for this page',
               widget: 'image',
             }
+          - { name: 'heroImage', label: 'Hero Module Image', widget: 'image' }
           - {
-              name: 'heroImage',
-              label: 'Image displayed in the hero module',
-              widget: 'image',
+              name: 'heroSubheading',
+              label: 'Hero Subheading',
+              widget: 'string',
+            }
+          - { name: 'graphImage', label: 'Graph Module Image', widget: 'image' }
+          - {
+              name: 'graphHeading',
+              label: 'Graph Module Heading',
+              widget: 'string',
             }
           - {
-              name: 'graphImage',
-              label: 'Image displayed in the graph module',
-              widget: 'image',
+              name: 'graphSubheading',
+              label: 'Graph Module Subheading',
+              widget: 'markdown',
+            }
+          - { name: 'engageIntro', label: 'Engage Intro', widget: 'string' }
+          - {
+              name: 'engageCards',
+              label: 'Engage Cards',
+              widget: 'list',
+              summary: '{{fields.cardTitle}}',
+              fields:
+                [
+                  { name: 'cardTitle', label: 'Card Title', widget: 'string' },
+                  {
+                    name: 'cardHeading',
+                    label: 'Card Heading',
+                    widget: 'markdown',
+                  },
+                  {
+                    name: 'cardSubheading',
+                    label: 'Card Subheading',
+                    widget: 'string',
+                  },
+                  {
+                    name: 'cardImage',
+                    label: 'Card Image',
+                    widget: 'image',
+                    required: false,
+                  },
+                  {
+                    name: 'isLibraryCallout',
+                    label: 'Is Library Callout',
+                    widget: 'boolean',
+                    required: false,
+                  },
+                  {
+                    name: 'cardLinks',
+                    label: 'Card Links',
+                    widget: 'list',
+                    fields:
+                      [
+                        {
+                          name: 'linkText',
+                          label: 'Link Text',
+                          widget: 'string',
+                        },
+                        {
+                          name: 'linkUrl',
+                          label: 'Link Url',
+                          widget: 'string',
+                        },
+                      ],
+                  },
+                ],
             }
           - {
               name: 'explorerImage',

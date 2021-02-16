@@ -10,16 +10,16 @@ const Footer = () => {
     <footer
       className="footer bg-darkgray"
     >
-      <Container fluid="sm" className="px-4 px-md-0">
+      <Container fluid="md" className="px-4 px-md-3">
         <Row className="justify-content-between pb-5 mb-5 flex-column flex-md-row align-items-center align-items-md-start">
-          <Col sm={{size: 5}} className="pb-5 pb-md-0">
+          <Col md={{size: 5}} className="pb-5 pb-md-0">
             <h2 className="knockout-bold text-uppercase">Subscribe to our e-mail updates</h2>
             <form>
               <input type="email" placeholder="Your email address" aria-label="input email"></input>
               <button type="submit" aria-label="submit email"><MdKeyboardArrowRight /></button>
             </form>
           </Col>
-          <HubLogo />
+          <HubLogo className="mx-5 mx-md-4" />
         </Row>
         <div className="footer__links">
           <Link to="/research-library/" className="text-uppercase knockout">Home</Link>
@@ -32,8 +32,8 @@ const Footer = () => {
   )
 }
 
-const HubLogo = () => (
-  <svg width="182" height="156" viewBox="0 0 182 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+const HubLogo = (props) => (
+  <svg {...props} width="182" height="156" viewBox="0 0 182 156" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" clipRule="evenodd" d="M138.237 84.9476V85.0817H137.856V86.0745H137.7V85.0817H137.319V84.9476H138.237Z" fill="#2A3133"/>
     <path fillRule="evenodd" clipRule="evenodd" d="M138.37 84.9473H138.593L138.913 85.9015L139.236 84.9473H139.455V86.0741H139.309V85.2962C139.309 85.242 139.31 85.1855 139.31 85.1239L138.988 86.0741H138.838L138.514 85.1239V85.1593C138.514 85.1861 138.516 85.228 138.516 85.2845C138.519 85.3419 138.519 85.383 138.519 85.4098V86.0741H138.37V84.9473Z" fill="#2A3133"/>
     <path fillRule="evenodd" clipRule="evenodd" d="M63.8006 98.1386C62.5337 99.2569 60.4386 99.9546 57.7592 99.9546C55.6827 99.9546 54.6606 99.4763 54.3179 98.979C54.1084 98.6894 54.0539 97.6398 54.0286 96.9804C54.0126 96.6317 53.9923 95.5331 53.9832 93.9508C53.9792 89.5933 53.9923 83.8455 54.0191 83.3261C54.0337 83.0807 54.0756 82.8773 54.137 82.7061C54.1824 82.6601 54.2406 82.623 54.3179 82.5888C54.5305 82.4832 55.5007 82.4042 56.024 82.4042C58.0751 82.4042 61.0676 82.7195 63.4836 85.0305C64.6153 86.108 66.0052 88.2601 66.0052 91.5953C66.0052 94.3027 65.4582 96.6671 63.8006 98.1386ZM66.9783 84.1639C64.1159 81.1695 59.7281 81.1695 56.4452 81.1695H55.9646V81.1321L48.5892 81.1352L48.5741 81.7733C48.5741 81.7733 50.5547 81.7784 50.6534 83.329C50.7008 84.0815 50.6914 98.0216 50.6469 98.8471C50.5624 100.397 49.4016 100.407 48.7096 100.407C48.7079 100.407 48.7002 101.037 48.7002 101.037H53.9741C55.1891 101.045 56.6224 101.059 57.8708 101.059C62.7286 101.059 65.4559 99.3979 66.6635 98.164C68.1337 96.6671 69.5267 94.1457 69.5267 90.8345C69.5267 87.7102 68.2915 85.5325 66.9783 84.1639Z" fill="#2A3133"/>
