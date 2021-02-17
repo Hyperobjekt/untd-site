@@ -50,6 +50,7 @@ const AboutHero = ({ pageData }) => {
       <Container fluid="sm">
         <Row className="py-5 align-items-center">
           <Col
+            xs={{size: 8, offset: 2}}
             sm={{size: 4, offset: 0}}
             md={{size: 4, offset: 0}}
             lg={{size: 3, offset: 1}}
@@ -84,10 +85,10 @@ const AboutBodyRow = ({ rowData, index }) => {
 
   return (
     <div className="about-row" ref={ref}>
-      <Row className={`align-items-center ${index % 2 > 0 ? '' : 'flex-md-row-reverse justify-content-end'}`} >
+      <Row className={`align-items-center flex-column-reverse ${index % 2 > 0 ? 'flex-sm-row' : 'flex-sm-row-reverse justify-content-end'}`} >
         <Col 
-          sm={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
-          md={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
+          sm={{size: 7, offset: index % 2 > 0 ? 0 : 1}}
+          md={{size: 7, offset: index % 2 > 0 ? 0 : 1}}
           lg={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
           xl={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
         >
@@ -96,10 +97,11 @@ const AboutBodyRow = ({ rowData, index }) => {
           </motion.div>
         </Col>
         <Col
-          sm={{size: 4, offset: 0}}
-          md={{size: 4, offset: 0}}
-          lg={{size: 3, offset: 1}}
-          xl={{size: 3, offset: 1}}
+          xs={{size: 8, offset: 0}}
+          sm={{size: 4, offset: index % 2 > 0 ? 1 : 0}}
+          md={{size: 4, offset: index % 2 > 0 ? 1 : 0}}
+          lg={{size: 3, offset: index % 2 > 0 ? 2 : 1}}
+          xl={{size: 3, offset: index % 2 > 0 ? 2 : 1}}
         >
           {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
           <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="about-row__image">
@@ -118,7 +120,7 @@ const AboutBody = ({ pageData }) => {
     <div className="about-body">
       <Container fluid="sm">
         {pageData.frontmatter.contentRows.map((row, index) => (
-          <AboutBodyRow rowData={row} index={index} />
+          <AboutBodyRow rowData={row} index={index} key={index} />
         ))}
       </Container>
     </div>
@@ -147,8 +149,8 @@ const AboutResearch = ({ pageData }) => {
       <Container fluid="sm">
         <Row className="align-items-center">
           <Col 
-            sm={{size: 6, offset: 4}}
-            md={{size: 6, offset: 4}}
+            sm={{size: 10, offset: 1}}
+            md={{size: 8, offset: 2}}
             lg={{size: 6, offset: 4}}
             xl={{size: 6, offset: 4}}
           >

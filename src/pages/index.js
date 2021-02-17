@@ -275,8 +275,8 @@ const HomeEngage = ({ pageData }) => {
         </Row>
         {pageData.frontmatter.engageCards.map((card, index) => (
           card.isLibraryCallout 
-          ? <HomeLibraryCard cardData={card} index={index} />
-          : <HomeCard cardData={card} index={index} />
+          ? <HomeLibraryCard cardData={card} index={index} key={index} />
+          : <HomeCard cardData={card} index={index} key={index} />
         ))}
       </Container>
     </div>
