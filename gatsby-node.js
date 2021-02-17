@@ -6,7 +6,16 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   
       type MdxFrontmatter {
         graphSubheading: String @mdx
+        heroText: String @mdx
+        contentRows: [ContentRow]
         engageCards: [EngageCard]
+        fullWidthText: String @mdx
+        researchHeading: String @mdx
+        researchSubheading: String @mdx
+      }
+
+      type ContentRow {
+        rowText: String @mdx
       }
   
       type EngageCard {

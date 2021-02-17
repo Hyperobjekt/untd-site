@@ -112,6 +112,37 @@ collections:
               widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
+          - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
+          - {
+              name: 'contentRows',
+              label: 'Content Rows',
+              widget: 'list',
+              fields:
+                [
+                  { name: 'rowText', label: 'Row Text', widget: 'markdown' },
+                  { name: 'rowImage', label: 'Row Image', widget: 'image' },
+                ],
+            }
+          - {
+              name: 'fullWidthImage',
+              label: 'Full Width Image',
+              widget: 'image',
+            }
+          - {
+              name: 'fullWidthText',
+              label: 'Full Width Text',
+              widget: 'markdown',
+            }
+          - {
+              name: 'researchHeading',
+              label: 'Research Heading',
+              widget: 'markdown',
+            }
+          - {
+              name: 'researchSubheading',
+              label: 'Research Subheading',
+              widget: 'markdown',
+            }
       - name: 'contact'
         label: 'Contact'
         file: './src/content/pages/contact.mdx'
