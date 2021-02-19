@@ -1,10 +1,165 @@
-import React from 'react'
-import { Row, Col } from 'reactstrap'
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
+import Image from '../components/atoms/image'
+import { BrushStroke } from '../components/atoms/icons'
+import { basicStagger, basicStaggerChild, libraryEntry } from '../components/atoms/animation'
+
+import heroImage1 from '../images/untd-library1.png'
+import heroImage2 from '../images/untd-library2.png'
+import heroImage3 from '../images/untd-library3.png'
+import heroImage4 from '../images/untd-library4.png'
+import heroImage5 from '../images/untd-library5.png'
+
+const LibraryHero = ({ pageData }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
+
+  return (
+    <div className="library-hero bg-gray" ref={ref}>
+      <Container fluid="sm">
+        <Row className="py-5 align-items-center">
+          <Col
+            xs={{size: 8, offset: 2}}
+            sm={{size: 5, offset: 0}}
+            md={{size: 5, offset: 0}}
+            lg={{size: 4, offset: 1}}
+            xl={{size: 4, offset: 1}}
+          >
+            {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
+            <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-hero__image">
+              <motion.img variants={basicStaggerChild} src={heroImage1} alt="hero image" />
+              <motion.img variants={basicStaggerChild} src={heroImage2} alt="hero image" />
+              <motion.img variants={basicStaggerChild} src={heroImage3} alt="hero image" />
+              <motion.img variants={basicStaggerChild} src={heroImage4} alt="hero image" />
+              <motion.img variants={basicStaggerChild} src={heroImage5} alt="hero image" />
+            </motion.div>
+          </Col>
+          <Col 
+            sm={{size: 7, offset: 0}}
+            md={{size: 6, offset: 1}}
+            lg={{size: 6, offset: 1}}
+            xl={{size: 6, offset: 1}}
+          >
+            <motion.div className="library-hero__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+              <MDXRenderer>{pageData.frontmatter.libraryHeroText}</MDXRenderer>
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  )
+}
+
+const LibraryDescription = ({ pageData }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
+
+  return (
+    <div className="library-description" ref={ref}>
+      <Container fluid="sm">
+        <Row className="align-items-center flex-column-reverse flex-sm-row">
+          <Col 
+            sm={{size: 6, offset: 0}}
+            md={{size: 6, offset: 0}}
+            lg={{size: 6, offset: 0}}
+            xl={{size: 6, offset: 0}}
+          >
+            <motion.div className="library-description__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+              <MDXRenderer>{pageData.frontmatter.libraryDescription}</MDXRenderer>
+            </motion.div>
+          </Col>
+          <Col
+            xs={{size: 8, offset: 0}}
+            sm={{size: 6, offset: 0}}
+            md={{size: 5, offset: 1}}
+            lg={{size: 4, offset: 1}}
+            xl={{size: 4, offset: 1}}
+          >
+            <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-description__image">
+              <motion.div variants={basicStaggerChild}>
+                <Image className="h-100 w-100" filename={pageData.frontmatter.libraryDescriptionImage} />
+              </motion.div>
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  )
+}
+
+const LibraryTopics = ({ pageData }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
+  const [activeTopic, setActiveTopic] = useState(0)
+
+  return (
+    <div className="library-topics" ref={ref}>
+      <div className="library-topics__heading bg-gray">
+        <Container fluid="sm">
+          <Row>
+            <Col
+              xs={{size: 10, offset: 1}}
+              sm={{size: 10, offset: 2}}
+              md={{size: 10, offset: 2}}
+              lg={{size: 10, offset: 2}}
+              xl={{size: 8, offset: 4}}
+            >
+              <MDXRenderer>{pageData.frontmatter.libraryTopicsHeading}</MDXRenderer>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <div className="library-topics__body">
+        <Container fluid="sm">
+          <Row className="flex-column flex-sm-row">
+            <Col
+              sm={{size: 5, offset: 0}}
+              md={{size: 4, offset: 0}}
+              lg={{size: 3, offset: 0}}
+              xl={{size: 3, offset: 0}}
+            >
+              <div className="library-topics__sidebar">
+                <h3 className="knockout-bold">Topics</h3>
+                <BrushStroke />
+                {pageData.frontmatter.researchItems.map((item, i) => (
+                  <a href={`#${item.label}`} onClick={() => setActiveTopic(i)} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
+                    <div style={{"--color": item.item_color}}></div>
+                    <span className="caslon">{item.label}</span>
+                  </a>
+                ))}
+              </div>
+            </Col>
+            <Col
+              sm={{size: 7, offset: 0}}
+              md={{size: 7, offset: 1}}
+              lg={{size: 6, offset: 2}}
+              xl={{size: 5, offset: 2}}
+              className="library-topics__entries"
+            >
+              {pageData.frontmatter.researchItems.map((item, i) => (
+                <motion.div className="library-topics__entry" key={i} variants={libraryEntry} animate={i === activeTopic ? 'show' : 'hide'}>
+                  <MDXRenderer>{item.item_content}</MDXRenderer>
+                </motion.div>
+              ))}
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
+  )
+}
+
 
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`
@@ -20,6 +175,10 @@ const SessionsPage = ({ location }) => {
               description
               keywords
               socialShareImage
+              libraryHeroText
+              libraryDescription
+              libraryDescriptionImage
+              libraryTopicsHeading
               researchItems {
                 label
                 topic_area
@@ -29,6 +188,8 @@ const SessionsPage = ({ location }) => {
                 authors
                 year
                 full_citation
+                item_color
+                item_content
               }
             }
           }
@@ -44,7 +205,10 @@ const SessionsPage = ({ location }) => {
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
-      <Row className="heading">
+      <LibraryHero pageData={pageData} />
+      <LibraryDescription pageData={pageData} />
+      <LibraryTopics pageData={pageData} />
+      {/* <Row className="heading">
         <Col
           xs={{ size: 12, offset: 0 }}
           sm={{ size: 10, offset: 1 }}
@@ -78,7 +242,7 @@ const SessionsPage = ({ location }) => {
             )
           })}
         </Col>
-      </Row>
+      </Row> */}
     </Layout>
   )
 }

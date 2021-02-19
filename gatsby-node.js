@@ -12,6 +12,14 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
         fullWidthText: String @mdx
         researchHeading: String @mdx
         researchSubheading: String @mdx
+        libraryHeroText: String @mdx
+        libraryDescription: String @mdx
+        libraryTopicsHeading: String @mdx
+        researchItems: [ResearchItem]
+      }
+
+      type ResearchItem {
+        item_content: String @mdx
       }
 
       type ContentRow {

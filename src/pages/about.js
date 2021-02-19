@@ -3,42 +3,16 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Container, Row, Col } from 'reactstrap'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
 import { BrushStroke } from '../components/atoms/icons'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import heroImage1 from '../images/about_hero1.png'
 import heroImage2 from '../images/home_hero6.png'
-
-const basicStagger = {
-  show: {
-    transition: {
-      delayChildren: 1,
-      duration: 0.75, 
-      staggerChildren: 0.2
-    }
-  },
-  hide: {
-    transition: {
-      duration: 0.75, 
-      staggerChildren: 0.2
-    }
-  }
-}
-
-const basicStaggerChild = {
-  show: {
-    opacity: 1,
-    y: 0
-  },
-  hide: {
-    opacity: 0,
-    y: 10
-  }
-}
+import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
 const AboutHero = ({ pageData }) => {
   const [ref, inView] = useInView({

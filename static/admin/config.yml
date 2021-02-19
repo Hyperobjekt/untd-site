@@ -320,6 +320,26 @@ collections:
               label: 'Social share image for this page',
               widget: 'image',
             }
+          - {
+              name: 'libraryHeroText',
+              label: 'Libary Hero Text',
+              widget: 'markdown',
+            }
+          - {
+              name: 'libraryDescription',
+              label: 'Libary Description',
+              widget: 'markdown',
+            }
+          - {
+              name: 'libraryDescriptionImage',
+              label: 'Libary Description Image',
+              widget: 'image',
+            }
+          - {
+              name: 'libraryTopicsHeading',
+              label: 'Libary Topics Heading',
+              widget: 'markdown',
+            }
           - name: 'body'
             label: 'Body'
             widget: 'markdown'
@@ -342,6 +362,19 @@ collections:
                   name: 'full_citation',
                   label: 'Full citation',
                   widget: 'string',
+                }
+              - {
+                  name: 'item_color',
+                  label: 'Item Color',
+                  widget: 'color',
+                  allowInput: true,
+                  default: '#000000',
+                }
+              - {
+                  name: 'item_content',
+                  label: 'Item Content',
+                  widget: 'markdown',
+                  required: false,
                 }
       - name: 'use-cases'
         label: 'Use Cases'
