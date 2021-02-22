@@ -18,6 +18,7 @@ import heroImage3 from "../images/home_hero3.png"
 import heroImage4 from "../images/home_hero4.png"
 import heroImage5 from "../images/home_hero5.png"
 import heroImage6 from "../images/home_hero6.png"
+import cpalLogo from "../images/cpal-logo.png"
 
 
 const HomeHero = ({ pageData }) => {
@@ -93,6 +94,7 @@ const HomeGraph = ({ pageData }) => {
             <div className="home-graph__cpal py-4">
               <p className="m-0">
                 <span className="knockout text-uppercase">In partnership with</span>
+                <img src={cpalLogo} />
               </p>
             </div>
           </Col>
@@ -161,27 +163,33 @@ const HomeLibraryCard = ({ cardData, index }) => {
           <motion.div className="home-engage__card-topics" variants={basicStagger} initial="hide" animate={inView ? 'show' : 'hide'}>
             <motion.ul variants={basicStaggerChild}>
               <li className="dotted-bottom">
-                <div className="bg-info"></div>
+                <span className="caslon">Socioeconomic Mobility</span>
+              </li>
+              <li className="dotted-bottom">
                 <span className="caslon">Family</span>
               </li>
               <li className="dotted-bottom">
-                <div className="bg-info"></div>
-                <span className="caslon">Quality Education</span>
+                <span className="caslon">Education</span>
               </li>
               <li className="dotted-bottom">
-                <div className="bg-info"></div>
                 <span className="caslon">Income Inequality</span>
               </li>
               <li className="dotted-bottom">
-                <div className="bg-info"></div>
-                <span className="caslon">Neighborhood Segregation</span>
+                <span className="caslon">Neighborhoods</span>
               </li>
               <li className="dotted-bottom">
-                <div className="bg-info"></div>
                 <span className="caslon">Social Capital</span>
               </li>
+              <li className="dotted-bottom">
+                <span className="caslon">Health and Trauma</span>
+              </li>
+              <li className="dotted-bottom">
+                <span className="caslon">Financial Stability</span>
+              </li>
+              <li className="dotted-bottom">
+                <span className="caslon">Criminal Justice and Safety</span>
+              </li>
               <li>
-                <div className="bg-info"></div>
                 <span className="caslon">Projects in North Texas</span>
               </li>
             </motion.ul>
