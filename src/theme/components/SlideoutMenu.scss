@@ -9,7 +9,7 @@
   top: 0;
   z-index: 1300;
   position: fixed;
-  background-color: $white;
+  background-color: $black;
   padding: 6rem;
   font-size: 2.6rem;
   box-shadow: 1px 1px 3px #ccc;
@@ -28,11 +28,15 @@
     font-size: 2rem;
     right: 2rem;
     top: 2rem;
+
+    path {
+      stroke: $white;
+    }
   }
 
   a {
     font-family: $knockoutBold !important;
     text-transform: uppercase;
-    color: $black !important;
+    color: $white !important;
   }
 }

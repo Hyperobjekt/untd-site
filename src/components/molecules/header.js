@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Navbar, NavbarBrand, Button } from 'reactstrap'
-import { MdMenu } from 'react-icons/md'
 
 import { useStore } from './../../utils/store'
 
@@ -10,10 +9,13 @@ const Header = ({ siteTitle, location }) => {
 
   return (
     <header>
-      <Navbar color="light" light expand="md" fixed="top">
-        <NavbarBrand href="/">LOGO</NavbarBrand>
+      <Navbar color="transparent" light expand="md" fixed="top">
         <Button color="link" className="btn-menu" onClick={toggleShowMenu}>
-          <MdMenu />
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+          <span>Menu</span>
         </Button>
       </Navbar>
     </header>

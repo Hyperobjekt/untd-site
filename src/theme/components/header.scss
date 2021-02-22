@@ -1,11 +1,56 @@
 header {
   nav.navbar {
-    height: $headerHeight;
-    justify-content: space-between;
+    justify-content: flex-end;
+    pointer-events: none;
     align-items: center;
-    padding: 0 1rem 0 2.2rem;
+    padding: 2rem;
+
+    @include media-breakpoint-up(md) {
+      padding: 2.4rem;
+    }
+
     .btn-menu {
       font-size: 2rem;
+    }
+  }
+
+  .btn-menu {
+    pointer-events: initial;
+    width: 100%;
+    max-width: 95px;
+    border-radius: 20px;
+    background-color: white;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.04));
+    padding: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    > span {
+      font-family: $knockoutReg !important;
+      font-size: 1.4rem;
+      color: $black;
+      margin-left: 8px;
+    }
+
+    div {
+      width: 14px;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $black;
+
+        &:last-child {
+          max-width: 60%;
+          margin: 5px 0 0 auto;
+        }
+      }
     }
   }
 }
