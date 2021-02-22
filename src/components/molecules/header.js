@@ -12,7 +12,12 @@ const Header = ({ siteTitle, location }) => {
     <header>
       <Navbar color="light" light expand="md" fixed="top">
         <NavbarBrand href="/">LOGO</NavbarBrand>
-        <Button color="link" className="btn-menu" onClick={toggleShowMenu}>
+        <Button
+          color="link"
+          className="btn-menu"
+          onClick={toggleShowMenu}
+          aria-label="Menu"
+        >
           <MdMenu />
         </Button>
       </Navbar>
