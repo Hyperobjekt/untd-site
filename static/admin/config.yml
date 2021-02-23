@@ -322,23 +322,28 @@ collections:
             }
           - {
               name: 'libraryHeroText',
-              label: 'Libary Hero Text',
+              label: 'Library Hero Text',
               widget: 'markdown',
             }
           - {
               name: 'libraryDescription',
-              label: 'Libary Description',
+              label: 'Library Description',
               widget: 'markdown',
             }
           - {
               name: 'libraryDescriptionImage',
-              label: 'Libary Description Image',
+              label: 'Library Description Image',
               widget: 'image',
             }
           - {
               name: 'libraryTopicsHeading',
-              label: 'Libary Topics Heading',
+              label: 'Library Topics Heading',
               widget: 'markdown',
+            }
+          - {
+              name: 'libraryTopicsHeadingImage',
+              label: 'Library Topics Heading Image',
+              widget: 'image',
             }
           - name: 'body'
             label: 'Body'

@@ -10,7 +10,7 @@ const Header = ({ siteTitle, location }) => {
   return (
     <header>
       <Navbar color="transparent" light expand="md" fixed="top">
-        <Button color="link" className="btn-menu" onClick={toggleShowMenu}>
+        <Button color="link" className="btn-menu" onClick={toggleShowMenu} aria-label="Menu">
           <div>
             <span></span>
             <span></span>

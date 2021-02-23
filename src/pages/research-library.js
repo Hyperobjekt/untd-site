@@ -24,7 +24,7 @@ const LibraryHero = ({ pageData }) => {
   })
 
   return (
-    <div className="library-hero bg-gray" ref={ref}>
+    <div className="library-hero bg-darkgray" ref={ref}>
       <Container fluid="sm">
         <Row className="py-5 align-items-center">
           <Col
@@ -107,13 +107,25 @@ const LibraryTopics = ({ pageData }) => {
     <div className="library-topics" ref={ref}>
       <div className="library-topics__heading bg-gray">
         <Container fluid="sm">
-          <Row>
+          <Row className="align-items-center">
             <Col
-              xs={{size: 10, offset: 1}}
-              sm={{size: 10, offset: 2}}
-              md={{size: 10, offset: 2}}
-              lg={{size: 10, offset: 2}}
-              xl={{size: 8, offset: 4}}
+              xs={{size: 8, offset: 2}}
+              sm={{size: 4, offset: 0}}
+              md={{size: 3, offset: 0}}
+              lg={{size: 3, offset: 0}}
+              xl={{size: 3, offset: 0}}
+            >
+              <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-topics__heading-image">
+                <motion.div variants={basicStaggerChild}>
+                  <Image className="h-100 w-100" filename={pageData.frontmatter.libraryTopicsHeadingImage} />
+                </motion.div>
+              </motion.div>
+            </Col>
+            <Col
+              sm={{size: 7, offset: 1}}
+              md={{size: 8, offset: 1}}
+              lg={{size: 8, offset: 1}}
+              xl={{size: 8, offset: 1}}
             >
               <MDXRenderer>{pageData.frontmatter.libraryTopicsHeading}</MDXRenderer>
             </Col>
@@ -133,7 +145,7 @@ const LibraryTopics = ({ pageData }) => {
                 <h3 className="knockout-bold">Topics</h3>
                 <BrushStroke />
                 {pageData.frontmatter.researchItems.map((item, i) => (
-                  <a href={`#${item.label}`} onClick={() => setActiveTopic(i)} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
+                  <a onClick={() => setActiveTopic(i)} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
                     <div style={{"--color": item.item_color}}></div>
                     <span className="caslon">{item.label}</span>
                   </a>
@@ -144,11 +156,11 @@ const LibraryTopics = ({ pageData }) => {
               sm={{size: 7, offset: 0}}
               md={{size: 7, offset: 1}}
               lg={{size: 6, offset: 2}}
-              xl={{size: 5, offset: 2}}
+              xl={{size: 6, offset: 2}}
               className="library-topics__entries"
             >
               {pageData.frontmatter.researchItems.map((item, i) => (
-                <motion.div className="library-topics__entry" key={i} variants={libraryEntry} animate={i === activeTopic ? 'show' : 'hide'}>
+                <motion.div className="library-topics__entry" key={i} id={slugify(item.label)} variants={libraryEntry} style={{position: i === activeTopic ? 'relative' : 'absolute'}} animate={i === activeTopic ? 'show' : 'hide'}>
                   <MDXRenderer>{item.item_content}</MDXRenderer>
                 </motion.div>
               ))}
@@ -159,6 +171,8 @@ const LibraryTopics = ({ pageData }) => {
     </div>
   )
 }
+
+const slugify = string => string.split(" ").map(ss => ss.toLowerCase()).join("-")
 
 
 const SessionsPage = ({ location }) => {
@@ -179,6 +193,7 @@ const SessionsPage = ({ location }) => {
               libraryDescription
               libraryDescriptionImage
               libraryTopicsHeading
+              libraryTopicsHeadingImage
               researchItems {
                 label
                 topic_area

@@ -20,8 +20,8 @@
 @import 'pages/about';
 @import 'pages/library';
 
-* {
-  font-family: 'Gotham A', 'Gotham B', sans-serif !important;
+body * {
+  font-family: 'Gotham A', 'Gotham B', sans-serif;
 }
 
 h1,
@@ -30,9 +30,14 @@ h3,
 h4,
 h5,
 h6 {
-  * {
-    font-family: inherit !important;
-    color: inherit !important;
+  a {
+    font-family: inherit;
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
 
