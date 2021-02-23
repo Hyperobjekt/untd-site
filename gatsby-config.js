@@ -42,28 +42,16 @@ module.exports = {
     footerMenu: [
       // Menu items for the footer (if it differs from slideout menu)
       {
-        title: `Explorer`,
-        path: `/explorer/`,
-      },
-      {
-        title: `Research Library`,
-        path: `/research-library/`,
-      },
-      {
-        title: `Use Cases`,
-        path: `/use-cases/`,
-      },
-      {
-        title: `FAQ`,
-        path: `/faq/`,
+        title: `Home`,
+        path: `/`,
       },
       {
         title: `About`,
         path: `/about/`,
       },
       {
-        title: `Contact`,
-        path: `/contact/`,
+        title: `FAQ`,
+        path: `/faq/`,
       },
     ],
   },
