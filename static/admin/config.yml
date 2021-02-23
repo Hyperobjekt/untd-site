@@ -3,9 +3,9 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: staging # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: false # Switch off when deployed.
+local_backend: true # Switch off when deployed.
 
-media_folder: ./src/content/uploads
+media_folder: /src/content/uploads
 public_folder: /uploads
 
 collections:
@@ -35,7 +35,7 @@ collections:
             }
       - label: 'Explorer Language Pack'
         name: 'explorer'
-        file: './src/content/lang/explorer.json'
+        file: '/src/content/lang/explorer.json'
         fields:
           - {
               label: 'English',
@@ -68,14 +68,14 @@ collections:
     create: false
     format: frontmatter
     extensions: mdx
-    media_folder: ./../uploads
+    media_folder: /src/content/uploads
     public_folder: /uploads
     editor:
       preview: true
     files:
       - label: '404'
         name: '404'
-        file: './src/content/pages/404.mdx'
+        file: '/src/content/pages/404.mdx'
         fields:
           - { name: title, label: 'Page title', widget: string }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -95,7 +95,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'about'
         label: 'About'
-        file: './src/content/pages/about.mdx'
+        file: '/src/content/pages/about.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -146,7 +146,7 @@ collections:
             }
       - name: 'contact'
         label: 'Contact'
-        file: './src/content/pages/contact.mdx'
+        file: '/src/content/pages/contact.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -166,7 +166,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'explorer'
         label: 'Explorer'
-        file: './src/content/pages/explorer.mdx'
+        file: '/src/content/pages/explorer.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -186,7 +186,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'faq'
         label: 'FAQ'
-        file: './src/content/pages/faq.mdx'
+        file: '/src/content/pages/faq.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -206,7 +206,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'home'
         label: 'Home'
-        file: './src/content/pages/home.mdx'
+        file: '/src/content/pages/home.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -304,7 +304,7 @@ collections:
           - { name: body, label: Body, widget: markdown }
       - name: 'research-library'
         label: 'Research Library'
-        file: './src/content/pages/research-library.mdx'
+        file: '/src/content/pages/research-library.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -384,7 +384,7 @@ collections:
                 }
       - name: 'use-cases'
         label: 'Use Cases'
-        file: './src/content/pages/use-cases.mdx'
+        file: '/src/content/pages/use-cases.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
