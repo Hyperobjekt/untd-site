@@ -23,8 +23,6 @@ const Footer = () => {
     `
   )
 
-  console.log('footer, ', site)
-
   return (
     <footer className="footer bg-darkgray">
       <Container fluid="md" className="px-4 px-md-3">
