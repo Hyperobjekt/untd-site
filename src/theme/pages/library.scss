@@ -111,8 +111,16 @@
   &__heading {
     padding: 8.7rem 0;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       padding: 12.7rem 0;
+    }
+
+    &-image {
+      margin: 0 0 6rem;
+
+      @include media-breakpoint-up(md) {
+        margin: 0;
+      }
     }
 
     p {
@@ -120,6 +128,11 @@
       font-size: 3.4rem;
       line-height: 4.4rem;
       color: $black;
+
+      @include media-breakpoint-only(sm) {
+        font-size: 2.3rem;
+        line-height: 3.4rem;
+      }
     }
   }
 
@@ -147,73 +160,106 @@
   }
 
   &__topic {
-    display: flex;
+    display: table;
     align-items: center;
-    margin-bottom: 6px;
+    margin-bottom: 1.6rem;
     transition: transform 0.4s ease-out;
+    position: relative;
+    cursor: pointer;
 
     &:hover {
       text-decoration: none;
+
+      span {
+        font-style: italic;
+      }
     }
 
     div {
-      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
       background-color: var(--color);
-      width: 12px;
-      height: 12px;
-      margin-right: 6px;
-      transform-origin: top left;
+      width: 100%;
+      height: 1px;
+      transform-origin: left center;
       transition: transform 0.4s ease-out;
+      transform: scaleX(0);
     }
 
     span {
       font-size: 1.8rem;
-      line-height: 1.8rem;
-      position: relative;
-      top: 4px;
+      line-height: 2rem;
       color: $black;
-      transform-origin: top left;
-      transition: transform 0.4s ease-out;
     }
   }
 
   &__topic--active {
     div {
-      transform: scale(1.5);
+      transform: scaleX(1);
     }
 
     span {
-      transform: scale(1.2) translate(7px, 2px);
+      font-style: italic;
     }
-  }
-
-  &__topic--active ~ &__topic {
-    transform: translateY(10px);
   }
 
   &__entries {
     position: relative;
-    margin: 55px 0 0;
+    padding: 0 !important;
   }
 
   &__entry {
+    width: calc(100% - 30px);
+    left: 15px;
+    top: 0;
+    padding: 55px 0 0;
+
+    @include media-breakpoint-up(sm) {
+      width: 100%;
+      left: 0;
+    }
+
     p {
-      font-size: 1.5rem;
-      line-height: 2.2rem;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
       margin: 0 0 2rem;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1 {
       font-family: $caslon !important;
-      font-size: 2.82rem;
-      line-height: 4.7rem;
-      margin: 0 0 2rem;
+      font-size: 4.6rem;
+      line-height: 6rem;
+      margin: 0 0 3.3rem;
       color: $black;
+      @include dotted-bottom;
+    }
+
+    h2 {
+      font-family: $caslon !important;
+      font-size: 3.4rem;
+      line-height: 4.4rem;
+      margin: 6.7rem 0 3rem;
+      color: $black;
+    }
+
+    h3 {
+      font-family: $caslon !important;
+      font-size: 2.6rem;
+      line-height: 3.3rem;
+      margin: 0 0 4.5rem;
+      color: $black;
+    }
+
+    ul {
+      padding-left: 2.5rem;
+    }
+
+    li {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: $black;
+      margin: 0 0 2rem;
     }
   }
 }

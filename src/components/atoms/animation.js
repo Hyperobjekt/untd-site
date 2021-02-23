@@ -30,7 +30,6 @@ export const libraryEntry = {
         opacity: 1,
         y: 0,
         pointerEvents: 'initial',
-        position: 'static',
         transition: {
             delay: 0.5
         }
@@ -39,6 +38,5 @@ export const libraryEntry = {
         opacity: 0,
         y: 10,
         pointerEvents: 'none',
-        position: 'absolute'
     }
 }

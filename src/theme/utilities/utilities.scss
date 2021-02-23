@@ -46,7 +46,7 @@ a.highlight {
   background-color: $darkgray;
 }
 
-.dotted-bottom {
+@mixin dotted-bottom {
   background-image: repeating-linear-gradient(
     90deg,
     $black,
@@ -57,6 +57,10 @@ a.highlight {
   background-position: 0 100%;
   background-size: 100% 1px;
   background-repeat: no-repeat;
+}
+
+.dotted-bottom {
+  @include dotted-bottom;
 }
 
 .knockout {
