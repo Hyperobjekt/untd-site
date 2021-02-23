@@ -24,11 +24,11 @@ module.exports = {
       },
       {
         title: `Use Cases`,
-        path: `/use-cases/`,
+        path: `/`,
       },
       {
         title: `FAQ`,
-        path: `/faq/`,
+        path: `/`,
       },
       {
         title: `About`,
@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         title: `Contact`,
-        path: `/contact/`,
+        path: `/`,
       },
     ],
     footerMenu: [
