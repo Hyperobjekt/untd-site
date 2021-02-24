@@ -24,6 +24,7 @@
   &__image {
     position: relative;
     padding: 70% 0;
+    left: 10%;
 
     @include media-breakpoint-up(sm) {
       padding: 85% 0;
@@ -109,7 +110,7 @@
 
 .library-topics {
   &__heading {
-    padding: 8.7rem 0;
+    padding: 6rem 0;
 
     @include media-breakpoint-up(md) {
       padding: 12.7rem 0;
@@ -125,19 +126,24 @@
 
     p {
       font-family: $caslon !important;
-      font-size: 3.4rem;
-      line-height: 4.4rem;
+      font-size: 1.9rem;
+      line-height: 2.4rem;
       color: $black;
 
-      @include media-breakpoint-only(sm) {
+      @include media-breakpoint-up(sm) {
         font-size: 2.3rem;
         line-height: 3.4rem;
+      }
+
+      @include media-breakpoint-up(md) {
+        font-size: 3.4rem;
+        line-height: 4.4rem;
       }
     }
   }
 
   &__body {
-    padding: 6rem 0;
+    padding: 0;
 
     @include media-breakpoint-up(sm) {
       padding: 10rem 0;
@@ -145,27 +151,84 @@
   }
 
   &__sidebar {
+    position: sticky !important;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    padding: 5rem 0 2rem;
+    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.04));
+
+    @include media-breakpoint-up(sm) {
+      padding: 0;
+      position: static;
+      filter: none;
+    }
+
     h3 {
       font-size: 2.2rem;
       line-height: 52px;
       text-transform: uppercase;
+      display: none;
+      color: $black;
+
+      @include media-breakpoint-up(sm) {
+        display: block;
+      }
     }
 
-    svg {
+    h4 {
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      color: $black;
+      text-transform: uppercase;
+
+      @include media-breakpoint-up(sm) {
+        display: none;
+      }
+    }
+
+    > div > svg {
       margin: 0.6rem 0 3.1rem;
       width: 100%;
       max-width: 6rem;
       height: auto;
+      display: none;
+
+      @include media-breakpoint-up(sm) {
+        display: block;
+      }
+    }
+
+    &-links {
+      //   height: 0;
+      overflow: hidden;
+
+      > div {
+        padding: 3rem 0 0;
+
+        @include media-breakpoint-up(sm) {
+          padding: 0;
+        }
+      }
+
+      @include media-breakpoint-up(sm) {
+        height: auto;
+      }
     }
   }
 
   &__topic {
     display: table;
     align-items: center;
-    margin-bottom: 1.6rem;
+    margin: 0 auto 1.6rem;
     transition: transform 0.4s ease-out;
     position: relative;
     cursor: pointer;
+
+    @include media-breakpoint-up(sm) {
+      margin: 0 0 1.6rem;
+    }
 
     &:hover {
       text-decoration: none;
