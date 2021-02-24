@@ -186,6 +186,18 @@
       @include media-breakpoint-up(sm) {
         display: none;
       }
+
+      svg {
+        width: 14px;
+        height: auto;
+        margin: 0 2px;
+        transform-origin: center;
+        transition: transform 0.3s ease-out;
+
+        &.open {
+          transform: rotate(180deg);
+        }
+      }
     }
 
     > div > svg {

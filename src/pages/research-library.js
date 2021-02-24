@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MdKeyboardArrowDown } from 'react-icons/md'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
@@ -152,7 +153,7 @@ const LibraryTopics = ({ pageData }) => {
             >
               <div onClick={toggleDropdown} role="toggle dropdown">
                 <h3 className="knockout-bold">Topics</h3>
-                <h4 className="knockout-bold">Choose Topic</h4>
+                <h4 className="knockout-bold">Choose Topic <MdKeyboardArrowDown className={`${dropdownOpen ? 'open' : ''}`} /></h4>
                 <BrushStroke />
                 <motion.div variants={topicsDropdown} initial={dropdownOpen ? "show" : "hide"} animate={dropdownOpen ? "show" : "hide"} className="library-topics__sidebar-links">
                   <div>
