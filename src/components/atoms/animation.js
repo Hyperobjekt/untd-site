@@ -40,3 +40,12 @@ export const libraryEntry = {
         pointerEvents: 'none',
     }
 }
+
+export const topicsDropdown = {
+    show: {
+        height: 'auto'
+    },
+    hide: {
+        height: 0,
+    }
+}

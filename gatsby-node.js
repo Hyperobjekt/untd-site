@@ -16,6 +16,8 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
         libraryDescription: String @mdx
         libraryTopicsHeading: String @mdx
         researchItems: [ResearchItem]
+        aboutTheCenterIntro: String @mdx
+        aboutTheCenterContent: String @mdx
       }
 
       type ResearchItem {

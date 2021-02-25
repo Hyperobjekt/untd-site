@@ -23,8 +23,6 @@ const Footer = () => {
     `
   )
 
-  console.log('footer, ', site)
-
   return (
     <footer className="footer bg-darkgray">
       <Container fluid="md" className="px-4 px-md-3">
@@ -47,9 +45,9 @@ const Footer = () => {
           <HubLogo className="mx-5 mx-md-4" />
         </Row>
         <div className="footer__links">
-          {site.siteMetadata.footerMenu.map(el => {
+          {site.siteMetadata.footerMenu.map((el, i) => {
             return (
-              <Link to={el.path} className="text-uppercase knockout">
+              <Link to={el.path} key={i} className="text-uppercase knockout">
                 {el.title}
               </Link>
             )

@@ -10,12 +10,13 @@
   z-index: 1300;
   position: fixed;
   background-color: $black;
-  padding: 6rem;
+  padding: 10rem 3rem;
   font-size: 2.6rem;
   box-shadow: 1px 1px 3px #ccc;
 
-  @include media-breakpoint-up(sm) {
-    width: 350px;
+  @include media-breakpoint-up(md) {
+    padding: 12.3rem 6.5rem;
+    width: 530px;
   }
 
   &.show {
@@ -35,8 +36,26 @@
   }
 
   a {
-    font-family: $knockoutBold !important;
+    font-family: $knockoutBold;
     text-transform: uppercase;
     color: $white !important;
+    font-size: 3rem;
+    line-height: 3rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 4rem;
+      line-height: 4rem;
+      margin: 0 0 2rem;
+    }
+
+    &:hover {
+      font-family: $caslon;
+      font-style: italic;
+      font-size: 2.5rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 3.4rem;
+      }
+    }
   }
 }

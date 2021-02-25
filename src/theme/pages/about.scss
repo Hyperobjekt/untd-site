@@ -175,5 +175,70 @@
       line-height: 2.4rem;
       color: $black;
     }
+
+    ul {
+      margin: 2rem 0 0;
+    }
+
+    li {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: $black;
+      margin: 0 0 1rem;
+    }
+  }
+}
+
+.about-center {
+  &__intro {
+    padding: 6rem 0;
+
+    @include media-breakpoint-up(md) {
+      padding: 12.7rem 0;
+    }
+
+    h2 {
+      font-family: $knockoutBold;
+      font-size: 4rem;
+      line-height: 3.5rem;
+      max-width: 600px;
+      margin: 0 0 4rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-family: $caslon;
+      font-size: 1.8rem;
+      color: $black;
+
+      @include media-breakpoint-up(md) {
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  &__content {
+    padding: 60px 0;
+
+    @include media-breakpoint-up(md) {
+      padding: 120px 0;
+    }
+
+    p {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: $black;
+    }
+
+    ul {
+      margin: 2rem 0 0;
+    }
+
+    li {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: $black;
+      margin: 0 0 2rem;
+    }
   }
 }
