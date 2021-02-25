@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
@@ -109,7 +109,13 @@ const LibraryTopics = ({ pageData }) => {
   })
   const [activeTopic, setActiveTopic] = useState(0)
 
-  const [dropdownOpen, setDropdownOpen] = useState(() => !!window && window.innerWidth < 576 ? false : true)
+  const [dropdownOpen, setDropdownOpen] = useState(true)
+
+  useEffect(() => {
+    if (window.innerWidth < 576) {
+      setDropdownOpen(false)
+    }
+  },[])
 
   const toggleDropdown = useCallback(() => {
     if(!!window && window.innerWidth < 576) {
