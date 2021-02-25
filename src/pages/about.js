@@ -140,6 +140,47 @@ const AboutResearch = ({ pageData }) => {
   )
 }
 
+const AboutTheCenter = ({ pageData }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
+
+  return (
+    <div className="about-center" ref={ref}>
+      <div className="about-center__intro bg-gray">
+        <Container fluid="sm">
+          <Row>
+            <Col
+              sm={{size: 10}}
+              md={{size: 8}}
+              lg={{size: 8}}
+              xl={{size: 8}}
+            >
+              <MDXRenderer>{pageData.frontmatter.aboutTheCenterIntro}</MDXRenderer>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <div className="about-center__content">
+        <Container fluid="sm">
+          <Row>
+            <Col 
+              sm={{size: 10, offset: 1}}
+              md={{size: 8, offset: 2}}
+              lg={{size: 6, offset: 4}}
+              xl={{size: 6, offset: 4}}
+            >
+              <motion.div className="about-research__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+                <MDXRenderer>{pageData.frontmatter.aboutTheCenterContent}</MDXRenderer>
+              </motion.div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
+  )
+}
+
 const AboutPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
@@ -164,6 +205,8 @@ const AboutPage = ({ location }) => {
               fullWidthText
               researchHeading
               researchSubheading
+              aboutTheCenterIntro
+              aboutTheCenterContent
             }
           }
         }
@@ -182,6 +225,7 @@ const AboutPage = ({ location }) => {
       <AboutBody pageData={pageData} />
       <AboutFullWidth pageData={pageData} />
       <AboutResearch pageData={pageData} />
+      <AboutTheCenter pageData={pageData} />
     </Layout>
   )
 }

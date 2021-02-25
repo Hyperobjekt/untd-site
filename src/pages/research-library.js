@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MdKeyboardArrowDown } from 'react-icons/md'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
@@ -14,6 +16,7 @@ import {
   basicStagger,
   basicStaggerChild,
   libraryEntry,
+  topicsDropdown,
 } from '../components/atoms/animation'
 
 import heroImage1 from '../images/untd-library1.png'
@@ -146,11 +149,27 @@ const LibraryDescription = ({ pageData }) => {
   )
 }
 
+const CustomImage = props => <Image filename={props.src} />
+
 const LibraryTopics = ({ pageData }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
   const [activeTopic, setActiveTopic] = useState(0)
+
+  const [dropdownOpen, setDropdownOpen] = useState(true)
+
+  useEffect(() => {
+    if (window.innerWidth < 576) {
+      setDropdownOpen(false)
+    }
+  }, [])
+
+  const toggleDropdown = useCallback(() => {
+    if (!!window && window.innerWidth < 576) {
+      setDropdownOpen(ddOpen => !ddOpen)
+    }
+  }, [])
 
   return (
     <div className="library-topics" ref={ref}>
@@ -199,22 +218,41 @@ const LibraryTopics = ({ pageData }) => {
               md={{ size: 4, offset: 0 }}
               lg={{ size: 3, offset: 0 }}
               xl={{ size: 3, offset: 0 }}
+              className="library-topics__sidebar"
             >
-              <div className="library-topics__sidebar">
+              <div onClick={toggleDropdown} role="toggle dropdown">
                 <h3 className="knockout-bold">Topics</h3>
+                <h4 className="knockout-bold">
+                  Choose Topic{' '}
+                  <MdKeyboardArrowDown
+                    className={`${dropdownOpen ? 'open' : ''}`}
+                  />
+                </h4>
                 <BrushStroke />
-                {pageData.frontmatter.researchItems.map((item, i) => (
-                  <a
-                    onClick={() => setActiveTopic(i)}
-                    className={`library-topics__topic ${
-                      i === activeTopic ? 'library-topics__topic--active' : ''
-                    }`}
-                    key={i}
-                  >
-                    <div style={{ '--color': item.item_color }}></div>
-                    <span className="caslon">{item.label}</span>
-                  </a>
-                ))}
+                <motion.div
+                  variants={topicsDropdown}
+                  initial={dropdownOpen ? 'show' : 'hide'}
+                  animate={dropdownOpen ? 'show' : 'hide'}
+                  className="library-topics__sidebar-links"
+                >
+                  <div>
+                    {pageData.frontmatter.researchItems.map((item, i) => (
+                      <a
+                        role="set active topic"
+                        onClick={() => setActiveTopic(i)}
+                        className={`library-topics__topic ${
+                          i === activeTopic
+                            ? 'library-topics__topic--active'
+                            : ''
+                        }`}
+                        key={i}
+                      >
+                        <div style={{ '--color': item.item_color }}></div>
+                        <span className="caslon">{item.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
             </Col>
             <Col
@@ -235,7 +273,13 @@ const LibraryTopics = ({ pageData }) => {
                   }}
                   animate={i === activeTopic ? 'show' : 'hide'}
                 >
-                  <MDXRenderer>{item.item_content}</MDXRenderer>
+                  <MDXProvider
+                    components={{
+                      img: CustomImage,
+                    }}
+                  >
+                    <MDXRenderer>{item.item_content}</MDXRenderer>
+                  </MDXProvider>
                 </motion.div>
               ))}
             </Col>

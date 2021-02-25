@@ -144,6 +144,16 @@ collections:
               label: 'Research Subheading',
               widget: 'markdown',
             }
+          - {
+              name: 'aboutTheCenterIntro',
+              label: 'About The Center Intro',
+              widget: 'markdown',
+            }
+          - {
+              name: 'aboutTheCenterContent',
+              label: 'About The Center Content',
+              widget: 'markdown',
+            }
       - name: 'contact'
         label: 'Contact'
         file: '/src/content/pages/contact.mdx'
