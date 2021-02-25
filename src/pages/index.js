@@ -9,7 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { Arrow, BrushStroke, InfoIcon } from '../components/atoms/icons'
+import { Arrow, BrushStroke, HubLogo, InfoIcon } from '../components/atoms/icons'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
 import heroImage1 from "../images/home_hero1.png"
@@ -43,7 +43,9 @@ const HomeHero = ({ pageData }) => {
               <motion.img variants={basicStaggerChild} src={heroImage3} alt="hero image" />
               <motion.img variants={basicStaggerChild} src={heroImage4} alt="hero image" />
               <motion.img variants={basicStaggerChild} src={heroImage5} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage6} alt="hero image" />
+              <Link to="/" className="logo">
+                <HubLogo />
+              </Link>
             </motion.div>
           </Col>
           <Col 
