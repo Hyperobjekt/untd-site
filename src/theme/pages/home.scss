@@ -225,21 +225,67 @@
       margin: 12rem 0 0;
     }
 
-    > a {
-      padding: 9px 11px;
-      max-width: 110px;
+    &-source {
+      display: flex;
+      // align-items: center;
+
+      // max-width: 400px;
+
+      div {
+        display: flex;
+        align-items: center;
+        padding: 9px 11px;
+
+        > span {
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          color: $black;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      svg {
+        width: 24px;
+        height: auto;
+      }
 
       &:hover {
         color: $black;
         text-decoration: none;
+
+        p {
+          width: 200px;
+
+          @include media-breakpoint-up(sm) {
+            width: 280px;
+          }
+        }
       }
 
-      span {
-        font-size: 1.6rem;
-        line-height: 1.6rem;
-        color: $black;
+      p {
+        margin-left: 15px;
         position: relative;
-        top: 2px;
+        top: 5px;
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s ease-out;
+
+        @include media-breakpoint-up(sm) {
+          margin-left: 25px;
+        }
+
+        span {
+          display: block;
+          font-size: 1.1rem;
+          line-height: 1.6rem;
+          color: black;
+          min-width: 200px;
+
+          @include media-breakpoint-up(sm) {
+            min-width: 280px;
+          }
+        }
       }
     }
   }

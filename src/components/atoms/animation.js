@@ -1,7 +1,7 @@
 export const basicStagger = {
     show: {
         transition: {
-        delayChildren: 1,
+        delayChildren: 0.5,
         duration: 0.75, 
         staggerChildren: 0.2
         }
