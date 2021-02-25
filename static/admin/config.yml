@@ -241,6 +241,11 @@ collections:
             }
           - { name: 'graphImage', label: 'Graph Module Image', widget: 'image' }
           - {
+              name: 'graphCitation',
+              label: 'Graph Module Citation',
+              widget: 'string',
+            }
+          - {
               name: 'graphHeading',
               label: 'Graph Module Heading',
               widget: 'string',

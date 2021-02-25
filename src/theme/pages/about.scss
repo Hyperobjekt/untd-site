@@ -13,13 +13,18 @@
         top: 30%;
         z-index: 1;
       }
+    }
 
-      &:last-child {
-        width: 50%;
+    .logo {
+      position: absolute;
+      width: 130px;
+      left: -15%;
+      top: 10%;
+      z-index: 2;
+
+      svg {
+        width: 100%;
         height: auto;
-        left: -10%;
-        top: 15%;
-        z-index: 2;
       }
     }
   }

@@ -9,7 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { Arrow, BrushStroke, InfoIcon } from '../components/atoms/icons'
+import { Arrow, BrushStroke, HubLogo, InfoIcon } from '../components/atoms/icons'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
 import heroImage1 from "../images/home_hero1.png"
@@ -43,7 +43,9 @@ const HomeHero = ({ pageData }) => {
               <motion.img variants={basicStaggerChild} src={heroImage3} alt="hero image" />
               <motion.img variants={basicStaggerChild} src={heroImage4} alt="hero image" />
               <motion.img variants={basicStaggerChild} src={heroImage5} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage6} alt="hero image" />
+              <Link to="/" className="logo">
+                <HubLogo />
+              </Link>
             </motion.div>
           </Col>
           <Col 
@@ -123,10 +125,15 @@ const HomeGraph = ({ pageData }) => {
             xs={{size: 12, offset: 0}}
           >
             <Image className="w-100" filename={pageData.frontmatter.graphImage} />
-            <a href="/" target="_black" className="bg-gray d-flex align-items-center mt-5">
-              <InfoIcon />
-              <span className="caslon ml-2">Source</span>
-            </a>
+            <div className="home-graph__image-source">
+              <div className="bg-gray">
+                <InfoIcon />
+                <span className="caslon ml-2">Source</span>
+                <p>
+                  <span>{pageData.frontmatter.graphCitation}</span>
+                </p>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
@@ -283,6 +290,7 @@ const IndexPage = ({ location }) => {
               heroImage
               heroSubheading
               graphImage
+              graphCitation
               graphHeading
               graphSubheading
               engageIntro

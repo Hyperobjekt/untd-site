@@ -16,51 +16,67 @@
       position: absolute;
 
       &:first-child {
-        width: 170px;
+        width: 50%;
         height: auto;
-        left: calc(50% - 85px);
-        top: 30px;
+        left: 25%;
+        top: 5%;
         z-index: 4;
       }
 
       &:nth-child(2) {
-        width: 165px;
+        width: 48%;
         height: auto;
-        left: calc(50% - 165px);
-        top: 230px;
+        left: 2%;
+        top: 40%;
         z-index: 2;
       }
 
       &:nth-child(3) {
-        width: 165px;
+        width: 48%;
         height: auto;
         left: 50%;
-        top: 200px;
+        top: 34%;
         z-index: 1;
       }
 
       &:nth-child(4) {
-        width: 160px;
+        width: 46%;
         height: auto;
-        left: calc(50% - 70px);
-        bottom: 80px;
+        left: 30%;
+        bottom: 12%;
         z-index: 3;
       }
 
       &:nth-child(5) {
-        width: 190px;
+        width: 54%;
         height: auto;
-        left: calc(50% - 65px);
-        top: calc(50% - 140px);
+        left: 32%;
+        top: 26%;
         z-index: 5;
       }
+    }
 
-      &:last-child {
-        width: 180px;
+    .logo {
+      position: absolute;
+      width: 130px;
+      height: auto;
+      left: 1%;
+      top: 0%;
+      z-index: 6;
+
+      @include media-breakpoint-up(md) {
+        left: -15%;
+        top: -13%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        left: -10%;
+        top: 15%;
+      }
+
+      svg {
+        width: 100%;
         height: auto;
-        left: -60px;
-        top: 120px;
-        z-index: 6;
       }
     }
   }
@@ -209,21 +225,67 @@
       margin: 12rem 0 0;
     }
 
-    > a {
-      padding: 9px 11px;
-      max-width: 110px;
+    &-source {
+      display: flex;
+      // align-items: center;
+
+      // max-width: 400px;
+
+      div {
+        display: flex;
+        align-items: center;
+        padding: 9px 11px;
+
+        > span {
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          color: $black;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      svg {
+        width: 24px;
+        height: auto;
+      }
 
       &:hover {
         color: $black;
         text-decoration: none;
+
+        p {
+          width: 200px;
+
+          @include media-breakpoint-up(sm) {
+            width: 280px;
+          }
+        }
       }
 
-      span {
-        font-size: 1.6rem;
-        line-height: 1.6rem;
-        color: $black;
+      p {
+        margin-left: 15px;
         position: relative;
-        top: 2px;
+        top: 5px;
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s ease-out;
+
+        @include media-breakpoint-up(sm) {
+          margin-left: 25px;
+        }
+
+        span {
+          display: block;
+          font-size: 1.1rem;
+          line-height: 1.6rem;
+          color: black;
+          min-width: 200px;
+
+          @include media-breakpoint-up(sm) {
+            min-width: 280px;
+          }
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXProvider } from '@mdx-js/react'
@@ -11,7 +11,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { BrushStroke } from '../components/atoms/icons'
+import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import {
   basicStagger,
   basicStaggerChild,
@@ -33,7 +33,7 @@ const LibraryHero = ({ pageData }) => {
   return (
     <div className="library-hero bg-darkgray" ref={ref}>
       <Container fluid="sm">
-        <Row className="py-5 align-items-center">
+        <Row className="align-items-center">
           <Col
             xs={{ size: 8, offset: 2 }}
             sm={{ size: 5, offset: 0 }}
@@ -73,6 +73,9 @@ const LibraryHero = ({ pageData }) => {
                 src={heroImage5}
                 alt="hero image"
               />
+              <Link to="/" className="logo">
+                <HubLogo />
+              </Link>
             </motion.div>
           </Col>
           <Col
@@ -317,12 +320,6 @@ const SessionsPage = ({ location }) => {
               libraryTopicsHeadingImage
               researchItems {
                 label
-                topic_area
-                type
-                link
-                quick_citation
-                authors
-                full_citation
                 item_color
                 item_content
               }

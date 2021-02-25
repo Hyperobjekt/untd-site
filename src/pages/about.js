@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { Container, Row, Col } from 'reactstrap'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -9,7 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { BrushStroke } from '../components/atoms/icons'
+import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
 import heroImage2 from '../images/home_hero6.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
@@ -33,7 +33,9 @@ const AboutHero = ({ pageData }) => {
             {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
             <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="about-hero__image">
               <motion.img variants={basicStaggerChild} src={heroImage1} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage2} alt="hero image" />
+              <Link to="/" className="logo">
+                <HubLogo />
+              </Link>
             </motion.div>
           </Col>
           <Col 
