@@ -109,10 +109,10 @@ const LibraryTopics = ({ pageData }) => {
   })
   const [activeTopic, setActiveTopic] = useState(0)
 
-  const [dropdownOpen, setDropdownOpen] = useState(() => window.innerWidth < 576 ? false : true)
+  const [dropdownOpen, setDropdownOpen] = useState(() => !!window && window.innerWidth < 576 ? false : true)
 
   const toggleDropdown = useCallback(() => {
-    if(window.innerWidth < 576) {
+    if(!!window && window.innerWidth < 576) {
       setDropdownOpen(ddOpen => !ddOpen)
     }
   }, [])
