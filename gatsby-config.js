@@ -15,6 +15,10 @@ module.exports = {
     menu: [
       // Items for slideout menu.
       {
+        title: `Home`,
+        path: `/`,
+      },
+      {
         title: `Explorer`,
         path: `/explorer/`,
       },

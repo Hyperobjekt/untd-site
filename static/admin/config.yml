@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: staging # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: true # Switch off when deployed.
+local_backend: false # Switch off when deployed.
 
 media_folder: /src/content/uploads
 public_folder: /uploads
@@ -240,6 +240,11 @@ collections:
               widget: 'string',
             }
           - { name: 'graphImage', label: 'Graph Module Image', widget: 'image' }
+          - {
+              name: 'graphCitation',
+              label: 'Graph Module Citation',
+              widget: 'string',
+            }
           - {
               name: 'graphHeading',
               label: 'Graph Module Heading',
