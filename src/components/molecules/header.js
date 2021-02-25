@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Navbar, NavbarBrand, Button } from 'reactstrap'
+import { Navbar, Button } from 'reactstrap'
 
 import { useStore } from './../../utils/store'
 

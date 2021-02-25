@@ -45,9 +45,9 @@ const Footer = () => {
           <HubLogo className="mx-5 mx-md-4" />
         </Row>
         <div className="footer__links">
-          {site.siteMetadata.footerMenu.map(el => {
+          {site.siteMetadata.footerMenu.map((el, i) => {
             return (
-              <Link to={el.path} className="text-uppercase knockout">
+              <Link to={el.path} key={i} className="text-uppercase knockout">
                 {el.title}
               </Link>
             )

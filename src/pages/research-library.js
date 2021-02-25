@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
@@ -98,6 +99,10 @@ const LibraryDescription = ({ pageData }) => {
   )
 }
 
+const CustomImage = (props) => (
+  <Image filename={props.src} />
+)
+
 const LibraryTopics = ({ pageData }) => {
   const [ref, inView] = useInView({
     triggerOnce: true
@@ -176,7 +181,11 @@ const LibraryTopics = ({ pageData }) => {
             >
               {pageData.frontmatter.researchItems.map((item, i) => (
                 <motion.div className="library-topics__entry" key={i} id={slugify(item.label)} variants={libraryEntry} style={{position: i === activeTopic ? 'relative' : 'absolute'}} animate={i === activeTopic ? 'show' : 'hide'}>
-                  <MDXRenderer>{item.item_content}</MDXRenderer>
+                  <MDXProvider components={{
+                    img: CustomImage
+                  }}>
+                    <MDXRenderer>{item.item_content}</MDXRenderer>
+                  </MDXProvider>
                 </motion.div>
               ))}
             </Col>
@@ -219,7 +228,7 @@ const SessionsPage = ({ location }) => {
                 year
                 full_citation
                 item_color
-                item_content
+                item_content 
               }
             }
           }
