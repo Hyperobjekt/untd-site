@@ -8,7 +8,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
-import Image, { CustomBackgroundImage as BackgroundImage } from '../components/atoms/image'
+import Image from '../components/atoms/image'
+import { CustomBackgroundImage as BackgroundImage } from '../components/atoms/bg-image'
 import { Arrow, BrushStroke, HubLogo, InfoIcon } from '../components/atoms/icons'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
@@ -17,7 +18,6 @@ import heroImage2 from "../images/home_hero2.png"
 import heroImage3 from "../images/home_hero3.png"
 import heroImage4 from "../images/home_hero4.png"
 import heroImage5 from "../images/home_hero5.png"
-import heroImage6 from "../images/home_hero6.png"
 import cpalLogo from "../images/cpal-logo.png"
 
 const HomeHero = ({ pageData }) => {
