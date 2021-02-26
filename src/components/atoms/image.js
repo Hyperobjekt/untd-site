@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import BackgroundImage from 'gatsby-background-image'
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -15,25 +16,27 @@ import Img from "gatsby-image"
 
  // Note: You can change "images" to whatever you'd like.
 
- const Image = ({alt, filename, ...props}) => (
-   <StaticQuery
-     query={graphql`
-       query {
-         images: allFile {
-           edges {
-             node {
-               relativePath
-               name
-               childImageSharp {
-                 fluid(maxWidth: 800, quality: 70) {
-                   ...GatsbyImageSharpFluid
-                 }
-               }
-             }
+ const imgQuery = graphql`
+ query {
+   images: allFile {
+     edges {
+       node {
+         relativePath
+         name
+         childImageSharp {
+           fluid(maxWidth: 800, quality: 70) {
+             ...GatsbyImageSharpFluid
            }
          }
        }
-     `}
+     }
+   }
+ }
+`
+
+ const Image = ({alt, filename, ...props}) => (
+   <StaticQuery
+     query={imgQuery}
      render={data => {
        const image = data.images.edges.find(n => {
          return filename.includes(n.node.relativePath);
@@ -47,5 +50,30 @@ import Img from "gatsby-image"
      }}
    />
  );
+
+ export const CustomBackgroundImage = ({alt, filename, children, ...props}) => (
+  <StaticQuery
+    query={imgQuery}
+    render={data => {
+      const image = data.images.edges.find(n => {
+        return filename.includes(n.node.relativePath);
+      });
+      if (!image) {
+        return null;
+      }
+      return (
+        <BackgroundImage
+          Tag="div"
+          fluid={image.node.childImageSharp.fluid}
+          backgroundColor={`#F0F5F2`}
+          {...props}
+        >
+          {children}
+        </BackgroundImage>
+      )
+    }}
+  />
+ )
+
 
  export default Image;
