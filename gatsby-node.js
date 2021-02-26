@@ -22,6 +22,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
 
       type ResearchItem {
         item_content: String @mdx
+        item_references: String @mdx
       }
 
       type ContentRow {

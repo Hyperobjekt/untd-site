@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: staging # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: false # Switch off when deployed.
+local_backend: true # Switch off when deployed.
 
 media_folder: /src/content/uploads
 public_folder: /uploads
@@ -306,16 +306,6 @@ collections:
                   },
                 ],
             }
-          - {
-              name: 'explorerImage',
-              label: 'Image displayed in the second engagement module',
-              widget: 'image',
-            }
-          - {
-              name: 'pathwaysImage',
-              label: 'Image displayed in the third engagement module',
-              widget: 'image',
-            }
           - { name: body, label: Body, widget: markdown }
       - name: 'research-library'
         label: 'Research Library'
@@ -396,6 +386,13 @@ collections:
                   label: 'Item Content',
                   widget: 'markdown',
                   required: false,
+                }
+              - {
+                  name: 'item_references',
+                  label: 'Item References',
+                  widget: 'markdown',
+                  required: false,
+                  default: '',
                 }
       - name: 'use-cases'
         label: 'Use Cases'

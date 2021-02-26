@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { graphql, Link, useStaticQuery } from 'gatsby'
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -19,6 +19,7 @@ import heroImage2 from '../images/untd-library2.png'
 import heroImage3 from '../images/untd-library3.png'
 import heroImage4 from '../images/untd-library4.png'
 import heroImage5 from '../images/untd-library5.png'
+import useMeasure from 'react-use-measure'
 
 const LibraryHero = ({ pageData }) => {
   const [ref, inView] = useInView({
@@ -107,24 +108,61 @@ const CustomImage = (props) => (
 )
 
 const LibraryTopics = ({ pageData }) => {
+  const [boundsRef, bounds] = useMeasure()
   const [ref, inView] = useInView({
     triggerOnce: true
   })
-  const [activeTopic, setActiveTopic] = useState(0)
 
+  const [hasDetected, setHasDetected] = useState(false)
+  const [activeTopic, setActiveTopic] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(true)
+
+  const bodyScroll = useMotionValue(0)
+
+  const scrollToContent = useCallback(() => {
+    animate(bodyScroll, document.body.scrollTop + bounds.top, {
+      type: "tween",
+      duration: 1,
+      ease: "easeInOut",
+      onUpdate: v => {
+        document.body.scrollTo(0, v)
+      }
+    })
+  }, [bounds])
 
   useEffect(() => {
     if (window.innerWidth < 576) {
       setDropdownOpen(false)
     }
-  },[])
+  }, [])
+
+  useEffect(() => {
+    if(hasDetected) return
+ 
+    const t = setTimeout(() => {
+      if(document.location.hash.length > 1) {
+        if(bounds.top !== 0 && !hasDetected){
+          setActiveTopic(pageData.frontmatter.researchItems.findIndex(e => slugify(e.label) === document.location.hash.split("#")[1]))
+          setHasDetected(true)
+          scrollToContent()
+        }
+      }else {
+        if(!hasDetected) setHasDetected(true)
+      }
+    }, 100)
+
+    return () => clearTimeout(t)
+  }, [bounds, hasDetected])
 
   const toggleDropdown = useCallback(() => {
     if(!!window && window.innerWidth < 576) {
       setDropdownOpen(ddOpen => !ddOpen)
     }
   }, [])
+
+  const setHash = (hash) => {
+    window.history.pushState({}, '', window.location.origin + window.location.pathname + hash)
+  }
 
   return (
     <div className="library-topics" ref={ref}>
@@ -155,7 +193,7 @@ const LibraryTopics = ({ pageData }) => {
           </Row>
         </Container>
       </div>
-      <div className="library-topics__body">
+      <div className="library-topics__body" ref={boundsRef}>
         <Container fluid="sm">
           <Row className="flex-column flex-sm-row">
             <Col
@@ -165,17 +203,22 @@ const LibraryTopics = ({ pageData }) => {
               xl={{size: 3, offset: 0}}
               className="library-topics__sidebar"
             >
-              <div onClick={toggleDropdown} role="toggle dropdown">
+              <div>
                 <h3 className="knockout-bold">Topics</h3>
-                <h4 className="knockout-bold">Choose Topic <MdKeyboardArrowDown className={`${dropdownOpen ? 'open' : ''}`} /></h4>
+                <button className="library-topics__sidebar-toggle" aria-label="expand dropdown" onClick={toggleDropdown}>
+                  <h4 className="knockout-bold">Choose Topic <MdKeyboardArrowDown className={`${dropdownOpen ? 'open' : ''}`} /></h4>
+                </button>
                 <BrushStroke />
                 <motion.div variants={topicsDropdown} initial={dropdownOpen ? "show" : "hide"} animate={dropdownOpen ? "show" : "hide"} className="library-topics__sidebar-links">
                   <div>
                     {pageData.frontmatter.researchItems.map((item, i) => (
-                      <a role="set active topic" onClick={() => setActiveTopic(i)} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
+                      <button aria-label={`set topic to ${item.label}`} onClick={() => {
+                        setActiveTopic(i)
+                        setHash(`#${slugify(item.label)}`)
+                        }} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
                         <div style={{"--color": item.item_color}}></div>
                         <span className="caslon">{item.label}</span>
-                      </a>
+                      </button>
                     ))}
                   </div>
                 </motion.div>
@@ -189,11 +232,14 @@ const LibraryTopics = ({ pageData }) => {
               className="library-topics__entries"
             >
               {pageData.frontmatter.researchItems.map((item, i) => (
-                <motion.div className="library-topics__entry" key={i} id={slugify(item.label)} variants={libraryEntry} style={{position: i === activeTopic ? 'relative' : 'absolute'}} animate={i === activeTopic ? 'show' : 'hide'}>
+                <motion.div className="library-topics__entry" key={i} name={slugify(item.label)} variants={libraryEntry} style={{position: i === activeTopic ? 'relative' : 'absolute'}} animate={i === activeTopic ? 'show' : 'hide'}>
                   <MDXProvider components={{
                     img: CustomImage
                   }}>
                     <MDXRenderer>{item.item_content}</MDXRenderer>
+                    <div className="library-topics__entry-refs">
+                      <MDXRenderer>{item.item_references}</MDXRenderer>
+                    </div>
                   </MDXProvider>
                 </motion.div>
               ))}
@@ -231,6 +277,7 @@ const SessionsPage = ({ location }) => {
                 label
                 item_color
                 item_content 
+                item_references
               }
             }
           }

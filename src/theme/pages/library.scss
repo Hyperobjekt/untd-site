@@ -206,16 +206,24 @@
       }
     }
 
+    &-toggle {
+      background: none;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      display: block;
+      margin: 0 auto;
+      @include media-breakpoint-up(sm) {
+        display: none;
+      }
+    }
+
     h4 {
       text-align: center;
       font-size: 1.4rem;
       line-height: 1.6rem;
       color: $black;
       text-transform: uppercase;
-
-      @include media-breakpoint-up(sm) {
-        display: none;
-      }
 
       svg {
         width: 14px;
@@ -267,6 +275,10 @@
     transition: transform 0.4s ease-out;
     position: relative;
     cursor: pointer;
+    background: none;
+    border: 0;
+    outline: 0;
+    padding: 0;
 
     @include media-breakpoint-up(sm) {
       margin: 0 0 1.6rem;
@@ -356,8 +368,27 @@
       color: $black;
     }
 
+    h4,
+    h5 {
+      font-size: 2.2rem;
+      line-height: 5.2rem;
+      font-family: $knockoutBold;
+      color: $black;
+      text-transform: uppercase;
+      margin: 0 0 2rem;
+    }
+
+    .gatsby-image-wrapper {
+      @include media-breakpoint-up(lg) {
+        width: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
     ul {
       padding-left: 2.5rem;
+      list-style-type: none;
     }
 
     li {
@@ -365,6 +396,44 @@
       line-height: 2.4rem;
       color: $black;
       margin: 0 0 2rem;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #a5b7bc;
+        transform-origin: center;
+        transform: rotate(-45deg);
+        left: -20px;
+        top: 9px;
+      }
+    }
+
+    &-refs {
+      margin: 6rem 0 0;
+      border-top: 2px solid #ced6db;
+
+      a {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        margin: 0 0 2rem 2.2rem;
+        display: block;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          background-image: url('/icons/link_arrow_icon.svg');
+          background-size: contain;
+          background-position: center;
+          left: -22px;
+          top: 4px;
+        }
+      }
     }
   }
 }
