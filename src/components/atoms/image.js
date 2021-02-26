@@ -18,22 +18,22 @@ import Img from "gatsby-image"
  const Image = ({alt, filename, ...props}) => (
    <StaticQuery
      query={graphql`
-       query {
-         images: allFile {
-           edges {
-             node {
-               relativePath
-               name
-               childImageSharp {
-                 fluid(maxWidth: 800, quality: 70) {
-                   ...GatsbyImageSharpFluid
-                 }
+     query {
+       images: allFile {
+         edges {
+           node {
+             relativePath
+             name
+             childImageSharp {
+               fluid(maxWidth: 800, quality: 70) {
+                 ...GatsbyImageSharpFluid
                }
              }
            }
          }
        }
-     `}
+     }
+    `}
      render={data => {
        const image = data.images.edges.find(n => {
          return filename.includes(n.node.relativePath);
@@ -48,4 +48,4 @@ import Img from "gatsby-image"
    />
  );
 
- export default Image;
+export default Image;

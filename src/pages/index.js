@@ -9,6 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
+import { CustomBackgroundImage as BackgroundImage } from '../components/atoms/bg-image'
 import { Arrow, BrushStroke, HubLogo, InfoIcon } from '../components/atoms/icons'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
@@ -17,9 +18,7 @@ import heroImage2 from "../images/home_hero2.png"
 import heroImage3 from "../images/home_hero3.png"
 import heroImage4 from "../images/home_hero4.png"
 import heroImage5 from "../images/home_hero5.png"
-import heroImage6 from "../images/home_hero6.png"
 import cpalLogo from "../images/cpal-logo.png"
-
 
 const HomeHero = ({ pageData }) => {
   const [ref, inView] = useInView({
@@ -207,6 +206,41 @@ const HomeLibraryCard = ({ cardData, index }) => {
   )
 }
 
+const HomeExplorerCard = ({ cardData, index }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
+
+  return (
+    <Row className="my-5" key={index}>
+      <Col 
+        xs={{size: 12, offset: 0}}
+        md={{size: 12, offset: index % 2 > 0 ? 1 : 0}}
+        lg={{size: 11, offset: index % 2 > 0 ? 2 : 0}}
+        className="py-5"
+      >
+        <BackgroundImage alt="Explorer" filename={cardData.cardImage}>
+          <div className={`${index % 2 > 0 ? '' : 'home-engage__card--left'} flex-column-reverse flex-md-row-reverse home-engage__card home-engage__card--explorer`} ref={ref}>
+            <motion.div className="home-engage__card-content" variants={basicStagger} initial="hide" animate={inView ? 'show' : 'hide'}>
+              <motion.h5 variants={basicStaggerChild} className="knockout-bold text-uppercase">{`${index + 1}. ${cardData.cardTitle}`}</motion.h5>
+              <motion.div variants={basicStaggerChild}>
+                <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+              </motion.div>
+              <motion.p variants={basicStaggerChild}>{cardData.cardSubheading}</motion.p>
+              <motion.p variants={basicStaggerChild} className="caslon">
+                {cardData.cardLinks.map((link, i) => (
+                  <Link to={link.linkUrl} className="dotted-bottom" key={i}>{link.linkText}</Link>
+                ))}
+              </motion.p>
+            </motion.div>
+            <div className="home-engage__card-image h-100"></div>
+          </div>
+        </BackgroundImage>
+      </Col>
+    </Row>
+  )
+}
+
 const HomeCard = ({ cardData, index }) => {
   const [ref, inView] = useInView({
     triggerOnce: true
@@ -266,6 +300,8 @@ const HomeEngage = ({ pageData }) => {
         {pageData.frontmatter.engageCards.map((card, index) => (
           card.isLibraryCallout 
           ? <HomeLibraryCard cardData={card} index={index} key={index} />
+          : index === 1 
+          ? <HomeExplorerCard cardData={card} index={index} key={index} />
           : <HomeCard cardData={card} index={index} key={index} />
         ))}
       </Container>
