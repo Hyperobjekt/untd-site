@@ -335,6 +335,7 @@
     line-height: 2.4rem;
     max-width: 375px;
   }
+
   &__card {
     padding: 4rem 3rem;
     display: flex;
@@ -346,6 +347,24 @@
 
     @include media-breakpoint-up(lg) {
       padding: 6rem 11rem;
+    }
+
+    &.home-engage__card--explorer {
+      padding: 20rem 3rem 4rem;
+      background: linear-gradient(
+        1.85deg,
+        #f9f9f3 35.03%,
+        rgba(249, 249, 243, 0) 80.2%
+      );
+
+      @include media-breakpoint-up(md) {
+        padding: 4rem 3rem;
+        background: linear-gradient(
+          281.85deg,
+          #f9f9f3 26.03%,
+          rgba(249, 249, 243, 0) 85.2%
+        );
+      }
     }
 
     h5 {
