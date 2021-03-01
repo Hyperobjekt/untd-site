@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { animate, motion, useMotionValue } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { MDXProvider } from "@mdx-js/react"
+import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
@@ -12,7 +12,12 @@ import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo } from '../components/atoms/icons'
-import { basicStagger, basicStaggerChild, libraryEntry, topicsDropdown } from '../components/atoms/animation'
+import {
+  basicStagger,
+  basicStaggerChild,
+  libraryEntry,
+  topicsDropdown,
+} from '../components/atoms/animation'
 
 import heroImage1 from '../images/untd-library1.png'
 import heroImage2 from '../images/untd-library2.png'
@@ -23,7 +28,7 @@ import useMeasure from 'react-use-measure'
 
 const LibraryHero = ({ pageData }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
@@ -31,31 +36,61 @@ const LibraryHero = ({ pageData }) => {
       <Container fluid="sm">
         <Row className="align-items-center">
           <Col
-            xs={{size: 8, offset: 2}}
-            sm={{size: 5, offset: 0}}
-            md={{size: 5, offset: 0}}
-            lg={{size: 4, offset: 1}}
-            xl={{size: 4, offset: 1}}
+            xs={{ size: 8, offset: 2 }}
+            sm={{ size: 5, offset: 0 }}
+            md={{ size: 5, offset: 0 }}
+            lg={{ size: 4, offset: 1 }}
+            xl={{ size: 4, offset: 1 }}
           >
             {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
-            <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-hero__image">
-              <motion.img variants={basicStaggerChild} src={heroImage1} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage2} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage3} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage4} alt="hero image" />
-              <motion.img variants={basicStaggerChild} src={heroImage5} alt="hero image" />
+            <motion.div
+              variants={basicStagger}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+              className="library-hero__image"
+            >
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage1}
+                alt="hero image"
+              />
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage2}
+                alt="hero image"
+              />
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage3}
+                alt="hero image"
+              />
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage4}
+                alt="hero image"
+              />
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage5}
+                alt="hero image"
+              />
               <Link to="/" className="logo">
                 <HubLogo />
               </Link>
             </motion.div>
           </Col>
-          <Col 
-            sm={{size: 7, offset: 0}}
-            md={{size: 6, offset: 1}}
-            lg={{size: 6, offset: 1}}
-            xl={{size: 6, offset: 1}}
+          <Col
+            sm={{ size: 7, offset: 0 }}
+            md={{ size: 6, offset: 1 }}
+            lg={{ size: 6, offset: 1 }}
+            xl={{ size: 6, offset: 1 }}
           >
-            <motion.div className="library-hero__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+            <motion.div
+              className="library-hero__text"
+              variants={basicStaggerChild}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+            >
               <MDXRenderer>{pageData.frontmatter.libraryHeroText}</MDXRenderer>
             </motion.div>
           </Col>
@@ -67,33 +102,48 @@ const LibraryHero = ({ pageData }) => {
 
 const LibraryDescription = ({ pageData }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
     <div className="library-description" ref={ref}>
       <Container fluid="sm">
         <Row className="align-items-center flex-column-reverse flex-sm-row">
-          <Col 
-            sm={{size: 6, offset: 0}}
-            md={{size: 6, offset: 0}}
-            lg={{size: 6, offset: 0}}
-            xl={{size: 6, offset: 0}}
+          <Col
+            sm={{ size: 6, offset: 0 }}
+            md={{ size: 6, offset: 0 }}
+            lg={{ size: 6, offset: 0 }}
+            xl={{ size: 6, offset: 0 }}
           >
-            <motion.div className="library-description__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
-              <MDXRenderer>{pageData.frontmatter.libraryDescription}</MDXRenderer>
+            <motion.div
+              className="library-description__text"
+              variants={basicStaggerChild}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+            >
+              <MDXRenderer>
+                {pageData.frontmatter.libraryDescription}
+              </MDXRenderer>
             </motion.div>
           </Col>
           <Col
-            xs={{size: 8, offset: 0}}
-            sm={{size: 6, offset: 0}}
-            md={{size: 5, offset: 1}}
-            lg={{size: 4, offset: 1}}
-            xl={{size: 4, offset: 1}}
+            xs={{ size: 8, offset: 0 }}
+            sm={{ size: 6, offset: 0 }}
+            md={{ size: 5, offset: 1 }}
+            lg={{ size: 4, offset: 1 }}
+            xl={{ size: 4, offset: 1 }}
           >
-            <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-description__image">
+            <motion.div
+              variants={basicStagger}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+              className="library-description__image"
+            >
               <motion.div variants={basicStaggerChild}>
-                <Image className="h-100 w-100" filename={pageData.frontmatter.libraryDescriptionImage} />
+                <Image
+                  className="h-100 w-100"
+                  filename={pageData.frontmatter.libraryDescriptionImage}
+                />
               </motion.div>
             </motion.div>
           </Col>
@@ -103,14 +153,12 @@ const LibraryDescription = ({ pageData }) => {
   )
 }
 
-const CustomImage = (props) => (
-  <Image filename={props.src} />
-)
+const CustomImage = props => <Image filename={props.src} />
 
 const LibraryTopics = ({ pageData }) => {
   const [boundsRef, bounds] = useMeasure()
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   const [hasDetected, setHasDetected] = useState(false)
@@ -155,7 +203,7 @@ const LibraryTopics = ({ pageData }) => {
   }, [bounds, hasDetected])
 
   const toggleDropdown = useCallback(() => {
-    if(!!window && window.innerWidth < 576) {
+    if (!!window && window.innerWidth < 576) {
       setDropdownOpen(ddOpen => !ddOpen)
     }
   }, [])
@@ -170,25 +218,35 @@ const LibraryTopics = ({ pageData }) => {
         <Container fluid="sm">
           <Row className="align-items-center">
             <Col
-              xs={{size: 8, offset: 2}}
-              sm={{size: 4, offset: 0}}
-              md={{size: 3, offset: 0}}
-              lg={{size: 3, offset: 0}}
-              xl={{size: 3, offset: 0}}
+              xs={{ size: 8, offset: 2 }}
+              sm={{ size: 4, offset: 0 }}
+              md={{ size: 3, offset: 0 }}
+              lg={{ size: 3, offset: 0 }}
+              xl={{ size: 3, offset: 0 }}
             >
-              <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="library-topics__heading-image">
+              <motion.div
+                variants={basicStagger}
+                animate={inView ? 'show' : 'hide'}
+                initial="hide"
+                className="library-topics__heading-image"
+              >
                 <motion.div variants={basicStaggerChild}>
-                  <Image className="h-100 w-100" filename={pageData.frontmatter.libraryTopicsHeadingImage} />
+                  <Image
+                    className="h-100 w-100"
+                    filename={pageData.frontmatter.libraryTopicsHeadingImage}
+                  />
                 </motion.div>
               </motion.div>
             </Col>
             <Col
-              sm={{size: 7, offset: 1}}
-              md={{size: 8, offset: 1}}
-              lg={{size: 8, offset: 1}}
-              xl={{size: 8, offset: 1}}
+              sm={{ size: 7, offset: 1 }}
+              md={{ size: 8, offset: 1 }}
+              lg={{ size: 8, offset: 1 }}
+              xl={{ size: 8, offset: 1 }}
             >
-              <MDXRenderer>{pageData.frontmatter.libraryTopicsHeading}</MDXRenderer>
+              <MDXRenderer>
+                {pageData.frontmatter.libraryTopicsHeading}
+              </MDXRenderer>
             </Col>
           </Row>
         </Container>
@@ -197,10 +255,10 @@ const LibraryTopics = ({ pageData }) => {
         <Container fluid="sm">
           <Row className="flex-column flex-sm-row">
             <Col
-              sm={{size: 5, offset: 0}}
-              md={{size: 4, offset: 0}}
-              lg={{size: 3, offset: 0}}
-              xl={{size: 3, offset: 0}}
+              sm={{ size: 5, offset: 0 }}
+              md={{ size: 4, offset: 0 }}
+              lg={{ size: 3, offset: 0 }}
+              xl={{ size: 3, offset: 0 }}
               className="library-topics__sidebar"
             >
               <div>
@@ -209,7 +267,12 @@ const LibraryTopics = ({ pageData }) => {
                   <h4 className="knockout-bold">Choose Topic <MdKeyboardArrowDown className={`${dropdownOpen ? 'open' : ''}`} /></h4>
                 </button>
                 <BrushStroke />
-                <motion.div variants={topicsDropdown} initial={dropdownOpen ? "show" : "hide"} animate={dropdownOpen ? "show" : "hide"} className="library-topics__sidebar-links">
+                <motion.div
+                  variants={topicsDropdown}
+                  initial={dropdownOpen ? 'show' : 'hide'}
+                  animate={dropdownOpen ? 'show' : 'hide'}
+                  className="library-topics__sidebar-links"
+                >
                   <div>
                     {pageData.frontmatter.researchItems.map((item, i) => (
                       <button aria-label={`set topic to ${item.label}`} onClick={() => {
@@ -225,10 +288,10 @@ const LibraryTopics = ({ pageData }) => {
               </div>
             </Col>
             <Col
-              sm={{size: 7, offset: 0}}
-              md={{size: 7, offset: 1}}
-              lg={{size: 6, offset: 2}}
-              xl={{size: 6, offset: 2}}
+              sm={{ size: 7, offset: 0 }}
+              md={{ size: 7, offset: 1 }}
+              lg={{ size: 6, offset: 2 }}
+              xl={{ size: 6, offset: 2 }}
               className="library-topics__entries"
             >
               {pageData.frontmatter.researchItems.map((item, i) => (
@@ -251,8 +314,11 @@ const LibraryTopics = ({ pageData }) => {
   )
 }
 
-const slugify = string => string.split(" ").map(ss => ss.toLowerCase()).join("-")
-
+const slugify = string =>
+  string
+    .split(' ')
+    .map(ss => ss.toLowerCase())
+    .join('-')
 
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`

@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: staging # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: true # Switch off when deployed.
+local_backend: false # Switch off when deployed.
 
 media_folder: /src/content/uploads
 public_folder: /uploads
