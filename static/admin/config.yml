@@ -391,8 +391,8 @@ collections:
                   name: 'item_references',
                   label: 'Item References',
                   widget: 'markdown',
-                  required: false,
-                  default: '',
+                  required: true,
+                  default: '\n',
                 }
       - name: 'use-cases'
         label: 'Use Cases'
