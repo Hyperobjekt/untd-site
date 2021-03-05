@@ -213,6 +213,17 @@ collections:
               label: 'Social share image for this page',
               widget: 'image',
             }
+          - {
+              name: 'questions',
+              label: 'Questions',
+              widget: 'list',
+              summary: '{{fields.question}}',
+              fields:
+                [
+                  { name: 'question', label: 'Question', widget: 'string' },
+                  { name: 'answer', label: 'Answer', widget: 'markdown' },
+                ],
+            }
           - { name: body, label: Body, widget: markdown }
       - name: 'home'
         label: 'Home'

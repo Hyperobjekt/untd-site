@@ -18,6 +18,11 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
         researchItems: [ResearchItem]
         aboutTheCenterIntro: String @mdx
         aboutTheCenterContent: String @mdx
+        questions: [FAQ]
+      }
+
+      type FAQ {
+          answer: String @mdx
       }
 
       type ResearchItem {

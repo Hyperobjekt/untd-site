@@ -331,84 +331,11 @@
     left: 15px;
     top: 0;
     padding: 55px 0 0;
+    @include wysiwyg;
 
     @include media-breakpoint-up(sm) {
       width: 100%;
       left: 0;
-    }
-
-    p {
-      font-size: 1.6rem;
-      line-height: 2.4rem;
-      margin: 0 0 2rem;
-    }
-
-    h1 {
-      font-family: $caslon !important;
-      font-size: 4.6rem;
-      line-height: 6rem;
-      margin: 0 0 3.3rem;
-      color: $black;
-      @include dotted-bottom;
-    }
-
-    h2 {
-      font-family: $caslon !important;
-      font-size: 3.4rem;
-      line-height: 4.4rem;
-      margin: 6.7rem 0 3rem;
-      color: $black;
-    }
-
-    h3 {
-      font-family: $caslon !important;
-      font-size: 2.6rem;
-      line-height: 3.3rem;
-      margin: 0 0 4.5rem;
-      color: $black;
-    }
-
-    h4,
-    h5 {
-      font-size: 2.2rem;
-      line-height: 5.2rem;
-      font-family: $knockoutBold;
-      color: $black;
-      text-transform: uppercase;
-      margin: 0 0 2rem;
-    }
-
-    .gatsby-image-wrapper {
-      @include media-breakpoint-up(lg) {
-        width: 130%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    ul {
-      padding-left: 2.5rem;
-      list-style-type: none;
-    }
-
-    li {
-      font-size: 1.6rem;
-      line-height: 2.4rem;
-      color: $black;
-      margin: 0 0 2rem;
-      position: relative;
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        background: #a5b7bc;
-        transform-origin: center;
-        transform: rotate(-45deg);
-        left: -20px;
-        top: 9px;
-      }
     }
 
     &-refs {
