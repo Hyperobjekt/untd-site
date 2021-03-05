@@ -1,0 +1,157 @@
+.cases-hero {
+  padding-top: 3rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 5rem;
+  }
+
+  &__image {
+    position: relative;
+    padding: 75% 0;
+
+    img {
+      position: absolute;
+
+      &:first-child {
+        width: 75%;
+        height: auto;
+        left: 0%;
+        top: 0%;
+        z-index: 2;
+      }
+
+      &:nth-child(2) {
+        width: 36%;
+        height: auto;
+        left: 3%;
+        top: 52%;
+        z-index: 4;
+      }
+
+      &:nth-child(3) {
+        width: 38%;
+        height: auto;
+        left: 33%;
+        top: 53%;
+        z-index: 3;
+      }
+
+      &:nth-child(4) {
+        width: 35%;
+        height: auto;
+        left: 61%;
+        top: 33%;
+        z-index: 1;
+      }
+
+      &:nth-child(5) {
+        width: 76%;
+        height: auto;
+        left: 17%;
+        top: 18%;
+        z-index: 5;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      width: 130px;
+      height: auto;
+      left: 61%;
+      top: 5%;
+      z-index: 6;
+
+      @include media-breakpoint-only(sm) {
+        top: -4%;
+      }
+
+      @include media-breakpoint-up(md) {
+        left: 65%;
+        top: -5%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        top: 6%;
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  &__text {
+    h1 {
+      font-size: 6rem;
+      line-height: 6rem;
+      color: $black;
+    }
+
+    h2 {
+      color: $black;
+      font-size: 5rem;
+      line-height: 4rem;
+      position: relative;
+      left: 30%;
+    }
+
+    h1:last-of-type {
+      display: table;
+      z-index: 1;
+      margin-left: auto;
+      padding-right: 30px;
+
+      @include media-breakpoint-up(lg) {
+        left: 80px;
+      }
+    }
+
+    p {
+      margin-top: 2rem;
+      font-size: 1.6rem;
+      color: $black;
+    }
+  }
+}
+
+.cases-rows {
+  padding: 6rem 0 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: 8rem 0 0;
+  }
+}
+
+.cases-row {
+  margin: 0 0 6rem;
+
+  @include media-breakpoint-up(lg) {
+    margin: 0 0 10rem;
+  }
+
+  &__image {
+    margin: 0 0 4rem;
+
+    @include media-breakpoint-up(lg) {
+      margin: 0;
+    }
+  }
+
+  &__text {
+    p {
+      color: $black;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+      }
+    }
+  }
+}
