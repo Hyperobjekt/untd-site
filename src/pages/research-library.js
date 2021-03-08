@@ -9,7 +9,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
-import { getPageMeta } from './../utils/utils'
+import { getPageMeta, slugify } from './../utils/utils'
 import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import {
@@ -313,12 +313,6 @@ const LibraryTopics = ({ pageData }) => {
     </div>
   )
 }
-
-const slugify = string =>
-  string
-    .split(' ')
-    .map(ss => ss.toLowerCase())
-    .join('-')
 
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`

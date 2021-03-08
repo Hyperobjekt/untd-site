@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { Row, Col, Container } from 'reactstrap'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
-import { getPageMeta } from './../utils/utils'
+import { getPageMeta, slugify } from './../utils/utils'
 import { HubLogo } from '../components/atoms/icons'
 import { useInView } from 'react-intersection-observer'
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import heroImage1 from "../images/faq-hero1.png"
 import heroImage2 from "../images/faq-hero2.png"
 import heroImage3 from "../images/faq-hero3.png"
 import { basicStagger, basicStaggerChild, faqHideShow } from '../components/atoms/animation'
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue } from 'framer-motion'
 import Image from '../components/atoms/image'
-import { MDXProvider } from '@mdx-js/react'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import useMeasure from 'react-use-measure'
+
 
 const FaqHero = () => {
   const [ref, inView] = useInView({
@@ -71,10 +73,49 @@ const CustomImage = props => <Image filename={props.src} />
 
 const FaqQuestion = ({ questionData }) => {
   const [open, setOpen] = useState(false)
+  const [boundsRef, bounds] = useMeasure()
+  const [hasDetected, setHasDetected] = useState(false)
+  const bodyScroll = useMotionValue(0)
+
+  const scrollToContent = useCallback(() => {
+    animate(bodyScroll, document.body.scrollTop + bounds.top, {
+      type: "tween",
+      duration: 1,
+      ease: "easeInOut",
+      onUpdate: v => {
+        document.body.scrollTo(0, v)
+      }
+    })
+  }, [bounds])
+
+  useEffect(() => {
+    if(hasDetected) return
+ 
+    const t = setTimeout(() => {
+      if(document.location.hash.length > 1 && document.location.hash.split("#")[1] === slugify(questionData.question)) {
+        if(bounds.top !== 0 && !hasDetected){
+          setOpen(true)
+          setHasDetected(true)
+          scrollToContent()
+        }
+      }else {
+        if(!hasDetected) setHasDetected(true)
+      }
+    }, 100)
+
+    return () => clearTimeout(t)
+  }, [bounds, hasDetected])
+
+  const setHash = (hash) => {
+    window.history.pushState({}, '', window.location.origin + window.location.pathname + hash)
+  }
 
   return (
-    <div className="faq-question">
-      <button className="faq-question__header" onClick={e => setOpen(o => !o)}>
+    <div className="faq-question" ref={boundsRef}>
+      <button className="faq-question__header" onClick={e => {
+        setOpen(o => !o)
+        setHash(`#${slugify(questionData.question)}`)
+        }}>
         <h2>{ questionData.question }</h2>
         <div className={`${open ? 'open' : ''}`}>
           <span></span>

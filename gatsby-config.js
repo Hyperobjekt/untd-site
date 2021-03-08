@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         title: `FAQ`,
-        path: `/`,
+        path: `/faq/`,
       },
       {
         title: `About`,
