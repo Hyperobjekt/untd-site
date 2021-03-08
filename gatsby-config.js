@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         title: `Use Cases`,
-        path: `/`,
+        path: `/use-cases/`,
       },
       {
         title: `FAQ`,
