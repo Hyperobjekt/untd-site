@@ -15,3 +15,9 @@ export const getPageMeta = (type, pageData, location) => {
     url: `${location.href}`,
   }
 }
+
+export const slugify = string =>
+  string
+    .split(' ')
+    .map(ss => ss.toLowerCase())
+    .join('-')

@@ -213,6 +213,17 @@ collections:
               label: 'Social share image for this page',
               widget: 'image',
             }
+          - {
+              name: 'questions',
+              label: 'Questions',
+              widget: 'list',
+              summary: '{{fields.question}}',
+              fields:
+                [
+                  { name: 'question', label: 'Question', widget: 'string' },
+                  { name: 'answer', label: 'Answer', widget: 'markdown' },
+                ],
+            }
           - { name: body, label: Body, widget: markdown }
       - name: 'home'
         label: 'Home'
@@ -412,5 +423,16 @@ collections:
               name: 'socialShareImage',
               label: 'Social share image for this page',
               widget: 'image',
+            }
+          - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
+          - {
+              name: 'useCasesRows',
+              label: 'Use Cases Rows',
+              widget: 'list',
+              fields:
+                [
+                  { name: 'rowText', label: 'Row Text', widget: 'markdown' },
+                  { name: 'rowImage', label: 'Row Image', widget: 'image' },
+                ],
             }
           - { name: body, label: Body, widget: markdown }

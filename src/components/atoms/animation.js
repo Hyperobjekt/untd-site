@@ -41,6 +41,15 @@ export const libraryEntry = {
     }
 }
 
+export const faqHideShow = {
+    show: {
+        height: 'auto'
+    },
+    hide: {
+        height: 0,
+    }
+}
+
 export const topicsDropdown = {
     show: {
         height: 'auto'

@@ -28,11 +28,11 @@ module.exports = {
       },
       {
         title: `Use Cases`,
-        path: `/`,
+        path: `/use-cases/`,
       },
       {
         title: `FAQ`,
-        path: `/`,
+        path: `/faq/`,
       },
       {
         title: `About`,
