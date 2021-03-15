@@ -21,6 +21,7 @@ const ContactForm = () => {
       email: '',
       subject: '',
       message: '',
+      signup: false
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -34,6 +35,7 @@ const ContactForm = () => {
         .required('Required'),
       subject: Yup.string().required('Required'),
       message: Yup.string().required('Required'),
+      signup: Yup.boolean()
     }),
     onSubmit: (values, { setSubmitting }) => {
       // console.log('onSubmit()', values)
@@ -70,6 +72,23 @@ const ContactForm = () => {
           // Enable display of submission error message.
           setIsSubmittedError(true)
         })
+
+      const {email, signup} = values 
+
+      if(signup) {
+        fetch('/.netlify/functions/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({email: email}),
+        })
+          .then(() => {
+            console.log('Signup success!')
+          })
+          .catch(error => {
+            // Catch submission errors.
+            console.log('Signup error:', error)
+          })
+      }
 
       // e.preventDefault();
     },
@@ -187,6 +206,17 @@ const ContactForm = () => {
         {formik.touched.message && formik.errors.message ? (
           <div>{formik.errors.message}</div>
         ) : null}
+      </div>
+      <div className="form-group">
+        <label htmlFor="signup">Subscribe to email updates</label>
+        <input
+          id="signup"
+          name="signup"
+          type="checkbox"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.signup}
+        />
       </div>
       <div className="form-group">
         <button
