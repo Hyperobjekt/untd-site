@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 const ContactForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
+  const honeypotRef = useRef(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmittedError, setIsSubmittedError] = useState(false)
   const encode = data => {
@@ -49,6 +50,9 @@ const ContactForm = () => {
       //   // setIsSubmittedError(true);
       // }, 1400);
 
+      // detect spam with honeypot
+      if(honeypotRef.current.value !== "") return
+      
       // Use Netlify forms processing.
       fetch('/', {
         method: 'POST',
@@ -77,17 +81,18 @@ const ContactForm = () => {
 
       if(signup) {
         fetch('/.netlify/functions/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({email: email}),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email: email})
+      })
+        .then(res => res.text())
+        .then(text => {
+          console.log('Signup success!', text)
         })
-          .then(() => {
-            console.log('Signup success!')
-          })
-          .catch(error => {
-            // Catch submission errors.
-            console.log('Signup error:', error)
-          })
+        .catch(error => {
+          // Catch submission errors.
+          console.log('Signup error:', error)
+        })
       }
 
       // e.preventDefault();
@@ -105,7 +110,7 @@ const ContactForm = () => {
       <input type="hidden" name="form-name" value="contact" />
       <p className="hidden">
         <label>
-          Don’t fill this out if you're human: <input name="bot-field" />
+          Don’t fill this out if you're human: <input name="bot-field" ref={honeypotRef} />
         </label>
       </p>
       <div className="form-group">

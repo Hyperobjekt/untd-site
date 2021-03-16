@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Row, Col, Container } from 'reactstrap'
@@ -13,6 +13,7 @@ import { motion } from 'framer-motion'
 const FooterForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
+  const honeypotRef = useRef(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmittedError, setIsSubmittedError] = useState(false)
   const encode = data => {
@@ -40,7 +41,9 @@ const FooterForm = () => {
       //   // If submission fails.
       //   // setIsSubmittedError(true);
       // }, 1400);
-      console.log("formik submit:", values)
+
+      // detect spam with honeypot
+      if(honeypotRef.current.value !== "") return
 
       // Post to the netlify lambda.
       // https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8
@@ -81,6 +84,11 @@ const FooterForm = () => {
             formik.touched.email && formik.errors.email ? 'is-invalid' : ''
           } ${formik.touched.email && !formik.errors.email ? 'is-valid' : ''}`}
         >
+          <p className="hidden">
+            <label>
+              Don’t fill this out if you're human: <input name="bot-field" ref={honeypotRef} />
+            </label>
+          </p>
           <input
             id="email"
             name="email"
