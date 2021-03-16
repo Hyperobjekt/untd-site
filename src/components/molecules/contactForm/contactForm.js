@@ -226,7 +226,7 @@ const ContactForm = () => {
       <div className="form-group">
         <button
           type="submit"
-          className="btn btn-primary"
+          className={`btn btn-primary ${formik.isSubmitting ? 'is-submitting' : ''}`}
           disabled={formik.isSubmitting ? 'disabled' : false}
         >
           Submit
