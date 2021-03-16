@@ -1,4 +1,22 @@
 // Footer
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .footer {
   > div {
     padding: 75px 0;
@@ -11,19 +29,46 @@
     color: $black;
   }
 
+  &__form {
+    position: relative;
+  }
+
   form {
     position: relative;
     width: 100%;
     max-width: 350px;
     padding: 0 2rem 1rem;
     border-bottom: 1px solid $black;
+    transition: opacity 0.3s ease-out;
 
-    &.is-invalid {
+    &.not-submitted.is-invalid {
       border-bottom: 1px solid red;
+    }
+
+    &.submitted {
+      pointer-events: none;
+      opacity: 0.4;
     }
 
     &.is-valid {
       border-bottom: 1px solid $black;
+    }
+
+    > svg {
+      position: absolute;
+      transition: opacity 0.3s ease-out;
+      opacity: 0;
+      top: 5px;
+      right: 1.5rem;
+      width: 2rem;
+      height: auto;
+      transform-origin: center;
+      pointer-events: none;
+      animation: 1s linear 0s infinite normal none running rotate;
+    }
+
+    &.submitting > svg {
+      opacity: 1;
     }
 
     input {
@@ -44,12 +89,24 @@
       width: 4rem;
       height: 3rem;
       margin: 0;
+      transition: opacity 0.3s ease-out;
 
       svg {
         width: 100%;
         height: auto;
       }
     }
+
+    &.submitting button {
+      opacity: 0;
+    }
+  }
+
+  &__success,
+  &__error {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
   }
 
   &__links {

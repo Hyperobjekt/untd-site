@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import { Row, Col, Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+import { CgSpinnerAlt } from 'react-icons/cg'
 import { Link } from 'gatsby'
 import { useStaticQuery, graphql } from 'gatsby'
 import { HubLogo } from '../atoms/icons'
@@ -75,12 +76,11 @@ const FooterForm = () => {
 
   return (
     <div className="footer__form">
-      <motion.div variants={libraryEntry} animate={isSubmitted ? 'hide' : 'show'}>
         <form
           name="subscribe"
           method="POST"
           onSubmit={formik.handleSubmit}
-          className={`${formik.isSubmitting ? 'submitting' : 'not-submitting'} ${
+          className={`${formik.isSubmitting ? 'submitting' : isSubmitted ? 'submitted' : 'not-submitting'} ${
             formik.touched.email && formik.errors.email ? 'is-invalid' : ''
           } ${formik.touched.email && !formik.errors.email ? 'is-valid' : ''}`}
         >
@@ -93,6 +93,9 @@ const FooterForm = () => {
             id="email"
             name="email"
             type="email"
+            className={`form-control ${
+              formik.touched.email && formik.errors.email ? 'is-invalid' : ''
+            } ${formik.touched.email && !formik.errors.email ? 'is-valid' : ''}`}
             placeholder="Your email address"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -101,8 +104,8 @@ const FooterForm = () => {
           <button type="submit" aria-label="submit email" disabled={formik.isSubmitting ? 'disabled' : false}>
             <MdKeyboardArrowRight />
           </button>
+          <CgSpinnerAlt />
         </form>
-      </motion.div>
       <motion.div className="footer__success" variants={libraryEntry} animate={isSubmitted && !isSubmittedError ? 'show' : 'hide'}>
         <p>Thank you.</p>
       </motion.div>
