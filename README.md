@@ -15,6 +15,18 @@ gatsby clean # Cleans your local site cache (try this if something's not updatin
 
 - `staging` branch and `production` branch are built and deployed on Netlify. For more information about the domains where they reside, see the Nelify build settings.
 
+## Local Testing
+
+The Netlify function for salesforce email list subscription, located in `./src/functions`, can be tested locally using [netlify dev](https://www.netlify.com/products/dev/). Install netlify cli globally and then run the dev command from the project root:
+
+```
+npm install -g netlify-cli
+cd untd-site
+netlify dev
+```
+
+Netlify dev runs the Gatsby development server at [https://localhost:8000](https://localhost:8000) and its own server, with both Gatsby and Netlify functions, at [https://localhost:8888](https://localhost:8888). Acces the site at [https://localhost:8888](https://localhost:8888) to test the function.
+
 ## Contributing
 
 - Update menu items by editing the menu arrays in `./gatsby-config.js`
@@ -32,10 +44,13 @@ gatsby clean # Cleans your local site cache (try this if something's not updatin
   - Use Bootstrap according to accepted conventions (don't nest rows inside rows, don't nest columns inside columns)
   - Use [Lighthouse](https://developers.google.com/web/tools/lighthouse/) or [pa11y](https://pa11y.org/), along with a screen reader, to check for accessibility issues
 - Implement Google Analytics custom event tracking using [gatsby-plugin-google-gtag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/?=gtag):
+
 ```javascript
-window.gtag("event", "click", { ...data })
+window.gtag('event', 'click', { ...data })
 ```
+
 - You need a `.env.development` file for various features to work locally. It should contain the following values:
+
 ```bash
 GATSBY_GOOGLE_ANALYTICS_TRACKING_ID=***
 GATSBY_MAPBOX_USER=***
@@ -44,8 +59,10 @@ GATSBY_NODE_ENV=development
 GATSBY_DATA_ENDPOINT=***
 GATSBY_DATA_BRANCH=***
 ```
+
 - Images used in internal development (not editable by the CMS) can go in `./src/images`. Images updated by the CMS should go in `./src/content/uploads`.
 - To run the CMS locally, change the following in `./static/admin/config.yml`, and run `npm run cms` in a separate terminal window:
+
 ```yaml
 backend:
   name: git-gateway
@@ -53,6 +70,7 @@ backend:
 
 local_backend: true # <--- Switch off when deployed.
 ```
+
 - If you will use something more than once, make a component.
 - Use `prop-types` to define arguments passed in to components.
 - Animations should be done using [framer-motion](https://www.framer.com/motion/).
