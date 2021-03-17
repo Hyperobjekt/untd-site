@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         title: `Contact`,
-        path: `/`,
+        path: `/contact/`,
       },
     ],
     footerMenu: [

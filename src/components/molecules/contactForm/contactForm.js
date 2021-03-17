@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 const ContactForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted
+  const honeypotRef = useRef(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmittedError, setIsSubmittedError] = useState(false)
   const encode = data => {
@@ -21,6 +22,7 @@ const ContactForm = () => {
       email: '',
       subject: '',
       message: '',
+      signup: false
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -34,6 +36,7 @@ const ContactForm = () => {
         .required('Required'),
       subject: Yup.string().required('Required'),
       message: Yup.string().required('Required'),
+      signup: Yup.boolean()
     }),
     onSubmit: (values, { setSubmitting }) => {
       // console.log('onSubmit()', values)
@@ -47,6 +50,9 @@ const ContactForm = () => {
       //   // setIsSubmittedError(true);
       // }, 1400);
 
+      // detect spam with honeypot
+      if(honeypotRef.current.value !== "") return
+      
       // Use Netlify forms processing.
       fetch('/', {
         method: 'POST',
@@ -71,6 +77,25 @@ const ContactForm = () => {
           setIsSubmittedError(true)
         })
 
+      const {email, signup} = values 
+
+      if(signup) {
+        fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email: email})
+      })
+        .then(res => res.text())
+        .then(text => {
+          console.log('Signup success!', text)
+        })
+        .catch(error => {
+          // Catch submission errors.
+          console.log('Signup error:', error)
+          setIsSubmittedError(true)
+        })
+      }
+
       // e.preventDefault();
     },
   })
@@ -86,7 +111,7 @@ const ContactForm = () => {
       <input type="hidden" name="form-name" value="contact" />
       <p className="hidden">
         <label>
-          Don’t fill this out if you're human: <input name="bot-field" />
+          Don’t fill this out if you're human: <input name="bot-field" ref={honeypotRef} />
         </label>
       </p>
       <div className="form-group">
@@ -189,9 +214,20 @@ const ContactForm = () => {
         ) : null}
       </div>
       <div className="form-group">
+        <label htmlFor="signup">Subscribe to email updates</label>
+        <input
+          id="signup"
+          name="signup"
+          type="checkbox"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.signup}
+        />
+      </div>
+      <div className="form-group">
         <button
           type="submit"
-          className="btn btn-primary"
+          className={`btn btn-primary ${formik.isSubmitting ? 'is-submitting' : ''}`}
           disabled={formik.isSubmitting ? 'disabled' : false}
         >
           Submit
@@ -201,7 +237,7 @@ const ContactForm = () => {
             <span className="sr-only">Submitting...</span>
           </div>
         ) : null}
-        {isSubmitted ? (
+        {isSubmitted && !isSubmittedError ? (
           <div className="alert alert-success" role="alert">
             Messsage received! Thanks for contacting us.
           </div>
