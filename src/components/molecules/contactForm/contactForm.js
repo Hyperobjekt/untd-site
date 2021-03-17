@@ -92,6 +92,7 @@ const ContactForm = () => {
         .catch(error => {
           // Catch submission errors.
           console.log('Signup error:', error)
+          setIsSubmittedError(true)
         })
       }
 
@@ -236,7 +237,7 @@ const ContactForm = () => {
             <span className="sr-only">Submitting...</span>
           </div>
         ) : null}
-        {isSubmitted ? (
+        {isSubmitted && !isSubmittedError ? (
           <div className="alert alert-success" role="alert">
             Messsage received! Thanks for contacting us.
           </div>
