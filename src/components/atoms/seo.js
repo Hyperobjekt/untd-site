@@ -116,8 +116,19 @@ function SEO({ meta }) {
           name: `twitter:card`,
           content: `summary_large_image`,
         },
+        {
+          name: ``,
+          content: ``,
+        },
       ].concat(meta)}
-    />
+    >
+      <meta name="referrer" content="origin" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cloud.typography.com/6135894/7078832/css/fonts.css"
+      />
+    </Helmet>
   )
 }
 
