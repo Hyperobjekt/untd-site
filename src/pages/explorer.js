@@ -55,22 +55,6 @@ const ExplorerPage = ({ data, location }) => {
   // Toggle menu from store.
   const toggleShowMenu = useStore(state => state.toggleShowMenu)
 
-  //   <form
-  //   name="map_feedback"
-  //   data-netlify="true"
-  //   netlify-honeypot="bot-field"
-  //   hidden
-  // >
-  //   <input type="text" name="latitude" />
-  //   <input type="text" name="longitude" />
-  //   <input type="text" name="firstname" />
-  //   <input type="text" name="lastname" />
-  //   <input type="text" name="address" />
-  //   <input type="email" name="email" />
-  //   <input type="textarea" name="message" />
-  //   <textarea name="message"></textarea>
-  // </form>
-
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
