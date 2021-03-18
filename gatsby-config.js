@@ -7,9 +7,9 @@ module.exports = {
     title: `UNTX Social Mobility Hub`,
     subtitle: ``,
     description: `This site is focused on the ways that knowledge about barriers and drivers to upward mobility can be put to action, and how the chances for upward mobility can be increased for all communities.`,
-    keywords: `upward mobility, community, change, economic opportunity, socioeconomic mobility`,
-    siteUrl: `https://TODO.netlify.com`,
-    socialShareImage: `TODO.jpg`, // resides in ./src/images
+    keywords: `upward mobility, community, change, economic opportunity, socioeconomic mobility, texas, north texas, untd, dallas`,
+    siteUrl: `https://socialmobility.netlify.app/`,
+    socialShareImage: `social-share.png`, // resides in ./src/images
     copyrightDate: `2018`,
     facebookAppID: `TODO`,
     menu: [
