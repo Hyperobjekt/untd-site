@@ -73,6 +73,14 @@ const NotFoundPage = ({ location }) => {
           }
         }
       }
+      metaImage: file(relativePath: { eq: "social-share.png" }) {
+        id
+        childImageSharp {
+          original {
+            src
+          }
+        }
+      }
     }
   `)
 
@@ -80,6 +88,7 @@ const NotFoundPage = ({ location }) => {
   // console.log(getPageData.allMdx.edges[0].node)
 
   const pageMeta = getPageMeta('404', pageData, location)
+  pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>

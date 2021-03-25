@@ -197,12 +197,21 @@ export default ({ location }) => {
           }
         }
       }
+      metaImage: file(relativePath: { eq: "social-share.png" }) {
+        id
+        childImageSharp {
+          original {
+            src
+          }
+        }
+      }
     }
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
   // console.log(pageData.frontmatter)
   const pageMeta = getPageMeta('use-cases', pageData, location)
+  pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>

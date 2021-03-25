@@ -380,12 +380,21 @@ const SessionsPage = ({ location }) => {
           }
         }
       }
+      metaImage: file(relativePath: { eq: "social-share.png" }) {
+        id
+        childImageSharp {
+          original {
+            src
+          }
+        }
+      }
     }
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
   // console.log('research-lib pageData', pageData)
   const pageMeta = getPageMeta('research-library', pageData, location)
+  pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
