@@ -11,12 +11,12 @@ import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
-import heroImage2 from '../images/home_hero6.png'
+// import heroImage2 from '../images/home_hero6.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 
 const AboutHero = ({ pageData }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
@@ -24,27 +24,41 @@ const AboutHero = ({ pageData }) => {
       <Container fluid="sm">
         <Row className="py-5 align-items-center">
           <Col
-            xs={{size: 8, offset: 2}}
-            sm={{size: 4, offset: 0}}
-            md={{size: 4, offset: 0}}
-            lg={{size: 3, offset: 1}}
-            xl={{size: 3, offset: 1}}
+            xs={{ size: 8, offset: 2 }}
+            sm={{ size: 4, offset: 0 }}
+            md={{ size: 4, offset: 0 }}
+            lg={{ size: 3, offset: 1 }}
+            xl={{ size: 3, offset: 1 }}
           >
             {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
-            <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="about-hero__image">
-              <motion.img variants={basicStaggerChild} src={heroImage1} alt="hero image" />
+            <motion.div
+              variants={basicStagger}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+              className="about-hero__image"
+            >
+              <motion.img
+                variants={basicStaggerChild}
+                src={heroImage1}
+                alt="hero image"
+              />
               <Link to="/" className="logo">
                 <HubLogo />
               </Link>
             </motion.div>
           </Col>
-          <Col 
-            sm={{size: 8, offset: 0}}
-            md={{size: 8, offset: 0}}
-            lg={{size: 8, offset: 0}}
-            xl={{size: 8, offset: 0}}
+          <Col
+            sm={{ size: 8, offset: 0 }}
+            md={{ size: 8, offset: 0 }}
+            lg={{ size: 8, offset: 0 }}
+            xl={{ size: 8, offset: 0 }}
           >
-            <motion.div className="about-hero__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+            <motion.div
+              className="about-hero__text"
+              variants={basicStaggerChild}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+            >
               <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
             </motion.div>
           </Col>
@@ -56,31 +70,47 @@ const AboutHero = ({ pageData }) => {
 
 const AboutBodyRow = ({ rowData, index }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
     <div className="about-row" ref={ref}>
-      <Row className={`align-items-center flex-column-reverse ${index % 2 > 0 ? 'flex-sm-row' : 'flex-sm-row-reverse justify-content-end'}`} >
-        <Col 
-          sm={{size: 7, offset: index % 2 > 0 ? 0 : 1}}
-          md={{size: 7, offset: index % 2 > 0 ? 0 : 1}}
-          lg={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
-          xl={{size: 5, offset: index % 2 > 0 ? 0 : 2}}
+      <Row
+        className={`align-items-center flex-column-reverse ${
+          index % 2 > 0
+            ? 'flex-sm-row'
+            : 'flex-sm-row-reverse justify-content-end'
+        }`}
+      >
+        <Col
+          sm={{ size: 7, offset: index % 2 > 0 ? 0 : 1 }}
+          md={{ size: 7, offset: index % 2 > 0 ? 0 : 1 }}
+          lg={{ size: 5, offset: index % 2 > 0 ? 0 : 2 }}
+          xl={{ size: 5, offset: index % 2 > 0 ? 0 : 2 }}
         >
-          <motion.div className="about-row__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+          <motion.div
+            className="about-row__text"
+            variants={basicStaggerChild}
+            animate={inView ? 'show' : 'hide'}
+            initial="hide"
+          >
             <MDXRenderer>{rowData.rowText}</MDXRenderer>
           </motion.div>
         </Col>
         <Col
-          xs={{size: 8, offset: 0}}
-          sm={{size: 4, offset: index % 2 > 0 ? 1 : 0}}
-          md={{size: 4, offset: index % 2 > 0 ? 1 : 0}}
-          lg={{size: 3, offset: index % 2 > 0 ? 2 : 1}}
-          xl={{size: 3, offset: index % 2 > 0 ? 2 : 1}}
+          xs={{ size: 8, offset: 0 }}
+          sm={{ size: 4, offset: index % 2 > 0 ? 1 : 0 }}
+          md={{ size: 4, offset: index % 2 > 0 ? 1 : 0 }}
+          lg={{ size: 3, offset: index % 2 > 0 ? 2 : 1 }}
+          xl={{ size: 3, offset: index % 2 > 0 ? 2 : 1 }}
         >
           {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
-          <motion.div variants={basicStagger} animate={inView ? 'show' : 'hide'} initial="hide" className="about-row__image">
+          <motion.div
+            variants={basicStagger}
+            animate={inView ? 'show' : 'hide'}
+            initial="hide"
+            className="about-row__image"
+          >
             <motion.div variants={basicStaggerChild}>
               <Image className="h-100 w-100" filename={rowData.rowImage} />
             </motion.div>
@@ -104,7 +134,6 @@ const AboutBody = ({ pageData }) => {
 }
 
 const AboutFullWidth = ({ pageData }) => {
-
   return (
     <div className="about-full">
       <Image className="w-100" filename={pageData.frontmatter.fullWidthImage} />
@@ -117,23 +146,30 @@ const AboutFullWidth = ({ pageData }) => {
 
 const AboutResearch = ({ pageData }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
     <div className="about-research" ref={ref}>
       <Container fluid="sm">
         <Row className="align-items-center">
-          <Col 
-            sm={{size: 10, offset: 1}}
-            md={{size: 8, offset: 2}}
-            lg={{size: 6, offset: 4}}
-            xl={{size: 6, offset: 4}}
+          <Col
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 8, offset: 2 }}
+            lg={{ size: 6, offset: 4 }}
+            xl={{ size: 6, offset: 4 }}
           >
-            <motion.div className="about-research__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
+            <motion.div
+              className="about-research__text"
+              variants={basicStaggerChild}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+            >
               <MDXRenderer>{pageData.frontmatter.researchHeading}</MDXRenderer>
               <BrushStroke />
-              <MDXRenderer>{pageData.frontmatter.researchSubheading}</MDXRenderer>
+              <MDXRenderer>
+                {pageData.frontmatter.researchSubheading}
+              </MDXRenderer>
             </motion.div>
           </Col>
         </Row>
@@ -144,7 +180,7 @@ const AboutResearch = ({ pageData }) => {
 
 const AboutTheCenter = ({ pageData }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true
+    triggerOnce: true,
   })
 
   return (
@@ -153,12 +189,14 @@ const AboutTheCenter = ({ pageData }) => {
         <Container fluid="sm">
           <Row>
             <Col
-              sm={{size: 10}}
-              md={{size: 8}}
-              lg={{size: 8}}
-              xl={{size: 8}}
+              sm={{ size: 10 }}
+              md={{ size: 8 }}
+              lg={{ size: 8 }}
+              xl={{ size: 8 }}
             >
-              <MDXRenderer>{pageData.frontmatter.aboutTheCenterIntro}</MDXRenderer>
+              <MDXRenderer>
+                {pageData.frontmatter.aboutTheCenterIntro}
+              </MDXRenderer>
             </Col>
           </Row>
         </Container>
@@ -166,14 +204,21 @@ const AboutTheCenter = ({ pageData }) => {
       <div className="about-center__content">
         <Container fluid="sm">
           <Row>
-            <Col 
-              sm={{size: 10, offset: 1}}
-              md={{size: 8, offset: 2}}
-              lg={{size: 6, offset: 4}}
-              xl={{size: 6, offset: 4}}
+            <Col
+              sm={{ size: 10, offset: 1 }}
+              md={{ size: 8, offset: 2 }}
+              lg={{ size: 6, offset: 4 }}
+              xl={{ size: 6, offset: 4 }}
             >
-              <motion.div className="about-research__text" variants={basicStaggerChild} animate={inView ? 'show' : 'hide'} initial="hide">
-                <MDXRenderer>{pageData.frontmatter.aboutTheCenterContent}</MDXRenderer>
+              <motion.div
+                className="about-research__text"
+                variants={basicStaggerChild}
+                animate={inView ? 'show' : 'hide'}
+                initial="hide"
+              >
+                <MDXRenderer>
+                  {pageData.frontmatter.aboutTheCenterContent}
+                </MDXRenderer>
               </motion.div>
             </Col>
           </Row>

@@ -17,11 +17,11 @@ const FooterForm = () => {
   const honeypotRef = useRef(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmittedError, setIsSubmittedError] = useState(false)
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&')
-  }
+  // const encode = data => {
+  //   return Object.keys(data)
+  //     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+  //     .join('&')
+  // }
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -44,7 +44,7 @@ const FooterForm = () => {
       // }, 1400);
 
       // detect spam with honeypot
-      if(honeypotRef.current.value !== "") return
+      if (honeypotRef.current.value !== '') return
 
       // Post to the netlify lambda.
       // https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8
@@ -76,40 +76,59 @@ const FooterForm = () => {
 
   return (
     <div className="footer__form">
-        <form
-          name="subscribe"
-          method="POST"
-          onSubmit={formik.handleSubmit}
-          className={`${formik.isSubmitting ? 'submitting' : isSubmitted ? 'submitted' : 'not-submitting'} ${
+      <form
+        name="subscribe"
+        method="POST"
+        onSubmit={formik.handleSubmit}
+        className={`${
+          formik.isSubmitting
+            ? 'submitting'
+            : isSubmitted
+            ? 'submitted'
+            : 'not-submitting'
+        } ${formik.touched.email && formik.errors.email ? 'is-invalid' : ''} ${
+          formik.touched.email && !formik.errors.email ? 'is-valid' : ''
+        }`}
+      >
+        <p className="hidden">
+          <label>
+            Don’t fill this out if you're human:{' '}
+            <input name="bot-field" ref={honeypotRef} />
+          </label>
+        </p>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          className={`form-control ${
             formik.touched.email && formik.errors.email ? 'is-invalid' : ''
           } ${formik.touched.email && !formik.errors.email ? 'is-valid' : ''}`}
+          placeholder="Your email address"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        <button
+          type="submit"
+          aria-label="submit email"
+          disabled={formik.isSubmitting ? 'disabled' : false}
         >
-          <p className="hidden">
-            <label>
-              Don’t fill this out if you're human: <input name="bot-field" ref={honeypotRef} />
-            </label>
-          </p>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            className={`form-control ${
-              formik.touched.email && formik.errors.email ? 'is-invalid' : ''
-            } ${formik.touched.email && !formik.errors.email ? 'is-valid' : ''}`}
-            placeholder="Your email address"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          <button type="submit" aria-label="submit email" disabled={formik.isSubmitting ? 'disabled' : false}>
-            <MdKeyboardArrowRight />
-          </button>
-          <CgSpinnerAlt />
-        </form>
-      <motion.div className="footer__success" variants={libraryEntry} animate={isSubmitted && !isSubmittedError ? 'show' : 'hide'}>
+          <MdKeyboardArrowRight />
+        </button>
+        <CgSpinnerAlt />
+      </form>
+      <motion.div
+        className="footer__success"
+        variants={libraryEntry}
+        animate={isSubmitted && !isSubmittedError ? 'show' : 'hide'}
+      >
         <p>Thank you.</p>
       </motion.div>
-      <motion.div className="footer__error" variants={libraryEntry} animate={isSubmittedError ? 'show' : 'hide'}>
+      <motion.div
+        className="footer__error"
+        variants={libraryEntry}
+        animate={isSubmittedError ? 'show' : 'hide'}
+      >
         <p>Error.</p>
       </motion.div>
     </div>

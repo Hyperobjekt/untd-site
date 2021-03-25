@@ -55,7 +55,7 @@
     "styled-components": "^5.2.1",
     "typeface-lato": "0.0.75",
     "typeface-muli": "^1.1.13",
-    "untd-map": "0.0.9",
+    "untd-map": "^0.1.0",
     "yup": "^0.28.5",
     "zustand": "^3.3.1"
   },

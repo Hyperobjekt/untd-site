@@ -169,14 +169,14 @@ const LibraryTopics = ({ pageData }) => {
 
   const scrollToContent = useCallback(() => {
     animate(bodyScroll, document.body.scrollTop + bounds.top, {
-      type: "tween",
+      type: 'tween',
       duration: 1,
-      ease: "easeInOut",
+      ease: 'easeInOut',
       onUpdate: v => {
         document.body.scrollTo(0, v)
-      }
+      },
     })
-  }, [bounds])
+  }, [bounds, bodyScroll])
 
   useEffect(() => {
     if (window.innerWidth < 576) {
@@ -185,17 +185,21 @@ const LibraryTopics = ({ pageData }) => {
   }, [])
 
   useEffect(() => {
-    if(hasDetected) return
- 
+    if (hasDetected) return
+
     const t = setTimeout(() => {
-      if(document.location.hash.length > 1) {
-        if(bounds.top !== 0 && !hasDetected){
-          setActiveTopic(pageData.frontmatter.researchItems.findIndex(e => slugify(e.label) === document.location.hash.split("#")[1]))
+      if (document.location.hash.length > 1) {
+        if (bounds.top !== 0 && !hasDetected) {
+          setActiveTopic(
+            pageData.frontmatter.researchItems.findIndex(
+              e => slugify(e.label) === document.location.hash.split('#')[1]
+            )
+          )
           setHasDetected(true)
           scrollToContent()
         }
-      }else {
-        if(!hasDetected) setHasDetected(true)
+      } else {
+        if (!hasDetected) setHasDetected(true)
       }
     }, 100)
 
@@ -208,8 +212,12 @@ const LibraryTopics = ({ pageData }) => {
     }
   }, [])
 
-  const setHash = (hash) => {
-    window.history.pushState({}, '', window.location.origin + window.location.pathname + hash)
+  const setHash = hash => {
+    window.history.pushState(
+      {},
+      '',
+      window.location.origin + window.location.pathname + hash
+    )
   }
 
   return (
@@ -263,8 +271,17 @@ const LibraryTopics = ({ pageData }) => {
             >
               <div>
                 <h3 className="knockout-bold">Topics</h3>
-                <button className="library-topics__sidebar-toggle" aria-label="expand dropdown" onClick={toggleDropdown}>
-                  <h4 className="knockout-bold">Choose Topic <MdKeyboardArrowDown className={`${dropdownOpen ? 'open' : ''}`} /></h4>
+                <button
+                  className="library-topics__sidebar-toggle"
+                  aria-label="expand dropdown"
+                  onClick={toggleDropdown}
+                >
+                  <h4 className="knockout-bold">
+                    Choose Topic{' '}
+                    <MdKeyboardArrowDown
+                      className={`${dropdownOpen ? 'open' : ''}`}
+                    />
+                  </h4>
                 </button>
                 <BrushStroke />
                 <motion.div
@@ -275,11 +292,20 @@ const LibraryTopics = ({ pageData }) => {
                 >
                   <div>
                     {pageData.frontmatter.researchItems.map((item, i) => (
-                      <button aria-label={`set topic to ${item.label}`} onClick={() => {
-                        setActiveTopic(i)
-                        setHash(`#${slugify(item.label)}`)
-                        }} className={`library-topics__topic ${i === activeTopic ? 'library-topics__topic--active' : ''}`} key={i}>
-                        <div style={{"--color": item.item_color}}></div>
+                      <button
+                        aria-label={`set topic to ${item.label}`}
+                        onClick={() => {
+                          setActiveTopic(i)
+                          setHash(`#${slugify(item.label)}`)
+                        }}
+                        className={`library-topics__topic ${
+                          i === activeTopic
+                            ? 'library-topics__topic--active'
+                            : ''
+                        }`}
+                        key={i}
+                      >
+                        <div style={{ '--color': item.item_color }}></div>
                         <span className="caslon">{item.label}</span>
                       </button>
                     ))}
@@ -295,10 +321,21 @@ const LibraryTopics = ({ pageData }) => {
               className="library-topics__entries"
             >
               {pageData.frontmatter.researchItems.map((item, i) => (
-                <motion.div className="library-topics__entry" key={i} name={slugify(item.label)} variants={libraryEntry} style={{position: i === activeTopic ? 'relative' : 'absolute'}} animate={i === activeTopic ? 'show' : 'hide'}>
-                  <MDXProvider components={{
-                    img: CustomImage
-                  }}>
+                <motion.div
+                  className="library-topics__entry"
+                  key={i}
+                  name={slugify(item.label)}
+                  variants={libraryEntry}
+                  style={{
+                    position: i === activeTopic ? 'relative' : 'absolute',
+                  }}
+                  animate={i === activeTopic ? 'show' : 'hide'}
+                >
+                  <MDXProvider
+                    components={{
+                      img: CustomImage,
+                    }}
+                  >
                     <MDXRenderer>{item.item_content}</MDXRenderer>
                     <div className="library-topics__entry-refs">
                       <MDXRenderer>{item.item_references}</MDXRenderer>
@@ -336,7 +373,7 @@ const SessionsPage = ({ location }) => {
               researchItems {
                 label
                 item_color
-                item_content 
+                item_content
                 item_references
               }
             }

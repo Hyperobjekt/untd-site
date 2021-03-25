@@ -25,7 +25,7 @@ function SEO({ meta }) {
             facebookAppID
           }
         }
-        placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+        placeholderImage: file(relativePath: { eq: "social-share.png" }) {
           id
           childImageSharp {
             original {
