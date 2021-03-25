@@ -10,7 +10,7 @@ const encode = data => {
     .join('&')
 }
 
-export async function handler(event) {
+exports.handler = async function(event) {
   const { email } = JSON.parse(event.body)
 
   const data = encode({
