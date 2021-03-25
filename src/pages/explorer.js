@@ -58,6 +58,8 @@ const ExplorerPage = ({ data, location }) => {
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
+      {/* This form is an unused placeholder to trigger the netlify API to listen for submissions
+      from the explorer. */}
       <form
         name="map_feedback"
         data-netlify="true"
@@ -70,9 +72,9 @@ const ExplorerPage = ({ data, location }) => {
         <input type="text" name="lastname" />
         <input type="text" name="address" />
         <input type="email" name="email" />
-        <input type="textarea" name="message" />
-        <textarea name="message"></textarea>
+        <textarea id="message" name="message" type="text" rows="4" />
       </form>
+      {/* End hidden form. */}
       <Explorer lang="en_US" langSet={json} toggleMenu={toggleShowMenu} />
     </Layout>
   )
