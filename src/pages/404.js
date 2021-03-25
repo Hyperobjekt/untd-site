@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Container } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import { graphql, useStaticQuery } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { motion } from 'framer-motion'
@@ -7,7 +7,6 @@ import { useInView } from 'react-intersection-observer'
 import { Link } from 'gatsby'
 
 import { HubLogo } from '../components/atoms/icons'
-import heroImage1 from '../images/about_hero1.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
@@ -74,6 +73,14 @@ const NotFoundPage = ({ location }) => {
           }
         }
       }
+      metaImage: file(relativePath: { eq: "social-share.png" }) {
+        id
+        childImageSharp {
+          original {
+            src
+          }
+        }
+      }
     }
   `)
 
@@ -81,6 +88,7 @@ const NotFoundPage = ({ location }) => {
   // console.log(getPageData.allMdx.edges[0].node)
 
   const pageMeta = getPageMeta('404', pageData, location)
+  pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
