@@ -86,27 +86,6 @@ const NotFoundPage = ({ location }) => {
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
       <NotFoundHero pageData={pageData} />
-      <form
-        name="map_feedback"
-        method="POST"
-        netlify-honeypot="bot-field"
-        data-netlify="true"
-        style={{ display: 'none' }}
-      >
-        <input type="hidden" name="form-name" value="map_feedback" />
-        <p className="hidden" style={{ visibility: 'hidden', height: 0 }}>
-          <label>
-            Don’t fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
-        <input id="latitude" name="latitude" type="text" />
-        <input id="longitude" name="longitude" type="text" />
-        <input id="address" name="address" type="text" />
-        <input id="firstname" name="firstname" type="text" />
-        <input id="lastname" name="lastname" type="text" />
-        <input id="email" name="email" type="email" />
-        <textarea id="message" name="message" type="text" rows="4" />
-      </form>
     </Layout>
   )
 }
