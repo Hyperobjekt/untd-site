@@ -24,6 +24,14 @@ export const query = graphql`
         }
       }
     }
+    metaImage: file(relativePath: { eq: "map-share.png" }) {
+      id
+      childImageSharp {
+        original {
+          src
+        }
+      }
+    }
     allFile(
       filter: {
         extension: { eq: "json" }
@@ -46,6 +54,7 @@ const ExplorerPage = ({ data, location }) => {
   const pageData = data.allMdx.edges[0].node
 
   const pageMeta = getPageMeta('explorer', pageData, location)
+  pageMeta.image = data.metaImage.childImageSharp.original.src
 
   // console.log('explorer, ', pageMeta)
 
