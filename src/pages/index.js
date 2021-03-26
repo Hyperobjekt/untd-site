@@ -279,9 +279,6 @@ const HomeLibraryCard = ({ cardData, index }) => {
                 <span className="caslon">Health and Trauma</span>
               </li>
               <li className="dotted-bottom">
-                <span className="caslon">Financial Stability</span>
-              </li>
-              <li className="dotted-bottom">
                 <span className="caslon">Criminal Justice and Safety</span>
               </li>
               <li>
