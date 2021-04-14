@@ -209,7 +209,7 @@ const HomeGraph = ({ pageData }) => {
   )
 }
 
-const HomeLibraryCard = ({ cardData, index }) => {
+const HomeLibraryCard = ({ cardData, index, topics }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
@@ -257,33 +257,11 @@ const HomeLibraryCard = ({ cardData, index }) => {
             animate={inView ? 'show' : 'hide'}
           >
             <motion.ul variants={basicStaggerChild}>
-              <li className="dotted-bottom">
-                <span className="caslon">Socioeconomic Mobility</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Family</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Education</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Income Inequality</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Neighborhoods</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Social Capital</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Health and Trauma</span>
-              </li>
-              <li className="dotted-bottom">
-                <span className="caslon">Criminal Justice and Safety</span>
-              </li>
-              <li>
-                <span className="caslon">Projects in North Texas</span>
-              </li>
+              {topics.slice(0, 10).map(({ label }, i) => (
+                <li className={i < 9 ? "dotted-bottom" : ""} key={i}>
+                  <span className="caslon">{ label }</span>
+                </li>
+              ))}
             </motion.ul>
           </motion.div>
         </div>
@@ -403,7 +381,7 @@ const HomeCard = ({ cardData, index }) => {
   )
 }
 
-const HomeEngage = ({ pageData }) => {
+const HomeEngage = ({ pageData, topics }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
@@ -430,7 +408,7 @@ const HomeEngage = ({ pageData }) => {
         </Row>
         {pageData.frontmatter.engageCards.map((card, index) =>
           card.isLibraryCallout ? (
-            <HomeLibraryCard cardData={card} index={index} key={index} />
+            <HomeLibraryCard cardData={card} index={index} key={index} topics={topics} />
           ) : index === 1 ? (
             <HomeExplorerCard cardData={card} index={index} key={index} />
           ) : (
@@ -478,6 +456,17 @@ const IndexPage = ({ location }) => {
           }
         }
       }
+      libraryTopics: allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
+        edges {
+          node {
+            frontmatter {
+              researchItems {
+                label
+              }
+            }
+          }
+        }
+      }
       metaImage: file(relativePath: { eq: "social-share.png" }) {
         id
         childImageSharp {
@@ -490,6 +479,7 @@ const IndexPage = ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
+  const libraryTopics = getPageData.libraryTopics.edges[0].node.frontmatter.researchItems
 
   const pageMeta = getPageMeta('home', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src
@@ -499,7 +489,7 @@ const IndexPage = ({ location }) => {
       <SEO meta={{ ...pageMeta }} />
       <HomeHero pageData={pageData} />
       <HomeGraph pageData={pageData} />
-      <HomeEngage pageData={pageData} />
+      <HomeEngage pageData={pageData} topics={libraryTopics} />
     </Layout>
   )
 }
