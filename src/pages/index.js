@@ -7,7 +7,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
-import { getPageMeta } from './../utils/utils'
+import { getPageMeta, slugify } from './../utils/utils'
 import Image from '../components/atoms/image'
 import { CustomBackgroundImage as BackgroundImage } from '../components/atoms/bg-image'
 import {
@@ -257,9 +257,11 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
             animate={inView ? 'show' : 'hide'}
           >
             <motion.ul variants={basicStaggerChild}>
-              {topics.slice(0, 10).map(({ label }, i) => (
-                <li className={i < 9 ? "dotted-bottom" : ""} key={i}>
-                  <span className="caslon">{ label }</span>
+              {topics.map(({ label }, i) => (
+                <li className={i < topics.length - 1 ? "dotted-bottom" : ""} key={i}>
+                  <Link to={`/research-library/#${slugify(label)}`}>
+                    <span className="caslon">{ label }</span>
+                  </Link>
                 </li>
               ))}
             </motion.ul>
@@ -462,6 +464,7 @@ const IndexPage = ({ location }) => {
             frontmatter {
               researchItems {
                 label
+                displayOnHomePage
               }
             }
           }
@@ -479,7 +482,7 @@ const IndexPage = ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  const libraryTopics = getPageData.libraryTopics.edges[0].node.frontmatter.researchItems
+  const libraryTopics = getPageData.libraryTopics.edges[0].node.frontmatter.researchItems.filter(item => item.displayOnHomePage)
 
   const pageMeta = getPageMeta('home', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src

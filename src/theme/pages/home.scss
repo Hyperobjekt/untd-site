@@ -452,6 +452,14 @@
       padding: 0 1rem 0.65rem;
       margin: 0 0 0.65rem;
 
+      a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
       > div {
         border-radius: 50%;
         width: 1.7rem;
