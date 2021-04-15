@@ -370,6 +370,12 @@ collections:
             widget: 'list'
             fields:
               - { name: 'label', label: 'Label for ', widget: 'string' }
+              - {
+                  name: 'displayOnHomePage',
+                  label: 'Display on Home Page',
+                  widget: 'boolean',
+                  required: false,
+                }
               - { name: 'topic_area', label: 'Topic area', widget: 'string' }
               - { name: 'type', label: 'Type', widget: 'string' }
               - { name: 'link', label: 'Link', widget: 'string' }
