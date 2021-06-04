@@ -1,10 +1,10 @@
 backend:
   name: git-gateway
   repo: Hyperobjekt/untd-site
-  branch: staging # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
+  branch: production # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
 local_backend: false # Switch off when deployed.
-
+publish_mode: editorial_workflow
 media_folder: /src/content/uploads
 public_folder: /uploads
 
