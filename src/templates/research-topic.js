@@ -13,7 +13,7 @@ import { topicsDropdown } from '../components/atoms/animation'
 const TopicHero = ({ pageData }) => {
   
     return (
-      <div className="topic-hero bg-gray">
+      <div className="topic-hero" style={{backgroundColor: pageData.item_color}}>
         <Container fluid="sm">
           <Row>
             <Col
@@ -41,7 +41,7 @@ const TopicContent = ({ pageData }) => {
     return (
         <div className="topic-content">
             <Container fluid="sm">
-                {pageData.item_content_sections.map((s, i) => (
+                {pageData.item_content_sections && pageData.item_content_sections.map((s, i) => (
                     <Row key={i}>
                         <Col
                             xs={{ size: 12, offset: 0 }}
@@ -125,6 +125,7 @@ const TopicNav = ({ pageData }) => {
                         variants={topicsDropdown}
                         initial={dropdownOpen ? 'show' : 'hide'}
                         animate={dropdownOpen ? 'show' : 'hide'}
+                        transition={{ duration: 0.7 }}
                         className="topic-nav__dropdown-links"
                     >
                         <div>
@@ -160,12 +161,14 @@ const TopicNext = ({ pageData }) => {
                             <h3>{nextTopic.label}</h3>
                             <p>{nextTopic.item_description}</p>
                             <Link to={`/research-library/${slugify(nextTopic.label)}/`} className="dotted-bottom">Learn more</Link>
-                            <div className="topic-next__card-image">
-                                <Image
-                                    className="h-100 w-100"
-                                    filename={nextTopic.item_image}
-                                />
-                            </div>
+                            {nextTopic.item_image && 
+                                <div className="topic-next__card-image">
+                                    <Image
+                                        className="h-100 w-100"
+                                        filename={nextTopic.item_image}
+                                    />
+                                </div>
+                            }
                         </div>
                     </Col>
                 </Row>

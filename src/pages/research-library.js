@@ -156,6 +156,10 @@ const LibraryDescription = ({ pageData }) => {
 const LibraryGrid = ({ pageData }) => {
   return (
     <div className="library-grid">
+      <div className="library-grid__eyebrow">
+        <h3>Research library topics</h3>
+        <BrushStroke />
+      </div>
       {pageData.frontmatter.researchItems.map((item, i) => (
         <div
           className="library-grid__entry"
