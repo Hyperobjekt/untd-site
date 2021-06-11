@@ -153,7 +153,32 @@ const LibraryDescription = ({ pageData }) => {
   )
 }
 
-const CustomImage = props => <Image filename={props.src} />
+const LibraryGrid = ({ pageData }) => {
+  return (
+    <div className="library-grid">
+      {pageData.frontmatter.researchItems.map((item, i) => (
+        <div
+          className="library-grid__entry"
+          key={i}
+          style={{backgroundColor: item.item_color}}
+        >
+          <h2>{item.label}</h2>
+          <p>Through much of American history, there was an expectation that one's life would provide opportunities that would provide a better quality of life than their parents. At its most simple, the American Dream is represented by these odds of advancement. This dream, however, hasn’t been the norm for at least a generation: many Americans have very low chances of the kind of upward mobility that defined progress for several decades.</p>
+          <Link to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
+          {item.item_image && 
+          <div className="library-grid__entry-image">
+              <Image
+                  className="h-100 w-100"
+                  filename={item.item_image}
+              />
+          </div>
+          }
+          
+        </div>
+      ))}
+    </div>
+  )
+}
 
 const LibraryTopics = ({ pageData }) => {
   const [boundsRef, bounds] = useMeasure()
@@ -196,7 +221,7 @@ const LibraryTopics = ({ pageData }) => {
             )
           )
           setHasDetected(true)
-          scrollToContent()
+          // scrollToContent()
         }
       } else {
         if (!hasDetected) setHasDetected(true)
@@ -259,97 +284,12 @@ const LibraryTopics = ({ pageData }) => {
           </Row>
         </Container>
       </div>
-      <div className="library-topics__body" ref={boundsRef}>
-        <Container fluid="sm">
-          <Row className="flex-column flex-sm-row">
-            <Col
-              sm={{ size: 5, offset: 0 }}
-              md={{ size: 4, offset: 0 }}
-              lg={{ size: 3, offset: 0 }}
-              xl={{ size: 3, offset: 0 }}
-              className="library-topics__sidebar"
-            >
-              <div>
-                <h3 className="knockout-bold">Topics</h3>
-                <button
-                  className="library-topics__sidebar-toggle"
-                  aria-label="expand dropdown"
-                  onClick={toggleDropdown}
-                >
-                  <h4 className="knockout-bold">
-                    Choose Topic{' '}
-                    <MdKeyboardArrowDown
-                      className={`${dropdownOpen ? 'open' : ''}`}
-                    />
-                  </h4>
-                </button>
-                <BrushStroke />
-                <motion.div
-                  variants={topicsDropdown}
-                  initial={dropdownOpen ? 'show' : 'hide'}
-                  animate={dropdownOpen ? 'show' : 'hide'}
-                  className="library-topics__sidebar-links"
-                >
-                  <div>
-                    {pageData.frontmatter.researchItems.map((item, i) => (
-                      <button
-                        aria-label={`set topic to ${item.label}`}
-                        onClick={() => {
-                          setActiveTopic(i)
-                          setHash(`#${slugify(item.label)}`)
-                        }}
-                        className={`library-topics__topic ${
-                          i === activeTopic
-                            ? 'library-topics__topic--active'
-                            : ''
-                        }`}
-                        key={i}
-                      >
-                        <div style={{ '--color': item.item_color }}></div>
-                        <span className="caslon">{item.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-            </Col>
-            <Col
-              sm={{ size: 7, offset: 0 }}
-              md={{ size: 7, offset: 1 }}
-              lg={{ size: 6, offset: 2 }}
-              xl={{ size: 6, offset: 2 }}
-              className="library-topics__entries"
-            >
-              {pageData.frontmatter.researchItems.map((item, i) => (
-                <motion.div
-                  className="library-topics__entry"
-                  key={i}
-                  name={slugify(item.label)}
-                  variants={libraryEntry}
-                  style={{
-                    position: i === activeTopic ? 'relative' : 'absolute',
-                  }}
-                  animate={i === activeTopic ? 'show' : 'hide'}
-                >
-                  <MDXProvider
-                    components={{
-                      img: CustomImage,
-                    }}
-                  >
-                    <MDXRenderer>{item.item_content}</MDXRenderer>
-                    <div className="library-topics__entry-refs">
-                      <MDXRenderer>{item.item_references}</MDXRenderer>
-                    </div>
-                  </MDXProvider>
-                </motion.div>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <LibraryGrid pageData={pageData} />
     </div>
   )
 }
+
+
 
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`
@@ -374,6 +314,11 @@ const SessionsPage = ({ location }) => {
                 label
                 item_color
                 item_content
+                item_image
+                item_content_sections {
+                  section_title
+                  section_content
+                }
                 item_references
               }
             }
@@ -402,43 +347,101 @@ const SessionsPage = ({ location }) => {
       <LibraryHero pageData={pageData} />
       <LibraryDescription pageData={pageData} />
       <LibraryTopics pageData={pageData} />
-      {/* <Row className="heading">
-        <Col
-          xs={{ size: 12, offset: 0 }}
-          sm={{ size: 10, offset: 1 }}
-          md={{ size: 8, offset: 2 }}
-          lg={{ size: 6, offset: 3 }}
-        >
-          <h1>{pageMeta.title}</h1>
-        </Col>
-        <Col
-          xs={{ size: 12, offset: 0 }}
-          sm={{ size: 10, offset: 1 }}
-          md={{ size: 8, offset: 2 }}
-          lg={{ size: 6, offset: 3 }}
-        >
-          {pageData.frontmatter.researchItems.map((el, i) => {
-            return (
-              <div className="research-item" key={`research-item-${i}`}>
-                <h4>
-                  {el.label} <span className="tag-topic">{el.topic_area}</span>
-                </h4>
-
-                <a
-                  className="tag-topic"
-                  href={el.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {el.link}
-                </a>
-              </div>
-            )
-          })}
-        </Col>
-      </Row> */}
     </Layout>
   )
 }
+
+// const LegacyTopicsBody = () => {
+//   return (
+//     <div className="library-topics__body" ref={boundsRef}>
+//         <Container fluid="sm">
+//           <Row className="flex-column flex-sm-row">
+//             <Col
+//               sm={{ size: 5, offset: 0 }}
+//               md={{ size: 4, offset: 0 }}
+//               lg={{ size: 3, offset: 0 }}
+//               xl={{ size: 3, offset: 0 }}
+//               className="library-topics__sidebar"
+//             >
+//               <div>
+//                 <h3 className="knockout-bold">Topics</h3>
+//                 <button
+//                   className="library-topics__sidebar-toggle"
+//                   aria-label="expand dropdown"
+//                   onClick={toggleDropdown}
+//                 >
+//                   <h4 className="knockout-bold">
+//                     Choose Topic{' '}
+//                     <MdKeyboardArrowDown
+//                       className={`${dropdownOpen ? 'open' : ''}`}
+//                     />
+//                   </h4>
+//                 </button>
+//                 <BrushStroke />
+//                 <motion.div
+//                   variants={topicsDropdown}
+//                   initial={dropdownOpen ? 'show' : 'hide'}
+//                   animate={dropdownOpen ? 'show' : 'hide'}
+//                   className="library-topics__sidebar-links"
+//                 >
+//                   <div>
+//                     {pageData.frontmatter.researchItems.map((item, i) => (
+//                       <button
+//                         aria-label={`set topic to ${item.label}`}
+//                         onClick={() => {
+//                           setActiveTopic(i)
+//                           setHash(`#${slugify(item.label)}`)
+//                         }}
+//                         className={`library-topics__topic ${
+//                           i === activeTopic
+//                             ? 'library-topics__topic--active'
+//                             : ''
+//                         }`}
+//                         key={i}
+//                       >
+//                         <div style={{ '--color': item.item_color }}></div>
+//                         <span className="caslon">{item.label}</span>
+//                       </button>
+//                     ))}
+//                   </div>
+//                 </motion.div>
+//               </div>
+//             </Col>
+//             <Col
+//               sm={{ size: 7, offset: 0 }}
+//               md={{ size: 7, offset: 1 }}
+//               lg={{ size: 6, offset: 2 }}
+//               xl={{ size: 6, offset: 2 }}
+//               className="library-topics__entries"
+//             >
+//               {pageData.frontmatter.researchItems.map((item, i) => (
+//                 <motion.div
+//                   className="library-topics__entry"
+//                   key={i}
+//                   name={slugify(item.label)}
+//                   variants={libraryEntry}
+//                   style={{
+//                     position: i === activeTopic ? 'relative' : 'absolute',
+//                   }}
+//                   animate={i === activeTopic ? 'show' : 'hide'}
+//                 >
+//                   <MDXProvider
+//                     components={{
+//                       img: CustomImage,
+//                     }}
+//                   >
+//                     <MDXRenderer>{item.item_content}</MDXRenderer>
+//                     <div className="library-topics__entry-refs">
+//                       <MDXRenderer>{item.item_references}</MDXRenderer>
+//                     </div>
+//                   </MDXProvider>
+//                 </motion.div>
+//               ))}
+//             </Col>
+//           </Row>
+//         </Container>
+//       </div>
+//   )
+// }
 
 export default SessionsPage

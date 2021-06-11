@@ -1,5 +1,17 @@
 import React from 'react'
 
+export const TopicNavArrow = props => (
+  <svg width="4" height="6" viewBox="0 0 4 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0.79427 6L4 3L0.79427 0L0 0.743297L2.41146 3L0 5.2567L0.79427 6Z" fill="#303030"/>
+  </svg>
+)
+
+export const HomeIcon = props => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 9V3.08683L5 1.11491L9 3.08683V9H1Z" fill="#2A3133" stroke="#2A3133" strokeWidth="2"/>
+  </svg>
+)
+
 export const HubLogo = props => (
     <svg
       {...props}
