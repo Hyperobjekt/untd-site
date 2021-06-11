@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Explorer from 'untd-map'
+import Explorer from '@hyperobjekt/untd-map'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
