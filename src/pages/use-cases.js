@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
-import { HubLogo } from '../components/atoms/icons'
+import { BrushStroke, HubLogo } from '../components/atoms/icons'
 
 import heroImage1 from '../images/cases1.png'
 import heroImage2 from '../images/cases2.png'
@@ -174,6 +174,46 @@ const CasesBody = ({ pageData }) => {
   )
 }
 
+const Worksheets = ({ pageData }) => {
+  return (
+    <div className="worksheets">
+      <Container fluid="sm">
+        <Row>
+          <div className="worksheets__heading">
+            <h2>{pageData.frontmatter.worksheetsHeading}</h2>
+            <BrushStroke />
+          </div>
+        </Row>
+        <div className="worksheets__list">
+          {pageData.frontmatter.worksheets.map((sheetData, i) => (
+            <Worksheet key={i} sheetData={sheetData} />
+          ))}
+        </div>
+      </Container>
+    </div>
+  )
+}
+
+const Worksheet = ({ sheetData }) => {
+  return (
+    <Row>
+        <div className="worksheet">
+          <div className="worksheet__image">
+            <Image
+              className="h-100 w-100"
+              filename={sheetData.sheetImage}
+            />
+          </div>
+          <div className="worksheet__body">
+            <h6>{sheetData.sheetEyebrow}</h6>
+            <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+            <a href={sheetData.sheetFile} className="btn-orange">Download worksheet</a>
+          </div>
+        </div>
+    </Row>
+  )
+}
+
 export default ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
@@ -193,6 +233,13 @@ export default ({ location }) => {
                 rowText
                 rowImage
               }
+              worksheetsHeading
+              worksheets {
+                sheetText
+                sheetImage
+                sheetFile
+                sheetEyebrow
+              }
             }
           }
         }
@@ -209,7 +256,7 @@ export default ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  // console.log(pageData.frontmatter)
+  console.log(pageData.frontmatter)
   const pageMeta = getPageMeta('use-cases', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
@@ -218,6 +265,7 @@ export default ({ location }) => {
       <SEO meta={{ ...pageMeta }} />
       <CasesHero pageData={pageData} />
       <CasesBody pageData={pageData} />
+      <Worksheets pageData={pageData} />
     </Layout>
   )
 }

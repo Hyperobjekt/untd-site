@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: production # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: false # Switch off when deployed.
+local_backend: true # Switch off when deployed.
 publish_mode: editorial_workflow
 media_folder: /src/content/uploads
 public_folder: /uploads
@@ -439,6 +439,36 @@ collections:
                 [
                   { name: 'rowText', label: 'Row Text', widget: 'markdown' },
                   { name: 'rowImage', label: 'Row Image', widget: 'image' },
+                ],
+            }
+          - {
+              name: 'worksheetsHeading',
+              label: 'Worksheets Heading',
+              widget: 'string',
+            }
+          - {
+              name: 'worksheets',
+              label: 'Worksheets',
+              widget: 'list',
+              fields:
+                [
+                  {
+                    name: 'sheetEyebrow',
+                    label: 'Sheet Eyebrow',
+                    widget: 'string',
+                  },
+                  {
+                    name: 'sheetText',
+                    label: 'Sheet Text',
+                    widget: 'markdown',
+                  },
+                  { name: 'sheetImage', label: 'Sheet Image', widget: 'image' },
+                  {
+                    name: 'sheetFile',
+                    label: 'Sheet File',
+                    widget: 'file',
+                    media_library: { name: 'sheets', media_folder: '/static' },
+                  },
                 ],
             }
           - { name: body, label: Body, widget: markdown }
