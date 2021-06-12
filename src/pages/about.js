@@ -9,7 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { BrushStroke, HubLogo } from '../components/atoms/icons'
+import { BrushStroke, HubLogo, ScrollDown } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
 // import heroImage2 from '../images/home_hero6.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
@@ -60,6 +60,10 @@ const AboutHero = ({ pageData }) => {
               initial="hide"
             >
               <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
+              <a href="#about-the-center">
+                <ScrollDown />
+                <span className="dotted-bottom">Click here to learn more about the Center</span>
+              </a>
             </motion.div>
           </Col>
         </Row>
@@ -198,7 +202,7 @@ const AboutTheCenter = ({ pageData }) => {
   })
 
   return (
-    <div className="about-center" ref={ref}>
+    <div className="about-center" id="about-the-center" ref={ref}>
       <div className="about-center__intro bg-gray">
         <Container fluid="sm">
           <Row>
