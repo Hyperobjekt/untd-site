@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
-import { getPageMeta } from './../utils/utils'
+import { getPageMeta } from '../utils/utils'
 import { HubLogo } from '../components/atoms/icons'
 
 import heroImage1 from '../images/cases1.png'
@@ -177,7 +177,7 @@ const CasesBody = ({ pageData }) => {
 export default ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/use-cases/" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/pathways-to-mobility/" } }) {
         edges {
           node {
             id
@@ -210,7 +210,7 @@ export default ({ location }) => {
 
   const pageData = getPageData.allMdx.edges[0].node
   // console.log(pageData.frontmatter)
-  const pageMeta = getPageMeta('use-cases', pageData, location)
+  const pageMeta = getPageMeta('pathways-to-mobility', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (

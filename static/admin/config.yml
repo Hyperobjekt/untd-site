@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: production # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: false # Switch off when deployed.
+local_backend: true # Switch off when deployed.
 publish_mode: editorial_workflow
 media_folder: /src/content/uploads
 public_folder: /uploads
@@ -411,9 +411,9 @@ collections:
                   required: true,
                   default: '\n',
                 }
-      - name: 'use-cases'
-        label: 'Use Cases'
-        file: '/src/content/pages/use-cases.mdx'
+      - name: 'pathways-to-mobility'
+        label: 'Pathways to Mobility'
+        file: '/src/content/pages/pathways-to-mobility.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }

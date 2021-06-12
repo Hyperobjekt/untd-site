@@ -27,8 +27,8 @@ module.exports = {
         path: `/research-library/`,
       },
       {
-        title: `Use Cases`,
-        path: `/use-cases/`,
+        title: `Pathways to Mobility`,
+        path: `/pathways-to-mobility/`,
       },
       {
         title: `FAQ`,
