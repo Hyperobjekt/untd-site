@@ -166,9 +166,9 @@
       color: $black;
       max-width: 290px;
 
-      @include media-breakpoint-up(md) {
-        max-width: 100%;
-      }
+      // @include media-breakpoint-up(md) {
+      //   max-width: 100%;
+      // }
     }
 
     svg {
@@ -222,11 +222,33 @@
     }
   }
 
+  &__image {
+    margin: 0 0 6rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: 0;
+    }
+  }
+
   &__content {
     padding: 60px 0;
 
     @include media-breakpoint-up(md) {
       padding: 120px 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $knockoutBold !important;
+      text-transform: uppercase;
+      font-size: 3.8rem;
+      line-height: 3.8rem;
+      color: $black;
+      max-width: 290px;
     }
 
     p {

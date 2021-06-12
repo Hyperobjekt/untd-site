@@ -3,7 +3,7 @@ backend:
   repo: Hyperobjekt/untd-site
   branch: production # Optional, defaults to master. Update this to draw from the correct branch when working locally and when deployed.
 
-local_backend: false # Switch off when deployed.
+local_backend: true # Switch off when deployed.
 publish_mode: editorial_workflow
 media_folder: /src/content/uploads
 public_folder: /uploads
@@ -148,6 +148,16 @@ collections:
               name: 'aboutTheCenterIntro',
               label: 'About The Center Intro',
               widget: 'markdown',
+            }
+          - {
+              name: 'aboutTheCenterImageLarge',
+              label: 'About The Center Image Large',
+              widget: 'image',
+            }
+          - {
+              name: 'aboutTheCenterImageSmall',
+              label: 'About The Center Image Small',
+              widget: 'image',
             }
           - {
               name: 'aboutTheCenterContent',
