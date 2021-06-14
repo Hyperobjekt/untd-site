@@ -257,7 +257,7 @@ export default ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  const pageMeta = getPageMeta('use-cases', pageData, location)
+  const pageMeta = getPageMeta('pathways-to-mobility', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 
   return (
