@@ -467,7 +467,8 @@ collections:
                     name: 'sheetFile',
                     label: 'Sheet File',
                     widget: 'file',
-                    media_library: { name: 'sheets', media_folder: '/static' },
+                    media_folder: '/static/uploads',
+                    public_folder: '/uploads',
                   },
                 ],
             }
