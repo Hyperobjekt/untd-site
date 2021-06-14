@@ -441,4 +441,35 @@ collections:
                   { name: 'rowImage', label: 'Row Image', widget: 'image' },
                 ],
             }
+          - {
+              name: 'worksheetsHeading',
+              label: 'Worksheets Heading',
+              widget: 'string',
+            }
+          - {
+              name: 'worksheets',
+              label: 'Worksheets',
+              widget: 'list',
+              fields:
+                [
+                  {
+                    name: 'sheetEyebrow',
+                    label: 'Sheet Eyebrow',
+                    widget: 'string',
+                  },
+                  {
+                    name: 'sheetText',
+                    label: 'Sheet Text',
+                    widget: 'markdown',
+                  },
+                  { name: 'sheetImage', label: 'Sheet Image', widget: 'image' },
+                  {
+                    name: 'sheetFile',
+                    label: 'Sheet File',
+                    widget: 'file',
+                    media_folder: '/static/uploads',
+                    public_folder: '/uploads',
+                  },
+                ],
+            }
           - { name: body, label: Body, widget: markdown }
