@@ -1,0 +1,287 @@
+.topic-next {
+  margin: 7.4rem 0;
+
+  &__card {
+    padding: 3.8rem 3.5rem 6.3rem;
+    overflow: hidden;
+    position: relative;
+
+    @include media-breakpoint-up(sm) {
+      padding: 4.8rem 9.5rem 7.3rem;
+    }
+
+    &-image {
+      position: absolute;
+      width: 50%;
+      height: auto;
+      right: -30px;
+      bottom: -10px;
+    }
+  }
+
+  h5 {
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    line-height: 3.5rem;
+    margin: 0 0 3.6rem;
+    font-family: $knockoutBold;
+  }
+
+  h3 {
+    position: relative;
+    z-index: 1;
+    font-family: $caslon !important;
+    font-size: 3rem;
+    line-height: 3.4rem;
+    color: $black;
+    margin: 0 0 1.5rem;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    color: $black;
+    max-width: 350px;
+    margin: 0 0 3rem;
+  }
+
+  a {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: $black;
+    padding-bottom: 1rem;
+  }
+}
+
+.topic-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  padding: 60px 0 12px;
+  width: 100%;
+  z-index: 2;
+
+  @include media-breakpoint-up(sm) {
+    padding: 32px 0;
+  }
+
+  .container-sm {
+    display: flex;
+    align-items: center;
+
+    > a:not(.home-icon) {
+      font-family: $caslon;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      position: relative;
+      top: 4px;
+    }
+
+    > a {
+      color: $black;
+
+      &:hover {
+        color: $black;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .home-icon {
+    margin-right: 3px;
+    width: 10px;
+    display: none;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  .arrow-icon {
+    margin: 0 8px;
+    width: 4px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  .home-icon + .arrow-icon {
+    display: none;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+
+  &__dropdown {
+    position: relative;
+
+    h4 {
+      font-family: $caslon;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      position: relative;
+      top: 4px;
+      margin: 0;
+      font-style: italic;
+    }
+
+    &-toggle {
+      background: none;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      display: block;
+      margin: 0 auto;
+      //   @include media-breakpoint-up(sm) {
+      //     display: none;
+      //   }
+    }
+
+    &-links {
+      position: absolute;
+      left: -3rem;
+      background-color: white;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      top: 30px;
+
+      @include media-breakpoint-up(sm) {
+        top: 50px;
+      }
+
+      > div {
+        padding: 1.6rem 3rem;
+      }
+
+      a {
+        display: block;
+        font-family: $caslon;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        margin: 0 0 1.6rem;
+        color: $black;
+        white-space: nowrap;
+
+        &:hover {
+          color: $black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.topic-hero {
+  padding: 125px 0 50px;
+  position: relative;
+  box-sizing: border-box;
+
+  h1 {
+    font-family: $caslon;
+    width: 100%;
+    max-width: 800px;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    color: $black;
+    margin: 18.5rem 0 2.4rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: 29rem 0 2.4rem;
+      font-size: 6rem;
+      line-height: 6rem;
+    }
+  }
+
+  p {
+    width: 100%;
+    max-width: 350px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: $black;
+    margin: 0;
+  }
+
+  .logo {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    width: 130px;
+
+    @include media-breakpoint-up(sm) {
+      left: 0;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.topic-content {
+  padding: 55px 0 0;
+
+  @include media-breakpoint-up(sm) {
+    width: 100%;
+    left: 0;
+  }
+
+  &__left {
+    margin: 0 0 4rem;
+
+    h2 {
+      font-size: 2.4rem;
+      line-height: 3.1rem;
+      font-family: $caslon;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 3.4rem;
+        line-height: 4.4rem;
+      }
+    }
+  }
+
+  &__right {
+    margin: 0 0 4rem;
+    @include wysiwyg;
+  }
+
+  &__refs {
+    margin: 6rem 0 0;
+    border-top: 2px solid #ced6db;
+    @include wysiwyg;
+
+    a {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      margin: 0 0 2rem 2.2rem;
+      display: block;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-image: url('/icons/link_arrow_icon.svg');
+        background-size: contain;
+        background-position: center;
+        left: -22px;
+        top: 4px;
+      }
+    }
+  }
+}

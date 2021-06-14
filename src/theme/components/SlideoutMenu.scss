@@ -38,7 +38,7 @@
   a {
     font-family: $knockoutBold;
     text-transform: uppercase;
-    color: $white !important;
+    color: $white;
     font-size: 3rem;
     line-height: 3rem;
 
@@ -49,16 +49,7 @@
     }
 
     &:hover {
-      font-family: $caslon;
-      font-style: italic;
-      font-size: 2.5rem;
-      position: relative;
-      top: 6px;
-
-      @include media-breakpoint-up(md) {
-        font-size: 3.4rem;
-        top: 9px;
-      }
+      color: #d6d6d6;
     }
   }
 }

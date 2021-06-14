@@ -1,3 +1,81 @@
+.library-grid {
+  // padding: ;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
+  padding: 4.5rem 15px;
+
+  @include media-breakpoint-up(sm) {
+    padding: 8.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__eyebrow {
+    grid-column: -1/1;
+    margin: 0 0 10px;
+
+    h3 {
+      text-transform: uppercase;
+      font-family: $knockoutBold;
+      font-size: 1.6rem;
+      line-height: 3.2rem;
+      margin: 0 0 10px;
+    }
+  }
+
+  &__entry {
+    padding: 4.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @include media-breakpoint-up(sm) {
+      padding: 7.5rem 9.5rem;
+    }
+
+    h2 {
+      position: relative;
+      z-index: 1;
+      font-family: $caslon !important;
+      font-size: 3rem;
+      line-height: 3.4rem;
+      color: $black;
+      margin: 0 0 1.5rem;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.5rem;
+      line-height: 2.25rem;
+      color: $black;
+      margin: 0 0 3rem;
+    }
+
+    a {
+      position: relative;
+      z-index: 1;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: $black;
+      padding-bottom: 1rem;
+    }
+
+    &-image {
+      position: absolute;
+      width: 60%;
+      height: auto;
+      right: 0px;
+      bottom: 0px;
+
+      @include media-breakpoint-up(sm) {
+        width: 70%;
+        right: -30px;
+        bottom: -10px;
+      }
+    }
+  }
+}
+
 .library-hero {
   padding: 10rem 0 0;
 

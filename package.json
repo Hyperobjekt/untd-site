@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Lou Groshek <lou@lougroshek.com>",
   "dependencies": {
+    "@hyperobjekt/untd-map": "^1.0.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "bootstrap": "^4.6.0",
@@ -55,7 +56,6 @@
     "styled-components": "^5.2.1",
     "typeface-lato": "0.0.75",
     "typeface-muli": "^1.1.13",
-    "untd-map": "^1.0.0",
     "yup": "^0.28.5",
     "zustand": "^3.3.1"
   },

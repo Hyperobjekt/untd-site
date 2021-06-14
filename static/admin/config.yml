@@ -150,6 +150,16 @@ collections:
               widget: 'markdown',
             }
           - {
+              name: 'aboutTheCenterImageLarge',
+              label: 'About The Center Image Large',
+              widget: 'image',
+            }
+          - {
+              name: 'aboutTheCenterImageSmall',
+              label: 'About The Center Image Small',
+              widget: 'image',
+            }
+          - {
               name: 'aboutTheCenterContent',
               label: 'About The Center Content',
               widget: 'markdown',
@@ -399,21 +409,55 @@ collections:
                   default: '#000000',
                 }
               - {
-                  name: 'item_content',
-                  label: 'Item Content',
-                  widget: 'markdown',
+                  name: 'item_image',
+                  label: 'Item Image',
+                  widget: 'image',
                   required: false,
                 }
               - {
-                  name: 'item_references',
-                  label: 'Item References',
+                  name: 'item_description',
+                  label: 'Item Description',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  name: 'item_content',
+                  label: 'Item Content',
                   widget: 'markdown',
                   required: true,
                   default: '\n',
                 }
-      - name: 'use-cases'
-        label: 'Use Cases'
-        file: '/src/content/pages/use-cases.mdx'
+              - {
+                  name: 'item_content_sections',
+                  label: 'Content Sections',
+                  widget: 'list',
+                  required: false,
+                  fields:
+                    [
+                      {
+                        name: 'section_title',
+                        label: 'Section Title',
+                        widget: 'markdown',
+                        required: false,
+                      },
+                      {
+                        name: 'section_content',
+                        label: 'Section Content',
+                        widget: 'markdown',
+                        required: false,
+                      },
+                    ],
+                }
+              - {
+                  name: 'item_references',
+                  label: 'References',
+                  widget: 'markdown',
+                  required: true,
+                  default: '\n',
+                }
+      - name: 'pathways-to-mobility'
+        label: 'Pathways to Mobility'
+        file: '/src/content/pages/pathways-to-mobility.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -439,6 +483,37 @@ collections:
                 [
                   { name: 'rowText', label: 'Row Text', widget: 'markdown' },
                   { name: 'rowImage', label: 'Row Image', widget: 'image' },
+                ],
+            }
+          - {
+              name: 'worksheetsHeading',
+              label: 'Worksheets Heading',
+              widget: 'string',
+            }
+          - {
+              name: 'worksheets',
+              label: 'Worksheets',
+              widget: 'list',
+              fields:
+                [
+                  {
+                    name: 'sheetEyebrow',
+                    label: 'Sheet Eyebrow',
+                    widget: 'string',
+                  },
+                  {
+                    name: 'sheetText',
+                    label: 'Sheet Text',
+                    widget: 'markdown',
+                  },
+                  { name: 'sheetImage', label: 'Sheet Image', widget: 'image' },
+                  {
+                    name: 'sheetFile',
+                    label: 'Sheet File',
+                    widget: 'file',
+                    media_folder: '/static/uploads',
+                    public_folder: '/uploads',
+                  },
                 ],
             }
           - { name: body, label: Body, widget: markdown }
