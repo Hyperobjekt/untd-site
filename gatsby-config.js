@@ -27,8 +27,8 @@ module.exports = {
         path: `/research-library/`,
       },
       {
-        title: `Use Cases`,
-        path: `/use-cases/`,
+        title: `Pathways to Mobility`,
+        path: `/pathways-to-mobility/`,
       },
       {
         title: `FAQ`,
@@ -103,7 +103,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-sass`,
