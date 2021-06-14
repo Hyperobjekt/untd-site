@@ -16,7 +16,7 @@ import {
   HubLogo,
   InfoIcon,
 } from '../components/atoms/icons'
-import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
+import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildDown, basicStaggerChildRight, basicStaggerChildStatic } from '../components/atoms/animation'
 
 import heroImage1 from '../images/home_hero1.png'
 import heroImage2 from '../images/home_hero2.png'
@@ -48,7 +48,7 @@ const HomeHero = ({ pageData }) => {
               className="home-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildLeft}
                 src={heroImage1}
                 alt="hero image"
               />
@@ -58,17 +58,17 @@ const HomeHero = ({ pageData }) => {
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildDown}
                 src={heroImage3}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildRight}
                 src={heroImage4}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildStatic}
                 src={heroImage5}
                 alt="hero image"
               />
