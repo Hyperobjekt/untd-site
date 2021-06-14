@@ -409,14 +409,48 @@ collections:
                   default: '#000000',
                 }
               - {
-                  name: 'item_content',
-                  label: 'Item Content',
-                  widget: 'markdown',
+                  name: 'item_image',
+                  label: 'Item Image',
+                  widget: 'image',
                   required: false,
                 }
               - {
+                  name: 'item_description',
+                  label: 'Item Description',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  name: 'item_content',
+                  label: 'Item Content',
+                  widget: 'markdown',
+                  required: true,
+                  default: '\n',
+                }
+              - {
+                  name: 'item_content_sections',
+                  label: 'Content Sections',
+                  widget: 'list',
+                  required: false,
+                  fields:
+                    [
+                      {
+                        name: 'section_title',
+                        label: 'Section Title',
+                        widget: 'markdown',
+                        required: false,
+                      },
+                      {
+                        name: 'section_content',
+                        label: 'Section Content',
+                        widget: 'markdown',
+                        required: false,
+                      },
+                    ],
+                }
+              - {
                   name: 'item_references',
-                  label: 'Item References',
+                  label: 'References',
                   widget: 'markdown',
                   required: true,
                   default: '\n',
