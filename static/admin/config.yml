@@ -411,9 +411,9 @@ collections:
                   required: true,
                   default: '\n',
                 }
-      - name: 'use-cases'
-        label: 'Use Cases'
-        file: '/src/content/pages/use-cases.mdx'
+      - name: 'pathways-to-mobility'
+        label: 'Pathways to Mobility'
+        file: '/src/content/pages/pathways-to-mobility.mdx'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }

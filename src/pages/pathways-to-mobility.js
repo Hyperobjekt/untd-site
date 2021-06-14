@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
-import { getPageMeta } from './../utils/utils'
+import { getPageMeta } from '../utils/utils'
 import { BrushStroke, HubLogo } from '../components/atoms/icons'
 
 import heroImage1 from '../images/cases1.png'
@@ -197,19 +197,18 @@ const Worksheets = ({ pageData }) => {
 const Worksheet = ({ sheetData }) => {
   return (
     <Row>
-        <div className="worksheet">
-          <div className="worksheet__image">
-            <Image
-              className="h-100 w-100"
-              filename={sheetData.sheetImage}
-            />
-          </div>
-          <div className="worksheet__body">
-            <h6>{sheetData.sheetEyebrow}</h6>
-            <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
-            <a href={sheetData.sheetFile} className="btn-orange">Download worksheet</a>
-          </div>
+      <div className="worksheet">
+        <div className="worksheet__image">
+          <Image className="h-100 w-100" filename={sheetData.sheetImage} />
         </div>
+        <div className="worksheet__body">
+          <h6>{sheetData.sheetEyebrow}</h6>
+          <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+          <a href={sheetData.sheetFile} className="btn-orange">
+            Download worksheet
+          </a>
+        </div>
+      </div>
     </Row>
   )
 }
@@ -217,7 +216,9 @@ const Worksheet = ({ sheetData }) => {
 export default ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/use-cases/" } }) {
+      allMdx(
+        filter: { fileAbsolutePath: { regex: "/pathways-to-mobility/" } }
+      ) {
         edges {
           node {
             id
@@ -256,7 +257,6 @@ export default ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  console.log(pageData.frontmatter)
   const pageMeta = getPageMeta('use-cases', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src
 

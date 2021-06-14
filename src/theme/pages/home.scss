@@ -402,7 +402,12 @@
       a {
         font-family: inherit !important;
         color: inherit;
-        margin-right: 3.5rem;
+        margin-bottom: 3.5rem;
+
+        @include media-breakpoint-up(sm) {
+          margin-right: 3.5rem;
+          margin-bottom: 0;
+        }
       }
     }
 
@@ -472,6 +477,38 @@
         line-height: 2.1rem;
         position: relative;
         top: 3px;
+      }
+    }
+
+    .btn-orange {
+      display: inline-block;
+      background-color: #a45e0b;
+      font-family: $knockoutBold !important;
+      color: #fff;
+      font-size: 1.4rem;
+      line-height: 1.5rem;
+      width: 100%;
+      max-width: 180px;
+      text-align: center;
+      padding: 13px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03px;
+
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      &.secondary {
+        background-color: unset;
+        border: 1px solid #a45e0b;
+        color: #a45e0b;
+
+        &:hover {
+          text-decoration: none;
+          color: #a45e0b;
+        }
       }
     }
   }
