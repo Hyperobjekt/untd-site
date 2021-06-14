@@ -150,6 +150,16 @@ collections:
               widget: 'markdown',
             }
           - {
+              name: 'aboutTheCenterImageLarge',
+              label: 'About The Center Image Large',
+              widget: 'image',
+            }
+          - {
+              name: 'aboutTheCenterImageSmall',
+              label: 'About The Center Image Small',
+              widget: 'image',
+            }
+          - {
               name: 'aboutTheCenterContent',
               label: 'About The Center Content',
               widget: 'markdown',
