@@ -36,7 +36,7 @@ export const libraryEntry = {
     },
     hide: {
         opacity: 0,
-        y: 10,
+        y: 20,
         pointerEvents: 'none',
     }
 }
