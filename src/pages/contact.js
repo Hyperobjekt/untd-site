@@ -9,7 +9,7 @@ import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import ContactForm from './../components/molecules/contactForm/contactForm'
 import heroImage1 from '../images/faq-hero1.png'
-import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
+import { basicStagger, basicStaggerChild, basicStaggerChildDown } from '../components/atoms/animation'
 import { HubLogo } from '../components/atoms/icons'
 
 const ContactUsHero = () => {
@@ -56,7 +56,7 @@ const ContactUsHero = () => {
               className="contact-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildDown}
                 src={heroImage1}
                 alt="hero image"
               />
