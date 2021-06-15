@@ -9,7 +9,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import Image from '../components/atoms/image'
-import { BrushStroke, HubLogo } from '../components/atoms/icons'
+import { BrushStroke, HubLogo, ScrollDown } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
 // import heroImage2 from '../images/home_hero6.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
@@ -60,6 +60,10 @@ const AboutHero = ({ pageData }) => {
               initial="hide"
             >
               <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
+              <a href="#about-the-center">
+                <ScrollDown />
+                <span className="dotted-bottom">Click here to learn more about the Center</span>
+              </a>
             </motion.div>
           </Col>
         </Row>
@@ -152,12 +156,12 @@ const AboutResearch = ({ pageData }) => {
   return (
     <div className="about-research" ref={ref}>
       <Container fluid="sm">
-        <Row className="align-items-center">
+        <Row>
           <Col
-            sm={{ size: 10, offset: 1 }}
-            md={{ size: 8, offset: 2 }}
-            lg={{ size: 6, offset: 4 }}
-            xl={{ size: 6, offset: 4 }}
+            sm={{ size: 12, offset: 0 }}
+            md={{ size: 3, offset: 0 }}
+            lg={{ size: 4, offset: 0 }}
+            xl={{ size: 4, offset: 0 }}
           >
             <motion.div
               className="about-research__text"
@@ -167,6 +171,20 @@ const AboutResearch = ({ pageData }) => {
             >
               <MDXRenderer>{pageData.frontmatter.researchHeading}</MDXRenderer>
               <BrushStroke />
+            </motion.div>
+          </Col>
+          <Col
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 8, offset: 1 }}
+            lg={{ size: 6, offset: 2 }}
+            xl={{ size: 5, offset: 2 }}
+          >
+            <motion.div
+              className="about-research__text"
+              variants={basicStaggerChild}
+              animate={inView ? 'show' : 'hide'}
+              initial="hide"
+            >
               <MDXRenderer>
                 {pageData.frontmatter.researchSubheading}
               </MDXRenderer>
@@ -184,7 +202,7 @@ const AboutTheCenter = ({ pageData }) => {
   })
 
   return (
-    <div className="about-center" ref={ref}>
+    <div className="about-center" id="about-the-center" ref={ref}>
       <div className="about-center__intro bg-gray">
         <Container fluid="sm">
           <Row>
@@ -201,17 +219,19 @@ const AboutTheCenter = ({ pageData }) => {
           </Row>
         </Container>
       </div>
+      <div className="about-full">
+        <Image className="w-100" filename={pageData.frontmatter.aboutTheCenterImageLarge} />
+      </div>
       <div className="about-center__content">
         <Container fluid="sm">
-          <Row>
+          <Row className="flex-column-reverse flex-md-row">
             <Col
               sm={{ size: 10, offset: 1 }}
-              md={{ size: 8, offset: 2 }}
-              lg={{ size: 6, offset: 4 }}
-              xl={{ size: 6, offset: 4 }}
+              md={{ size: 8, offset: 0 }}
+              lg={{ size: 6, offset: 1 }}
+              xl={{ size: 6, offset: 1 }}
             >
               <motion.div
-                className="about-research__text"
                 variants={basicStaggerChild}
                 animate={inView ? 'show' : 'hide'}
                 initial="hide"
@@ -219,6 +239,21 @@ const AboutTheCenter = ({ pageData }) => {
                 <MDXRenderer>
                   {pageData.frontmatter.aboutTheCenterContent}
                 </MDXRenderer>
+              </motion.div>
+            </Col>
+            <Col
+              sm={{ size: 10, offset: 1 }}
+              md={{ size: 3, offset: 1 }}
+              lg={{ size: 4, offset: 1 }}
+              xl={{ size: 4, offset: 1 }}
+            >
+              <motion.div
+                className="about-center__image"
+                variants={basicStaggerChild}
+                animate={inView ? 'show' : 'hide'}
+                initial="hide"
+              >
+                <Image className="w-100" filename={pageData.frontmatter.aboutTheCenterImageSmall} />
               </motion.div>
             </Col>
           </Row>
@@ -254,6 +289,8 @@ const AboutPage = ({ location }) => {
               researchSubheading
               aboutTheCenterIntro
               aboutTheCenterContent
+              aboutTheCenterImageLarge
+              aboutTheCenterImageSmall
             }
           }
         }

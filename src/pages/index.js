@@ -244,7 +244,7 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
             </motion.p>
             <motion.p variants={basicStaggerChild} className="caslon">
               {cardData.cardLinks.map((link, i) => (
-                <Link to={link.linkUrl} className="dotted-bottom" key={i}>
+                <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
                   {link.linkText}
                 </Link>
               ))}
@@ -259,7 +259,7 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
             <motion.ul variants={basicStaggerChild}>
               {topics.map(({ label }, i) => (
                 <li className={i < topics.length - 1 ? "dotted-bottom" : ""} key={i}>
-                  <Link to={`/research-library/#${slugify(label)}`}>
+                  <Link to={`/research-library/${slugify(label)}/`}>
                     <span className="caslon">{ label }</span>
                   </Link>
                 </li>
@@ -310,7 +310,7 @@ const HomeExplorerCard = ({ cardData, index }) => {
               </motion.p>
               <motion.p variants={basicStaggerChild} className="caslon">
                 {cardData.cardLinks.map((link, i) => (
-                  <Link to={link.linkUrl} className="dotted-bottom" key={i}>
+                  <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
                     {link.linkText}
                   </Link>
                 ))}
@@ -361,7 +361,7 @@ const HomeCard = ({ cardData, index }) => {
             </motion.p>
             <motion.p variants={basicStaggerChild} className="caslon">
               {cardData.cardLinks.map((link, i) => (
-                <Link to={link.linkUrl} className="dotted-bottom" key={i}>
+                <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
                   {link.linkText}
                 </Link>
               ))}
