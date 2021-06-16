@@ -50,12 +50,28 @@ module.exports = {
         path: `/`,
       },
       {
-        title: `About`,
-        path: `/about/`,
+        title: `Explorer`,
+        path: `/explorer/`,
+      },
+      {
+        title: `Research Library`,
+        path: `/research-library/`,
+      },
+      {
+        title: `Pathways to Mobility`,
+        path: `/pathways-to-mobility/`,
       },
       {
         title: `FAQ`,
         path: `/faq/`,
+      },
+      {
+        title: `About`,
+        path: `/about/`,
+      },
+      {
+        title: `Contact`,
+        path: `/contact/`,
       },
     ],
   },

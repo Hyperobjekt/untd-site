@@ -405,7 +405,7 @@ collections:
               - {
                   name: 'item_content',
                   label: 'Item Content',
-                  widget: 'markdown',
+                  widget: 'hidden',
                   required: true,
                   default: '\n',
                 }

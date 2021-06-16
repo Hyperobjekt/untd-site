@@ -1,5 +1,6 @@
 .faq-hero {
   padding: 6rem 0;
+  overflow: hidden;
 
   @include media-breakpoint-up(md) {
     padding: 5rem 0;
