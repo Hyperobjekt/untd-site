@@ -3,6 +3,7 @@
 
 .home-hero {
   padding-top: 3rem;
+  overflow: hidden;
 
   @include media-breakpoint-up(md) {
     padding-top: 5rem;
@@ -95,7 +96,7 @@
     h2 {
       font-size: 4rem;
       line-height: 3.5rem;
-      max-width: 271px;
+      max-width: 290px;
       // left: 40px;
       margin: 2rem 0;
 
@@ -207,6 +208,17 @@
       &:hover {
         color: inherit;
         text-decoration: none !important;
+      }
+
+      &.dotted-bottom {
+        color: #a45e0b;
+        background-image: repeating-linear-gradient(
+          90deg,
+          #a45e0b,
+          #a45e0b 1px,
+          transparent 0,
+          transparent 4px
+        );
       }
 
       &:not(.dotted-bottom) {

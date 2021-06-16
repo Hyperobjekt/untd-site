@@ -321,13 +321,8 @@ const SessionsPage = ({ location }) => {
               researchItems {
                 label
                 item_color
-                item_content
                 item_image
                 item_description
-                item_content_sections {
-                  section_title
-                  section_content
-                }
               }
             }
           }
