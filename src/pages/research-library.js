@@ -171,7 +171,7 @@ const LibraryGrid = ({ pageData }) => {
           style={{backgroundColor: item.item_color}}
         >
           <h2>{item.label}</h2>
-          <p>Through much of American history, there was an expectation that one's life would provide opportunities that would provide a better quality of life than their parents. At its most simple, the American Dream is represented by these odds of advancement. This dream, however, hasn’t been the norm for at least a generation: many Americans have very low chances of the kind of upward mobility that defined progress for several decades.</p>
+          <p>{item.item_description}</p>
           <Link to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
           {item.item_image && 
           <div className="library-grid__entry-image">
@@ -323,11 +323,11 @@ const SessionsPage = ({ location }) => {
                 item_color
                 item_content
                 item_image
+                item_description
                 item_content_sections {
                   section_title
                   section_content
                 }
-                item_references
               }
             }
           }

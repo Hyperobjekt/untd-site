@@ -372,9 +372,6 @@ collections:
               label: 'Library Topics Heading Image',
               widget: 'image',
             }
-          - name: 'body'
-            label: 'Body'
-            widget: 'markdown'
           - name: 'researchItems'
             label: 'Research Items'
             widget: 'list'
@@ -385,21 +382,6 @@ collections:
                   label: 'Display on Home Page',
                   widget: 'boolean',
                   required: false,
-                }
-              - { name: 'topic_area', label: 'Topic area', widget: 'string' }
-              - { name: 'type', label: 'Type', widget: 'string' }
-              - { name: 'link', label: 'Link', widget: 'string' }
-              - {
-                  name: 'quick_citation',
-                  label: 'Quick citation',
-                  widget: 'string',
-                }
-              - { name: 'authors', label: 'Authors', widget: 'string' }
-              - { name: 'year', label: 'Year', widget: 'string' }
-              - {
-                  name: 'full_citation',
-                  label: 'Full citation',
-                  widget: 'string',
                 }
               - {
                   name: 'item_color',
@@ -452,7 +434,7 @@ collections:
                   name: 'item_references',
                   label: 'References',
                   widget: 'markdown',
-                  required: true,
+                  required: false,
                   default: '\n',
                 }
       - name: 'pathways-to-mobility'
