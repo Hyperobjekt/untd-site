@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { useStore } from './../utils/store'
 import { getPageMeta } from './../utils/utils'
+import '../theme/pages/explorer.scss'
 
 export const query = graphql`
   query {
