@@ -56,9 +56,9 @@ const TopicContent = ({ pageData }) => {
                         <Col
                             xs={{ size: 12, offset: 0 }}
                             sm={{ size: 12, offset: 0 }}
-                            md={{ size: 6, offset: 0 }}
-                            lg={{ size: 6, offset: 0 }}
-                            xl={{ size: 6, offset: 0 }}
+                            md={{ size: 6, offset: 1 }}
+                            lg={{ size: 6, offset: 1 }}
+                            xl={{ size: 6, offset: 1 }}
                             className="topic-content__right"
                         >
                             <MDXProvider
@@ -82,9 +82,9 @@ const TopicContent = ({ pageData }) => {
                     <Col
                         xs={{ size: 12, offset: 0 }}
                         sm={{ size: 12, offset: 0 }}
-                        md={{ size: 6, offset: 0 }}
-                        lg={{ size: 6, offset: 0 }}
-                        xl={{ size: 6, offset: 0 }}
+                        md={{ size: 6, offset: 1 }}
+                        lg={{ size: 6, offset: 1 }}
+                        xl={{ size: 6, offset: 1 }}
                     >
                         <div className="topic-content__refs">
                             <MDXRenderer>{pageData.item_references}</MDXRenderer>

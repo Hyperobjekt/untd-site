@@ -74,7 +74,7 @@ exports.createPages = async function ({ actions, graphql }) {
                 item_description
                 item_color
                 item_image
-                item_content
+                item_references
                 item_content_sections {
                     section_title
                     section_content
