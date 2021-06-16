@@ -15,6 +15,10 @@ import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import {
   basicStagger,
   basicStaggerChild,
+  basicStaggerChildLeft, 
+  basicStaggerChildDown, 
+  basicStaggerChildRight, 
+  basicStaggerChildStatic,
   libraryEntry,
   topicsDropdown,
 } from '../components/atoms/animation'
@@ -50,7 +54,7 @@ const LibraryHero = ({ pageData }) => {
               className="library-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildLeft}
                 src={heroImage1}
                 alt="hero image"
               />
@@ -60,17 +64,17 @@ const LibraryHero = ({ pageData }) => {
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildDown}
                 src={heroImage3}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildRight}
                 src={heroImage4}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildStatic}
                 src={heroImage5}
                 alt="hero image"
               />

@@ -11,10 +11,14 @@ import { getPageMeta } from './../utils/utils'
 import ContactForm from './../components/molecules/contactForm/contactForm'
 import heroImage1 from '../images/contact-hero1.png'
 import heroImage2 from '../images/contact-hero2.png'
-import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
+import {
+  basicStagger,
+  basicStaggerChild,
+  basicStaggerChildDown,
+} from '../components/atoms/animation'
 import { HubLogo } from '../components/atoms/icons'
 
-const ContactUsHero = ({pageData}) => {
+const ContactUsHero = ({ pageData }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
@@ -59,7 +63,7 @@ const ContactUsHero = ({pageData}) => {
               className="contact-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildDown}
                 src={heroImage1}
                 alt="hero image"
               />

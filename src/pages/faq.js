@@ -13,11 +13,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import heroImage1 from '../images/faq-hero1.png'
 import heroImage2 from '../images/faq-hero2.png'
 import heroImage3 from '../images/faq-hero3.png'
-import {
-  basicStagger,
-  basicStaggerChild,
-  faqHideShow,
-} from '../components/atoms/animation'
+import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildRight, faqHideShow } from '../components/atoms/animation' 
 import { animate, motion, useMotionValue } from 'framer-motion'
 import Image from '../components/atoms/image'
 import useMeasure from 'react-use-measure'
@@ -78,7 +74,7 @@ const FaqHero = () => {
               className="faq-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildRight}
                 src={heroImage1}
                 alt="hero image"
               />
@@ -88,7 +84,7 @@ const FaqHero = () => {
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildLeft}
                 src={heroImage3}
                 alt="hero image"
               />
