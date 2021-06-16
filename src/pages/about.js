@@ -12,7 +12,7 @@ import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo, ScrollDown } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
 // import heroImage2 from '../images/home_hero6.png'
-import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
+import { basicStagger, basicStaggerChild, basicStaggerChildLeft } from '../components/atoms/animation'
 
 const AboutHero = ({ pageData }) => {
   const [ref, inView] = useInView({
@@ -38,7 +38,7 @@ const AboutHero = ({ pageData }) => {
               className="about-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildLeft}
                 src={heroImage1}
                 alt="hero image"
               />

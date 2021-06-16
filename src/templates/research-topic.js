@@ -71,7 +71,7 @@ const TopicContent = ({ pageData }) => {
                         </Col>
                     </Row>
                 ))}
-                <Row>
+                {pageData.item_references && <Row>
                     <Col
                         xs={{ size: 12, offset: 0 }}
                         sm={{ size: 12, offset: 0 }}
@@ -90,7 +90,7 @@ const TopicContent = ({ pageData }) => {
                             <MDXRenderer>{pageData.item_references}</MDXRenderer>
                         </div>
                     </Col>
-                </Row>
+                </Row>}
             </Container>
         </div>
     )

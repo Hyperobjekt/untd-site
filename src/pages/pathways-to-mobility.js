@@ -15,7 +15,7 @@ import heroImage2 from '../images/cases2.png'
 import heroImage3 from '../images/cases3.png'
 import heroImage4 from '../images/untd-library2.png'
 import heroImage5 from '../images/cases5.png'
-import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
+import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildDown, basicStaggerChildRight, basicStaggerChildStatic } from '../components/atoms/animation'
 import Image from '../components/atoms/image'
 
 const CasesHero = ({ pageData }) => {
@@ -77,7 +77,7 @@ const CasesHero = ({ pageData }) => {
               className="cases-hero__image"
             >
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildLeft}
                 src={heroImage1}
                 alt="hero image"
               />
@@ -87,17 +87,17 @@ const CasesHero = ({ pageData }) => {
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildRight}
                 src={heroImage3}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildDown}
                 src={heroImage4}
                 alt="hero image"
               />
               <motion.img
-                variants={basicStaggerChild}
+                variants={basicStaggerChildStatic}
                 src={heroImage5}
                 alt="hero image"
               />
