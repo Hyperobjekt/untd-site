@@ -3,18 +3,16 @@ import { Row, Col, Container } from 'reactstrap'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
 import ContactForm from './../components/molecules/contactForm/contactForm'
-import heroImage1 from '../images/contact-hero1.png'
-import heroImage2 from '../images/contact-hero2.png'
+import heroImage1 from '../images/faq-hero1.png'
 import { basicStagger, basicStaggerChild } from '../components/atoms/animation'
 import { HubLogo } from '../components/atoms/icons'
 
-const ContactUsHero = ({pageData}) => {
+const ContactUsHero = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
@@ -41,7 +39,6 @@ const ContactUsHero = ({pageData}) => {
               >
                 Contact Us
               </motion.h1>
-              <MDXRenderer>{pageData.body}</MDXRenderer>
             </motion.div>
           </Col>
           <Col
@@ -61,11 +58,6 @@ const ContactUsHero = ({pageData}) => {
               <motion.img
                 variants={basicStaggerChild}
                 src={heroImage1}
-                alt="hero image"
-              />
-              <motion.img
-                variants={basicStaggerChild}
-                src={heroImage2}
                 alt="hero image"
               />
               <Link to="/" className="logo">
@@ -132,7 +124,7 @@ const ContactPage = ({ location }) => {
   return (
     <Layout location={pageMeta.location} pageType={pageMeta.type}>
       <SEO meta={{ ...pageMeta }} />
-      <ContactUsHero pageData={pageData} />
+      <ContactUsHero />
       <ContactUsBody />
     </Layout>
   )

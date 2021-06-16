@@ -79,6 +79,7 @@ exports.createPages = async function ({ actions, graphql }) {
                     section_title
                     section_content
                 }
+                item_references
               }
             }
           }

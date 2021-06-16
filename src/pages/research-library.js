@@ -324,6 +324,7 @@ const SessionsPage = ({ location }) => {
                   section_title
                   section_content
                 }
+                item_references
               }
             }
           }
