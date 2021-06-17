@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { Navbar, Button } from 'reactstrap'
 
 import { useStore } from './../../utils/store'
+import { SlideoutMenu } from './SlideoutMenu'
 
-const Header = ({ siteTitle, location }) => {
+const Header = ({ siteTitle, location, menu }) => {
   const toggleShowMenu = useStore(state => state.toggleShowMenu)
 
   return (
@@ -17,6 +18,10 @@ const Header = ({ siteTitle, location }) => {
           </div>
           <span>Menu</span>
         </Button>
+        <SlideoutMenu
+          location={location}
+          menu={menu}
+        ></SlideoutMenu>
       </Navbar>
     </header>
   )

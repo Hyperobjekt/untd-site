@@ -25,13 +25,14 @@ export const SlideoutMenu = ({ menu, location, ...props }) => {
         aria-label="close"
         color="link"
         onClick={toggleShowMenu}
+        tabindex={!!showMenu ? 0 : -1}
       >
         <GrClose />
       </Button>
-      <Nav className="mr-auto" navbar>
+      <Nav>
         {menu.map((item, index) => (
           <NavItem key={`nav_link_${index}`}>
-            <NavLink href={item.path} className={item.active ? `active` : null}>
+            <NavLink href={item.path} className={item.active ? `active` : null} tabIndex={!!showMenu ? 0 : -1}>
               {item.title}
             </NavLink>
           </NavItem>
