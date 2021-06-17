@@ -37,9 +37,7 @@ function SEO({ meta }) {
     `
   )
 
-  const description = meta.description
-    ? meta.description
-    : site.siteMetadata.description
+  const description = site.siteMetadata.description
   const title = meta.title
     ? `${meta.title} | ${site.siteMetadata.title}`
     : site.siteMetadata.title
@@ -47,7 +45,7 @@ function SEO({ meta }) {
   const url = meta.location.href
     ? meta.location.href
     : site.siteMetadata.siteUrl
-  const keywords = meta.keywords ? meta.keywords : site.siteMetadata.keywords
+  const keywords = site.siteMetadata.keywords
   const image = `${site.siteMetadata.siteUrl}${placeholderImage.childImageSharp.original.src}`
 
   return (

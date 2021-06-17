@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `UNTX Social Mobility Hub`,
+    title: `NTX Social Mobility Hub`,
     subtitle: ``,
     description: `This site is focused on the ways that knowledge about barriers and drivers to upward mobility can be put to action, and how the chances for upward mobility can be increased for all communities.`,
     keywords: `upward mobility, community, change, economic opportunity, socioeconomic mobility, texas, north texas, untd, dallas`,
