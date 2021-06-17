@@ -22,7 +22,6 @@ function SEO({ meta }) {
             keywords
             siteUrl
             socialShareImage
-            facebookAppID
           }
         }
         placeholderImage: file(relativePath: { eq: "social-share.png" }) {
@@ -87,10 +86,6 @@ function SEO({ meta }) {
         {
           property: `og:url`,
           content: url,
-        },
-        {
-          property: `fb:app_id`,
-          content: site.siteMetadata.facebookAppID,
         },
         {
           name: `twitter:card`,

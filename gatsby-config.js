@@ -4,14 +4,13 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `UNTX Social Mobility Hub`,
+    title: `NTX Social Mobility Hub`,
     subtitle: ``,
     description: `This site is focused on the ways that knowledge about barriers and drivers to upward mobility can be put to action, and how the chances for upward mobility can be increased for all communities.`,
     keywords: `upward mobility, community, change, economic opportunity, socioeconomic mobility, texas, north texas, untd, dallas`,
-    siteUrl: `https://socialmobility.netlify.app/`,
+    siteUrl: `https://socialmobilityhub.org/`,
     socialShareImage: `social-share.png`, // resides in ./src/images
-    copyrightDate: `2018`,
-    facebookAppID: `TODO`,
+    copyrightDate: `2021`,
     menu: [
       // Items for slideout menu.
       {
@@ -129,7 +128,7 @@ module.exports = {
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
-          `${process.env.GATSBY_GOOGLE_ANALYTICS_TRACKING_ID}`,
+          `G-JP8WRK6EET`,
           // "GA-TRACKING_ID", // Google Analytics / GA
           // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
           // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
@@ -154,8 +153,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://TODO.com',
-        sitemap: 'https://TODO.com/sitemap.xml',
+        host: 'https://socialmobilityhub.org/',
+        sitemap: 'https://socialmobilityhub.org/sitemap.xml',
         env: {
           development: {
             policy: [{ userAgent: '*', disallow: ['/'] }],
