@@ -16,7 +16,7 @@ import Img from 'gatsby-image'
  * - this component is querying and processing all files, instead it should only query the required file
  */
 
-const Image = ({ alt, filename, ...props }) => (
+const Image = ({ filename, ...props }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -43,11 +43,9 @@ const Image = ({ alt, filename, ...props }) => (
       if (!image || !image.node) return null
       // if it's an SVG, use the publicURL
       if (image.node.relativePath.includes('.svg'))
-        return <img alt={alt} src={image.node.publicURL} />
+        return <img src={image.node.publicURL} {...props} />
       if (image.node.childImageSharp)
-        return (
-          <Img alt={alt} fluid={image.node.childImageSharp.fluid} {...props} />
-        )
+        return <Img fluid={image.node.childImageSharp.fluid} {...props} />
       return null
     }}
   />
