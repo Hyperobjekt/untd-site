@@ -1,6 +1,6 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -11,41 +11,46 @@ import Img from "gatsby-image"
  * For more information, see the docs:
  * - `gatsby-image`: https://gatsby.dev/gatsby-image
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
+ *
+ * NOTE / TODO: June 17, 2021:
+ * - this component is querying and processing all files, instead it should only query the required file
  */
 
- // Note: You can change "images" to whatever you'd like.
-
- const Image = ({alt, filename, ...props}) => (
-   <StaticQuery
-     query={graphql`
-     query {
-       images: allFile {
-         edges {
-           node {
-             relativePath
-             name
-             childImageSharp {
-               fluid(maxWidth: 800, quality: 70) {
-                 ...GatsbyImageSharpFluid
-               }
-             }
-           }
-         }
-       }
-     }
+const Image = ({ alt, filename, ...props }) => (
+  <StaticQuery
+    query={graphql`
+      query {
+        images: allFile {
+          edges {
+            node {
+              relativePath
+              name
+              childImageSharp {
+                fluid(maxWidth: 800, quality: 70) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+              publicURL
+            }
+          }
+        }
+      }
     `}
-     render={data => {
-       const image = data.images.edges.find(n => {
-         return filename.includes(n.node.relativePath);
-       });
-       if (!image) {
-         return null;
-       }
+    render={data => {
+      const image = data.images.edges.find(n => {
+        return filename.includes(n.node.relativePath)
+      })
+      if (!image || !image.node) return null
+      // if it's an SVG, use the publicURL
+      if (image.node.relativePath.includes('.svg'))
+        return <img alt={alt} src={image.node.publicURL} />
+      if (image.node.childImageSharp)
+        return (
+          <Img alt={alt} fluid={image.node.childImageSharp.fluid} {...props} />
+        )
+      return null
+    }}
+  />
+)
 
-       //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
-       return <Img alt={alt} fluid={image.node.childImageSharp.fluid} {...props} />;
-     }}
-   />
- );
-
-export default Image;
+export default Image
