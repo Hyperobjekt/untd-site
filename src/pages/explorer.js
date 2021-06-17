@@ -57,11 +57,6 @@ const ExplorerPage = ({ data, location }) => {
   const pageMeta = getPageMeta('explorer', pageData, location)
   pageMeta.image = data.metaImage.childImageSharp.original.src
 
-  // console.log('explorer, ', pageMeta)
-
-  // Set up JSON to pass lang strings to map app.
-  const json = JSON.parse(data.allFile.edges[0].node.internal.content)
-
   // Toggle menu from store.
   const toggleShowMenu = useStore(state => state.toggleShowMenu)
 
@@ -85,7 +80,7 @@ const ExplorerPage = ({ data, location }) => {
         <textarea id="message" name="message" type="text" rows="4" />
       </form>
       {/* End hidden form. */}
-      <Explorer lang="en_US" langSet={json} toggleMenu={toggleShowMenu} />
+      <Explorer lang="en_US" toggleMenu={toggleShowMenu} />
     </Layout>
   )
 }
