@@ -25,7 +25,7 @@ export const SlideoutMenu = ({ menu, location, ...props }) => {
         aria-label="close"
         color="link"
         onClick={toggleShowMenu}
-        tabindex={!!showMenu ? 0 : -1}
+        tabIndex={!!showMenu ? 0 : -1}
       >
         <GrClose />
       </Button>
