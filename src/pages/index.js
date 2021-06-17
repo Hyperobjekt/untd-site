@@ -89,32 +89,22 @@ const HomeHero = ({ pageData }) => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                The neighborhoods
-              </motion.h1>
-              <motion.h2
-                variants={basicStaggerChild}
-                className="text-uppercase knockout"
-              >
-                you live in have a major impact on
-              </motion.h2>
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                <Link to="/research-library/" className="highlight">
-                  social mobility
-                </Link>
-                <div className="home-hero__hint">
-                  <Arrow />
-                  <span className="knockout text-uppercase text-center">
-                    Click on the highlighted words to go to the library
+              <h1 className="sr-only">NTX Social Mobility Hub</h1>
+              <h2>
+                <motion.span variants={basicStaggerChild}>The neighborhoods</motion.span>
+                <motion.span variants={basicStaggerChild}>you live in have a major impact on</motion.span>
+                <motion.span variants={basicStaggerChild}>
+                  <Link to="/research-library/" className="highlight">
+                    social mobility
+                  </Link>
+                  <span className="home-hero__hint">
+                    <Arrow />
+                    <span className="knockout text-uppercase text-center">
+                      Click on the highlighted words to go to the library
+                    </span>
                   </span>
-                </div>
-              </motion.h1>
+                  </motion.span>
+              </h2>
               <motion.p variants={basicStaggerChild}>
                 {pageData.frontmatter.heroSubheading}
               </motion.p>
@@ -163,12 +153,12 @@ const HomeGraph = ({ pageData }) => {
               initial="hide"
               animate={inView ? 'show' : 'hide'}
             >
-              <motion.h3
+              <motion.h2
                 variants={basicStaggerChild}
                 className="knockout-bold text-uppercase"
               >
                 {pageData.frontmatter.graphHeading}
-              </motion.h3>
+              </motion.h2>
               <motion.div variants={basicStaggerChild}>
                 <BrushStroke />
               </motion.div>
@@ -232,10 +222,10 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
             initial="hide"
             animate={inView ? 'show' : 'hide'}
           >
-            <motion.h5
+            <motion.h2
               variants={basicStaggerChild}
               className="knockout-bold text-uppercase"
-            >{`${index + 1}. ${cardData.cardTitle}`}</motion.h5>
+            >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
               <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
             </motion.div>
@@ -298,10 +288,10 @@ const HomeExplorerCard = ({ cardData, index }) => {
               initial="hide"
               animate={inView ? 'show' : 'hide'}
             >
-              <motion.h5
+              <motion.h2
                 variants={basicStaggerChild}
                 className="knockout-bold text-uppercase"
-              >{`${index + 1}. ${cardData.cardTitle}`}</motion.h5>
+              >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
               <motion.div variants={basicStaggerChild}>
                 <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
               </motion.div>
@@ -349,10 +339,10 @@ const HomeCard = ({ cardData, index }) => {
             initial="hide"
             animate={inView ? 'show' : 'hide'}
           >
-            <motion.h5
+            <motion.h2
               variants={basicStaggerChild}
               className="knockout-bold text-uppercase"
-            >{`${index + 1}. ${cardData.cardTitle}`}</motion.h5>
+            >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
               <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
             </motion.div>

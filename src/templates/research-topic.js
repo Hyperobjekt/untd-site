@@ -157,7 +157,7 @@ const TopicNext = ({ pageData }) => {
                         xl={{ size: 10, offset: 1 }}
                     >
                         <div className="topic-next__card" style={{backgroundColor: nextTopic.item_color}}>
-                            <h5>Next topic</h5>
+                            <h2>Next topic</h2>
                             <h3>{nextTopic.label}</h3>
                             <p>{nextTopic.item_description}</p>
                             <Link to={`/research-library/${slugify(nextTopic.label)}/`} className="dotted-bottom">Learn more</Link>

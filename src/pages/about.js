@@ -59,6 +59,7 @@ const AboutHero = ({ pageData }) => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
+              <h1 className="sr-only">About</h1>
               <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
               <a href="#about-the-center">
                 <ScrollDown />
