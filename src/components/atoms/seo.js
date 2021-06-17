@@ -11,7 +11,7 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 function SEO({ meta }) {
-  // console.log('SEO, ', meta)
+  console.log('SEO, ', meta)
   const { site, placeholderImage } = useStaticQuery(
     graphql`
       query {
@@ -48,9 +48,7 @@ function SEO({ meta }) {
     ? meta.location.href
     : site.siteMetadata.siteUrl
   const keywords = meta.keywords ? meta.keywords : site.siteMetadata.keywords
-  const image = meta.image
-    ? `${site.siteMetadata.siteUrl}${meta.image}`
-    : `${site.siteMetadata.siteUrl}${placeholderImage.childImageSharp.original.src}`
+  const image = `${site.siteMetadata.siteUrl}${placeholderImage.childImageSharp.original.src}`
 
   return (
     <Helmet

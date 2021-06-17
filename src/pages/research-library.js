@@ -312,7 +312,6 @@ const SessionsPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
               libraryHeroText
               libraryDescription
               libraryDescriptionImage

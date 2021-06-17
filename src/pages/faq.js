@@ -217,7 +217,6 @@ const FaqPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
               questions {
                 question
                 answer
