@@ -48,7 +48,6 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
       }
 
       type ResearchItemSection {
-        section_title: String @mdx
         section_content: String @mdx
       }
 
