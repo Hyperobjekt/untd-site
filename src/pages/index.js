@@ -435,7 +435,6 @@ const IndexPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
               heroImage
               heroSubheading
               graphImage

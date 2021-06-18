@@ -235,8 +235,8 @@
     }
 
     p {
-      font-family: $caslon;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
       color: $black;
 
       @include media-breakpoint-up(md) {

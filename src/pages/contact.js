@@ -112,7 +112,6 @@ const ContactPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
             }
           }
         }

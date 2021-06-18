@@ -33,11 +33,6 @@ collections:
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
             }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
-            }
           - { name: body, label: Body, widget: markdown }
       - name: 'about'
         label: 'About'
@@ -52,11 +47,6 @@ collections:
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
           - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
@@ -124,11 +114,6 @@ collections:
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
             }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
-            }
           - { name: body, label: Body, widget: markdown }
       - name: 'explorer'
         label: 'Explorer'
@@ -144,11 +129,6 @@ collections:
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
             }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
-            }
           - { name: body, label: Body, widget: markdown }
       - name: 'faq'
         label: 'FAQ'
@@ -163,11 +143,6 @@ collections:
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - {
               name: 'questions',
@@ -194,11 +169,6 @@ collections:
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: 'heroImage', label: 'Hero Module Image', widget: 'image' }
           - {
@@ -287,11 +257,6 @@ collections:
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - {
               name: 'libraryHeroText',
@@ -396,11 +361,6 @@ collections:
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
           - {
