@@ -174,14 +174,14 @@ const LibraryGrid = ({ pageData }) => {
           <p>{item.item_description}</p>
           <Link to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
           {item.item_image && 
-          <div className="library-grid__entry-image">
-              <Image
-                  className="h-100 w-100"
-                  filename={item.item_image}
-              />
-          </div>
+            <div className="library-grid__entry-image">
+                <Image
+                    className="h-100 w-100"
+                    filename={item.item_image}
+                />
+            </div>
           }
-          
+          <div className="library-grid__entry-bg"></div>
         </div>
       ))}
     </div>
