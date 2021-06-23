@@ -203,8 +203,6 @@ const TopicNext = ({ pageData }) => {
 }
 
 function ResearchItemTemplate(props) {
-  console.log(props)
-
   return (
     <Layout location={props.location} pageType="research-topic">
       <TopicHero pageData={props.pageContext} />
