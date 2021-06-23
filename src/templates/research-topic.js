@@ -197,6 +197,7 @@ const TopicNext = ({ pageData }) => {
                   }
                 </div>
               }
+              <div className="topic-next__card-bg"></div>
             </div>
           </Col>
         </Row>
