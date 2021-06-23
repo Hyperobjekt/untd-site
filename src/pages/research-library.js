@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useRef } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { animate, motion, useMotionValue } from 'framer-motion'
@@ -158,27 +158,39 @@ const LibraryGrid = ({ pageData }) => {
         <BrushStroke />
       </div>
       {pageData.frontmatter.researchItems.map((item, i) => (
-        <div
-          className="library-grid__entry"
-          key={i}
-          style={{backgroundColor: item.item_color}}
-        >
-          <h2>{item.label}</h2>
-          <p>{item.item_description}</p>
-          <Link to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
-          {
-            item.item_image && 
-            <div className="library-grid__entry-image">
-              {
-              item.item_image.childImageSharp
-                ? <Img className="w-100" fluid={item.item_image.childImageSharp.fluid} />
-                : <img src={item.item_image.publicURL} />
-              }
-            </div>
-          }
-          <div className="library-grid__entry-bg"></div>
-        </div>
+        <LibraryGridCard key={i} item={item} />
       ))}
+    </div>
+  )
+}
+
+const LibraryGridCard = ({ item }) => {
+  const linkRef = useRef(null)
+  const cardRef = useRef(null)
+
+  return (
+    <div
+      className="library-grid__entry"
+      style={{backgroundColor: item.item_color}}
+      ref={cardRef}
+      onClick={() => {
+        linkRef.current.click()
+      }}
+    >
+      <h2>{item.label}</h2>
+      <p>{item.item_description}</p>
+      <Link ref={linkRef} onFocus={() => cardRef.current.classList.add("isfocused")} onBlur={() => cardRef.current.classList.remove("isfocused")} to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
+      {
+        item.item_image && 
+        <div className="library-grid__entry-image">
+          {
+          item.item_image.childImageSharp
+            ? <Img className="w-100" fluid={item.item_image.childImageSharp.fluid} />
+            : <img src={item.item_image.publicURL} />
+          }
+        </div>
+      }
+      <div className="library-grid__entry-bg"></div>
     </div>
   )
 }
@@ -330,6 +342,7 @@ const SessionsPage = ({ location }) => {
                       ...GatsbyImageSharpFluid
                     }
                   }
+                  publicURL
                 }
                 item_description
               }

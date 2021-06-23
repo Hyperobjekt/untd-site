@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import React, { useRef, useState } from 'react'
+import { Link, graphql } from 'gatsby'
 import { HomeIcon, HubLogo, TopicNavArrow } from '../components/atoms/icons'
 import { Col, Container, Row } from 'reactstrap'
 import Img from 'gatsby-image'
@@ -154,6 +154,8 @@ const TopicNav = ({ pageData }) => {
 }
 
 const TopicNext = ({ pageData }) => {
+  const linkRef = useRef(null)
+  const cardRef = useRef(null)
   const nextTopicIndex = pageData.researchItems.findIndex(
     i => i.label === pageData.label
   )
@@ -161,7 +163,7 @@ const TopicNext = ({ pageData }) => {
     nextTopicIndex + 1 === pageData.researchItems.length
       ? pageData.researchItems[0]
       : pageData.researchItems[nextTopicIndex + 1]
-  // console.log(nextTopic)
+  
 
   return (
     <div className="topic-next">
@@ -176,12 +178,19 @@ const TopicNext = ({ pageData }) => {
           >
             <div
               className="topic-next__card"
+              ref={cardRef}
+              onClick={() => {
+                linkRef.current.click()
+              }}
               style={{ backgroundColor: nextTopic.item_color }}
             >
               <h5>Next topic</h5>
               <h3>{nextTopic.label}</h3>
               <p>{nextTopic.item_description}</p>
               <Link
+                ref={linkRef}
+                onFocus={() => cardRef.current.classList.add("isfocused")} 
+                onBlur={() => cardRef.current.classList.remove("isfocused")}
                 to={`/research-library/${slugify(nextTopic.label)}/`}
                 className="dotted-bottom"
               >
@@ -238,6 +247,7 @@ export const query = graphql`
                     ...GatsbyImageSharpFluid
                   }
                 }
+                publicURL
               }
               item_references
               item_content_sections {

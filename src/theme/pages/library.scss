@@ -5,9 +5,13 @@
   grid-gap: 3rem;
   padding: 4.5rem 15px;
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
     padding: 8.5rem;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: 6.5rem;
   }
 
   &__eyebrow {
@@ -48,7 +52,8 @@
       margin: 0 0 1.5rem;
     }
 
-    &:hover {
+    &:hover,
+    &.isfocused {
       h2 {
         font-style: italic;
       }
@@ -98,7 +103,8 @@
       transition: opacity 0.3s ease-in-out;
     }
 
-    &:hover &-bg {
+    &:hover &-bg,
+    &.isfocused &-bg {
       opacity: 1;
     }
 
@@ -109,6 +115,13 @@
       top: 0;
       left: 0;
       z-index: 0;
+      display: flex;
+      align-items: flex-end;
+
+      > img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }
