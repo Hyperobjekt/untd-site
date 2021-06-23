@@ -227,7 +227,7 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
               className="knockout-bold text-uppercase"
             >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
-              <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+              <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
             </motion.div>
             <motion.p variants={basicStaggerChild}>
               {cardData.cardSubheading}
@@ -293,7 +293,7 @@ const HomeExplorerCard = ({ cardData, index }) => {
                 className="knockout-bold text-uppercase"
               >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
               <motion.div variants={basicStaggerChild}>
-                <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+                <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
               </motion.div>
               <motion.p variants={basicStaggerChild}>
                 {cardData.cardSubheading}
@@ -344,7 +344,7 @@ const HomeCard = ({ cardData, index }) => {
               className="knockout-bold text-uppercase"
             >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
-              <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+              <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
             </motion.div>
             <motion.p variants={basicStaggerChild}>
               {cardData.cardSubheading}

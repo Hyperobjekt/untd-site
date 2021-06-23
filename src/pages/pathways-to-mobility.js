@@ -39,7 +39,7 @@ const CasesHero = ({ pageData }) => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
-              <h1><span>Pathways</span> <span>To</span> <span>Mobility</span></h1>
+              <h1><motion.span variants={basicStaggerChild}>Pathways</motion.span> <motion.span variants={basicStaggerChild}>To</motion.span> <motion.span variants={basicStaggerChild}>Mobility</motion.span></h1>
               <motion.div variants={basicStaggerChild}>
                 <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
               </motion.div>

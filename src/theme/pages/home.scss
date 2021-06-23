@@ -388,47 +388,53 @@
       }
     }
 
-    h2 {
-      font-size: 2.2rem;
-      line-height: 5.2rem;
-      color: $black;
-      margin: 0 0 2rem;
-    }
+    &-content {
+      h2 {
+        font-size: 2.2rem;
+        line-height: 5.2rem;
+        color: $black;
+        margin: 0 0 2rem;
+      }
 
-    h3,
-    h4 {
-      font-size: 3.4rem;
-      line-height: 4rem;
-      margin: 0 0 2rem;
-      color: $black;
-      font-family: $caslon !important;
+      h3,
+      h4 {
+        font-size: 3.4rem;
+        line-height: 4rem;
+        margin: 0 0 2rem;
+        color: $black;
+        font-family: $caslon !important;
 
-      a {
-        z-index: 0;
-        position: relative;
-        @include highlight;
+        p {
+          font-family: inherit;
+        }
 
-        &:hover {
-          text-decoration: none;
+        a {
+          z-index: 0;
+          position: relative;
+          @include highlight;
+
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
-    }
 
-    p {
-      font-size: 1.5rem;
-      line-height: 2.25rem;
-      margin: 0 0 3rem;
-      color: $black;
-      max-width: 456px;
+      > p {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+        margin: 0 0 3rem;
+        color: $black;
+        max-width: 456px;
 
-      a {
-        font-family: inherit !important;
-        color: inherit;
-        margin-bottom: 3.5rem;
+        a {
+          font-family: inherit !important;
+          color: inherit;
+          margin-bottom: 3.5rem;
 
-        @include media-breakpoint-up(sm) {
-          margin-right: 3.5rem;
-          margin-bottom: 0;
+          @include media-breakpoint-up(sm) {
+            margin-right: 3.5rem;
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -436,7 +442,7 @@
     &--left &-content {
       max-width: 450px;
 
-      p {
+      > p {
         max-width: 385px;
       }
     }
