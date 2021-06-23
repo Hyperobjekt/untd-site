@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'reactstrap'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { motion } from 'framer-motion'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
@@ -16,7 +17,6 @@ import heroImage3 from '../images/cases3.png'
 import heroImage4 from '../images/untd-library2.png'
 import heroImage5 from '../images/cases5.png'
 import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildDown, basicStaggerChildRight, basicStaggerChildStatic } from '../components/atoms/animation'
-import Image from '../components/atoms/image'
 
 const CasesHero = ({ pageData }) => {
   const [ref, inView] = useInView({
@@ -153,7 +153,7 @@ const CasesBodyRow = ({ rowData, index }) => {
             className="cases-row__image"
           >
             <motion.div variants={basicStaggerChild}>
-              <Image className="h-100 w-100" filename={rowData.rowImage} />
+              <Img className="w-100" fluid={rowData.rowImage.childImageSharp.fluid} />
             </motion.div>
           </motion.div>
         </Col>
@@ -199,7 +199,7 @@ const Worksheet = ({ sheetData }) => {
     <Row>
       <div className="worksheet">
         <div className="worksheet__image">
-          <Image className="h-100 w-100" filename={sheetData.sheetImage} />
+          <Img className="w-100" fluid={sheetData.sheetImage.childImageSharp.fluid} />
         </div>
         <div className="worksheet__body">
           <h6>{sheetData.sheetEyebrow}</h6>
@@ -231,12 +231,24 @@ export default ({ location }) => {
               heroText
               useCasesRows {
                 rowText
-                rowImage
+                rowImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
               worksheetsHeading
               worksheets {
                 sheetText
-                sheetImage
+                sheetImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 sheetFile
                 sheetEyebrow
               }

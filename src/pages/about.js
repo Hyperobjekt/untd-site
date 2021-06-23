@@ -4,11 +4,11 @@ import { Container, Row, Col } from 'reactstrap'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta } from './../utils/utils'
-import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo, ScrollDown } from '../components/atoms/icons'
 import heroImage1 from '../images/about_hero1.png'
 // import heroImage2 from '../images/home_hero6.png'
@@ -30,7 +30,6 @@ const AboutHero = ({ pageData }) => {
             lg={{ size: 3, offset: 1 }}
             xl={{ size: 3, offset: 1 }}
           >
-            {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
             <motion.div
               variants={basicStagger}
               animate={inView ? 'show' : 'hide'}
@@ -108,7 +107,6 @@ const AboutBodyRow = ({ rowData, index }) => {
           lg={{ size: 3, offset: index % 2 > 0 ? 2 : 1 }}
           xl={{ size: 3, offset: index % 2 > 0 ? 2 : 1 }}
         >
-          {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
           <motion.div
             variants={basicStagger}
             animate={inView ? 'show' : 'hide'}
@@ -116,7 +114,7 @@ const AboutBodyRow = ({ rowData, index }) => {
             className="about-row__image"
           >
             <motion.div variants={basicStaggerChild}>
-              <Image className="h-100 w-100" filename={rowData.rowImage} />
+              <Img className="w-100" fluid={rowData.rowImage.childImageSharp.fluid} />
             </motion.div>
           </motion.div>
         </Col>
@@ -140,7 +138,7 @@ const AboutBody = ({ pageData }) => {
 const AboutFullWidth = ({ pageData }) => {
   return (
     <div className="about-full">
-      <Image className="w-100" filename={pageData.frontmatter.fullWidthImage} />
+      <Img className="w-100" fluid={pageData.frontmatter.fullWidthImage.childImageSharp.fluid} />
       <div className="about-full__text">
         <MDXRenderer>{pageData.frontmatter.fullWidthText}</MDXRenderer>
       </div>
@@ -220,7 +218,7 @@ const AboutTheCenter = ({ pageData }) => {
         </Container>
       </div>
       <div className="about-full">
-        <Image className="w-100" filename={pageData.frontmatter.aboutTheCenterImageLarge} />
+        <Img className="w-100" fluid={pageData.frontmatter.aboutTheCenterImageLarge.childImageSharp.fluid} />
       </div>
       <div className="about-center__content">
         <Container fluid="sm">
@@ -253,7 +251,7 @@ const AboutTheCenter = ({ pageData }) => {
                 animate={inView ? 'show' : 'hide'}
                 initial="hide"
               >
-                <Image className="w-100" filename={pageData.frontmatter.aboutTheCenterImageSmall} />
+                <Img className="w-100" fluid={pageData.frontmatter.aboutTheCenterImageSmall.childImageSharp.fluid} />
               </motion.div>
             </Col>
           </Row>
@@ -280,16 +278,40 @@ const AboutPage = ({ location }) => {
               heroText
               contentRows {
                 rowText
-                rowImage
+                rowImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
-              fullWidthImage
+              fullWidthImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               fullWidthText
               researchHeading
               researchSubheading
               aboutTheCenterIntro
               aboutTheCenterContent
-              aboutTheCenterImageLarge
-              aboutTheCenterImageSmall
+              aboutTheCenterImageLarge {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+              aboutTheCenterImageSmall {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }
