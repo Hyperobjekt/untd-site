@@ -13,9 +13,9 @@ import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import {
   basicStagger,
   basicStaggerChild,
-  basicStaggerChildLeft, 
-  basicStaggerChildDown, 
-  basicStaggerChildRight, 
+  basicStaggerChildLeft,
+  basicStaggerChildDown,
+  basicStaggerChildRight,
   basicStaggerChildStatic,
 } from '../components/atoms/animation'
 
@@ -140,7 +140,13 @@ const LibraryDescription = ({ pageData }) => {
               className="library-description__image"
             >
               <motion.div variants={basicStaggerChild}>
-                <Img className="w-100" fluid={pageData.frontmatter.libraryDescriptionImage.childImageSharp.fluid} />
+                <Img
+                  className="w-100"
+                  fluid={
+                    pageData.frontmatter.libraryDescriptionImage.childImageSharp
+                      .fluid
+                  }
+                />
               </motion.div>
             </motion.div>
           </Col>
@@ -165,31 +171,33 @@ const LibraryGrid = ({ pageData }) => {
 }
 
 const LibraryGridCard = ({ item }) => {
-  const linkRef = useRef(null)
-  const cardRef = useRef(null)
-
   return (
     <div
       className="library-grid__entry"
-      style={{backgroundColor: item.item_color}}
-      ref={cardRef}
-      onClick={() => {
-        linkRef.current.click()
-      }}
+      style={{ backgroundColor: item.item_color }}
     >
-      <h2>{item.label}</h2>
+      <h2>
+        <Link
+          to={`/research-library/${slugify(item.label)}/`}
+          className="library-grid__entry-link"
+        >
+          {item.label}
+        </Link>
+      </h2>
       <p>{item.item_description}</p>
-      <Link ref={linkRef} onFocus={() => cardRef.current.classList.add("isfocused")} onBlur={() => cardRef.current.classList.remove("isfocused")} to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
-      {
-        item.item_image && 
+      <span className="dotted-bottom">Learn more</span>
+      {item.item_image && (
         <div className="library-grid__entry-image">
-          {
-          item.item_image.childImageSharp
-            ? <Img className="w-100" fluid={item.item_image.childImageSharp.fluid} />
-            : <img src={item.item_image.publicURL} />
-          }
+          {item.item_image.childImageSharp ? (
+            <Img
+              className="w-100"
+              fluid={item.item_image.childImageSharp.fluid}
+            />
+          ) : (
+            <img src={item.item_image.publicURL} />
+          )}
         </div>
-      }
+      )}
       <div className="library-grid__entry-bg"></div>
     </div>
   )
@@ -279,7 +287,13 @@ const LibraryTopics = ({ pageData }) => {
                 className="library-topics__heading-image"
               >
                 <motion.div variants={basicStaggerChild}>
-                  <Img className="w-100" fluid={pageData.frontmatter.libraryTopicsHeadingImage.childImageSharp.fluid} />
+                  <Img
+                    className="w-100"
+                    fluid={
+                      pageData.frontmatter.libraryTopicsHeadingImage
+                        .childImageSharp.fluid
+                    }
+                  />
                 </motion.div>
               </motion.div>
             </Col>
@@ -300,8 +314,6 @@ const LibraryTopics = ({ pageData }) => {
     </div>
   )
 }
-
-
 
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`

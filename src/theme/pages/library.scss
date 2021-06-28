@@ -31,7 +31,6 @@
     padding: 4.5rem 2.5rem;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
     background: linear-gradient(
       111.4deg,
       rgba(255, 255, 255, 0) 0%,
@@ -43,8 +42,6 @@
     }
 
     h2 {
-      position: relative;
-      z-index: 2;
       font-family: $caslon !important;
       font-size: 3rem;
       line-height: 3.4rem;
@@ -53,12 +50,11 @@
     }
 
     &:hover,
-    &.isfocused {
-      h2 {
+    &:focus-within {
+      .library-grid__entry-link {
         font-style: italic;
       }
-
-      a {
+      .dotted-bottom {
         background-color: #f1f1ad;
       }
     }
@@ -72,7 +68,7 @@
       margin: 0 0 3rem;
     }
 
-    a {
+    .dotted-bottom {
       position: relative;
       z-index: 2;
       font-size: 1.4rem;
@@ -104,7 +100,7 @@
     }
 
     &:hover &-bg,
-    &.isfocused &-bg {
+    &:focus-within &-bg {
       opacity: 1;
     }
 
@@ -122,6 +118,16 @@
         width: 100%;
         height: auto;
       }
+    }
+
+    &-link:before {
+      position: absolute;
+      z-index: 10;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 }
