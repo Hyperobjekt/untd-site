@@ -9,9 +9,6 @@ export const getPageMeta = (type, pageData, location) => {
     keywords: pageData.frontmatter.keywords
       ? pageData.frontmatter.keywords.toString()
       : null,
-    image: pageData.frontmatter.socialShareImage
-      ? pageData.frontmatter.socialShareImage
-      : null,
     url: `${location.href}`,
   }
 }

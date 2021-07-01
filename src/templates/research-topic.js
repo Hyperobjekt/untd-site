@@ -54,7 +54,7 @@ const TopicContent = ({ pageData }) => {
                 xl={{ size: 5, offset: 0 }}
                 className="topic-content__left"
               >
-                <MDXRenderer>{s.section_title}</MDXRenderer>
+                <h2>{s.section_title}</h2>
               </Col>
               <Col
                 xs={{ size: 12, offset: 0 }}

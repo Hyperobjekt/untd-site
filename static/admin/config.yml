@@ -26,17 +26,18 @@ collections:
           - { name: title, label: 'Page title', widget: string }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'about'
@@ -46,17 +47,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
           - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
@@ -117,17 +119,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'explorer'
@@ -137,17 +140,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: body, label: Body, widget: markdown }
       - name: 'faq'
@@ -157,17 +161,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - {
               name: 'questions',
@@ -188,17 +193,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: 'heroImage', label: 'Hero Module Image', widget: 'image' }
           - {
@@ -281,17 +287,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - {
               name: 'libraryHeroText',
@@ -365,7 +372,7 @@ collections:
                       {
                         name: 'section_title',
                         label: 'Section Title',
-                        widget: 'markdown',
+                        widget: 'string',
                         required: false,
                       },
                       {
@@ -390,17 +397,18 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
           - { name: date, label: Date, widget: datetime }
-          - { name: 'description', label: 'Page description', widget: 'string' }
+          - {
+              name: 'description',
+              label: 'Page description',
+              widget: 'string',
+              required: false,
+              default: '',
+            }
           - {
               name: keywords,
               label: 'Page keywords',
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
-            }
-          - {
-              name: 'socialShareImage',
-              label: 'Social share image for this page',
-              widget: 'image',
             }
           - { name: 'heroText', label: 'Hero Text', widget: 'markdown' }
           - {

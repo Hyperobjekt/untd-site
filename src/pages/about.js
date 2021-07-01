@@ -278,7 +278,6 @@ const AboutPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
               heroText
               contentRows {
                 rowText

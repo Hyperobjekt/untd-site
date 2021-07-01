@@ -48,3 +48,14 @@ h6 {
 html {
   font-size: 62.5%; // sets sitewide font sizes based on user's font size in browser
 }
+
+.highlight-link {
+  color: #2a3133;
+  &:not(.dotted-bottom) {
+    position: relative;
+    &:hover {
+      color: #2a3133;
+    }
+    @include highlight;
+  }
+}

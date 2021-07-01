@@ -68,7 +68,6 @@ const NotFoundPage = ({ location }) => {
               title
               description
               keywords
-              socialShareImage
             }
           }
         }

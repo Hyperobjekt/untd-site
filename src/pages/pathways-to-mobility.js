@@ -213,7 +213,6 @@ export default ({ location }) => {
               title
               description
               keywords
-              socialShareImage
               heroText
               useCasesRows {
                 rowText
