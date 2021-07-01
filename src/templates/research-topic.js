@@ -154,8 +154,6 @@ const TopicNav = ({ pageData }) => {
 }
 
 const TopicNext = ({ pageData }) => {
-  const linkRef = useRef(null)
-  const cardRef = useRef(null)
   const nextTopicIndex = pageData.researchItems.findIndex(
     i => i.label === pageData.label
   )
@@ -178,24 +176,19 @@ const TopicNext = ({ pageData }) => {
           >
             <div
               className="topic-next__card"
-              ref={cardRef}
-              onClick={() => {
-                linkRef.current.click()
-              }}
               style={{ backgroundColor: nextTopic.item_color }}
             >
               <h5>Next topic</h5>
-              <h3>{nextTopic.label}</h3>
+              <h3>
+                <Link
+                  to={`/research-library/${slugify(nextTopic.label)}/`}
+                  className="topic-next__card-link"
+                >
+                  {nextTopic.label}
+                </Link>
+              </h3>
               <p>{nextTopic.item_description}</p>
-              <Link
-                ref={linkRef}
-                onFocus={() => cardRef.current.classList.add("isfocused")} 
-                onBlur={() => cardRef.current.classList.remove("isfocused")}
-                to={`/research-library/${slugify(nextTopic.label)}/`}
-                className="dotted-bottom"
-              >
-                Learn more
-              </Link>
+              <span className="dotted-bottom">Learn more</span>
               {
                 nextTopic.item_image && 
                 <div className="topic-next__card-image">
