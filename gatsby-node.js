@@ -59,6 +59,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
         cardHeading: String @mdx
         cardLinks: [CardLink]
         cardImage: File @fileByRelativePath
+        isLibraryCallout: Boolean
       }
 
       type CardLink {
