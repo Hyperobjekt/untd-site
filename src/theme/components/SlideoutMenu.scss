@@ -20,6 +20,7 @@
   }
 
   &.show {
+    pointer-events: initial;
     // right: -0px;
     transform: translateX(0%);
     // transition: right 0.35s linear 0s !important;
@@ -35,7 +36,14 @@
     }
   }
 
+  ul {
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+  }
+
   a {
+    display: block;
     font-family: $knockoutBold;
     text-transform: uppercase;
     color: $white;

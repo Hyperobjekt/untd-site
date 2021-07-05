@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'reactstrap'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { motion } from 'framer-motion'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
@@ -16,7 +17,6 @@ import heroImage3 from '../images/cases3.png'
 import heroImage4 from '../images/untd-library2.png'
 import heroImage5 from '../images/cases5.png'
 import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildDown, basicStaggerChildRight, basicStaggerChildStatic } from '../components/atoms/animation'
-import Image from '../components/atoms/image'
 
 const CasesHero = ({ pageData }) => {
   const [ref, inView] = useInView({
@@ -39,24 +39,7 @@ const CasesHero = ({ pageData }) => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Pathways
-              </motion.h1>
-              <motion.h2
-                variants={basicStaggerChild}
-                className="text-uppercase knockout"
-              >
-                To
-              </motion.h2>
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Mobility
-              </motion.h1>
+              <h1><motion.span variants={basicStaggerChild}>Pathways</motion.span> <motion.span variants={basicStaggerChild}>To</motion.span> <motion.span variants={basicStaggerChild}>Mobility</motion.span></h1>
               <motion.div variants={basicStaggerChild}>
                 <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
               </motion.div>
@@ -153,7 +136,7 @@ const CasesBodyRow = ({ rowData, index }) => {
             className="cases-row__image"
           >
             <motion.div variants={basicStaggerChild}>
-              <Image className="h-100 w-100" filename={rowData.rowImage} />
+              <Img className="w-100" fluid={rowData.rowImage.childImageSharp.fluid} />
             </motion.div>
           </motion.div>
         </Col>
@@ -199,11 +182,13 @@ const Worksheet = ({ sheetData }) => {
     <Row>
       <div className="worksheet">
         <div className="worksheet__image">
-          <Image className="h-100 w-100" filename={sheetData.sheetImage} />
+          <Img className="w-100" fluid={sheetData.sheetImage.childImageSharp.fluid} />
         </div>
         <div className="worksheet__body">
-          <h6>{sheetData.sheetEyebrow}</h6>
-          <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+          <h3 className="worksheet__body-eyebrow">{sheetData.sheetEyebrow}</h3>
+          <div>
+            <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+          </div>
           <a href={sheetData.sheetFile} className="btn-orange">
             Download worksheet
           </a>
@@ -231,12 +216,24 @@ export default ({ location }) => {
               heroText
               useCasesRows {
                 rowText
-                rowImage
+                rowImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
               worksheetsHeading
               worksheets {
                 sheetText
-                sheetImage
+                sheetImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 sheetFile
                 sheetEyebrow
               }

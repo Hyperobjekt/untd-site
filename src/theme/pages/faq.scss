@@ -68,36 +68,54 @@
   }
   &__text {
     h1 {
-      font-size: 6rem;
-      line-height: 6rem;
-      color: $black;
+      text-transform: uppercase;
+      > span {
+        position: relative;
+        display: block;
+        &:first-child {
+          font-size: 6rem;
+          line-height: 6rem;
+          color: $black;
+          font-family: $knockoutBold;
 
-      @include media-breakpoint-up(md) {
-        font-size: 8rem;
-        line-height: 8rem;
+          @include media-breakpoint-up(md) {
+            font-size: 8rem;
+            line-height: 8rem;
+          }
+        }
+
+        &:nth-child(2) {
+          color: $black;
+          position: relative;
+          font-size: 5rem;
+          line-height: 6rem;
+          left: 25%;
+          font-family: $knockoutReg;
+
+          @include media-breakpoint-up(md) {
+            font-size: 6rem;
+            line-height: 7rem;
+          }
+
+          @include media-breakpoint-up(lg) {
+            left: 45%;
+          }
+        }
+
+        &:nth-child(3) {
+          display: table;
+          margin-left: auto;
+          font-size: 6rem;
+          line-height: 6rem;
+          color: $black;
+          font-family: $knockoutBold;
+
+          @include media-breakpoint-up(md) {
+            font-size: 8rem;
+            line-height: 8rem;
+          }
+        }
       }
-    }
-
-    h2 {
-      color: $black;
-      position: relative;
-      font-size: 5rem;
-      line-height: 6rem;
-      left: 25%;
-
-      @include media-breakpoint-up(md) {
-        font-size: 6rem;
-        line-height: 7rem;
-      }
-
-      @include media-breakpoint-up(lg) {
-        left: 45%;
-      }
-    }
-
-    h1:last-of-type {
-      display: table;
-      margin-left: auto;
     }
   }
 }

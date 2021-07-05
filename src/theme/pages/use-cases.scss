@@ -83,27 +83,38 @@
   }
   &__text {
     h1 {
-      font-size: 6rem;
-      line-height: 6rem;
-      color: $black;
-    }
+      text-transform: uppercase;
 
-    h2 {
-      color: $black;
-      font-size: 5rem;
-      line-height: 4rem;
-      position: relative;
-      left: 30%;
-    }
+      > span {
+        position: relative;
 
-    h1:last-of-type {
-      display: table;
-      z-index: 1;
-      margin-left: auto;
-      padding-right: 30px;
+        &:first-child {
+          display: block;
+          font-size: 6rem;
+          line-height: 6rem;
+          color: $black;
+          font-family: $knockoutBold;
+        }
 
-      @include media-breakpoint-up(lg) {
-        left: 80px;
+        &:nth-child(2) {
+          display: block;
+          color: $black;
+          font-size: 5rem;
+          line-height: 4rem;
+          left: 30%;
+          font-family: $knockoutReg;
+        }
+
+        &:nth-child(3) {
+          font-size: 6rem;
+          line-height: 6rem;
+          color: $black;
+          z-index: 1;
+          display: table;
+          margin-left: auto;
+          padding-right: 30px;
+          font-family: $knockoutBold;
+        }
       }
     }
 
@@ -224,7 +235,7 @@
   &__body {
     max-width: 635px;
 
-    h6 {
+    &-eyebrow {
       font-family: $knockoutBold;
       font-size: 1.8rem;
       line-height: 3.6rem;
@@ -232,24 +243,23 @@
       margin: 0 0 2.7rem;
     }
 
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: $caslon;
-    }
+    > div {
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: $caslon;
+        font-size: 3.4rem;
+        line-height: 4rem;
+        margin: 0 0 4rem;
+      }
 
-    h1 {
-      font-size: 3.4rem;
-      line-height: 4rem;
-      margin: 0 0 4rem;
-    }
-
-    p {
-      font-size: 1.5rem;
-      line-height: 2.25rem;
-      margin: 0 0 3.2rem;
-      max-width: 540px;
+      p {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+        margin: 0 0 3.2rem;
+        max-width: 540px;
+      }
     }
   }
 }

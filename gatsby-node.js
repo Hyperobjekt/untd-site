@@ -5,7 +5,7 @@ const slugify = string =>
     .join('-')
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-    createTypes(`
+  createTypes(`
       type Mdx implements Node {
         frontmatter: MdxFrontmatter
       }
@@ -57,11 +57,19 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   
       type EngageCard {
         cardHeading: String @mdx
+        cardLinks: [CardLink]
+        cardImage: File @fileByRelativePath
+        isLibraryCallout: Boolean
       }
-    `);
-};
 
-exports.createPages = async function ({ actions, graphql }) {
+      type CardLink {
+        linkText: String
+        linkUrl: String
+      }
+    `)
+}
+
+exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`
     query {
       allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
@@ -70,14 +78,6 @@ exports.createPages = async function ({ actions, graphql }) {
             frontmatter {
               researchItems {
                 label
-                item_description
-                item_color
-                item_image
-                item_references
-                item_content_sections {
-                    section_title
-                    section_content
-                }
               }
             }
           }
@@ -90,8 +90,7 @@ exports.createPages = async function ({ actions, graphql }) {
       path: `/research-library/${slugify(node.label)}/`,
       component: require.resolve(`./src/templates/research-topic.js`),
       context: {
-        ...node,
-        researchItems: data.allMdx.edges[0].node.frontmatter.researchItems.map(({label, item_image, item_description, item_color}) => ({label, item_image, item_description, item_color}))
+        label: node.label,
       },
     })
   })

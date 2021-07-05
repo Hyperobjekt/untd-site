@@ -39,24 +39,7 @@ const FaqHero = () => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Frequently
-              </motion.h1>
-              <motion.h2
-                variants={basicStaggerChild}
-                className="text-uppercase knockout"
-              >
-                Asked
-              </motion.h2>
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Questions
-              </motion.h1>
+              <h1><motion.span variants={basicStaggerChild}>Frequently</motion.span> <motion.span variants={basicStaggerChild}>Asked</motion.span> <motion.span variants={basicStaggerChild}>Questions</motion.span></h1>
             </motion.div>
           </Col>
           <Col
