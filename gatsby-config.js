@@ -72,6 +72,10 @@ module.exports = {
         title: `Contact`,
         path: `/contact/`,
       },
+      {
+        title: `Get the Data`,
+        path: `https://github.com/childpovertyactionlab/Social-Mobility`
+      }
     ],
   },
   plugins: [
