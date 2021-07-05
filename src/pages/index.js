@@ -4,12 +4,12 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta, slugify } from './../utils/utils'
-import Image from '../components/atoms/image'
-import { CustomBackgroundImage as BackgroundImage } from '../components/atoms/bg-image'
 import {
   Arrow,
   BrushStroke,
@@ -40,7 +40,6 @@ const HomeHero = ({ pageData }) => {
             lg={{ size: 4, offset: 1 }}
             xl={{ size: 4, offset: 1 }}
           >
-            {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
             <motion.div
               variants={basicStagger}
               animate={inView ? 'show' : 'hide'}
@@ -189,10 +188,7 @@ const HomeGraph = ({ pageData }) => {
             </motion.div>
           </Col>
           <Col className="home-graph__image" xs={{ size: 12, offset: 0 }}>
-            <Image
-              className="w-100"
-              filename={pageData.frontmatter.graphImage}
-            />
+            <Img className="w-100" fluid={pageData.frontmatter.graphImage.childImageSharp.fluid} />
             <div className="home-graph__image-source">
               <div className="bg-gray">
                 <InfoIcon />
@@ -285,7 +281,7 @@ const HomeExplorerCard = ({ cardData, index }) => {
         lg={{ size: 11, offset: index % 2 > 0 ? 2 : 0 }}
         className="py-5"
       >
-        <BackgroundImage alt="Explorer" filename={cardData.cardImage}>
+        <BackgroundImage alt="Explorer" Tag="div" fluid={cardData.cardImage.childImageSharp.fluid} backgroundColor={`#F0F5F2`}>
           <div
             className={`${
               index % 2 > 0 ? '' : 'home-engage__card--left'
@@ -374,7 +370,7 @@ const HomeCard = ({ cardData, index }) => {
             animate={inView ? 'show' : 'hide'}
           >
             <motion.div variants={basicStaggerChild}>
-              <Image className="h-100 w-100" filename={cardData.cardImage} />
+              <Img className="w-100" fluid={cardData.cardImage.childImageSharp.fluid} />
             </motion.div>
           </motion.div>
         </div>
@@ -435,9 +431,14 @@ const IndexPage = ({ location }) => {
               title
               description
               keywords
-              heroImage
               heroSubheading
-              graphImage
+              graphImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               graphCitation
               graphHeading
               graphSubheading
@@ -446,7 +447,13 @@ const IndexPage = ({ location }) => {
                 cardTitle
                 cardHeading
                 cardSubheading
-                cardImage
+                cardImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 isLibraryCallout
                 cardLinks {
                   linkText
