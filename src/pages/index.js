@@ -4,19 +4,26 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta, slugify } from './../utils/utils'
-import Image from '../components/atoms/image'
-import { CustomBackgroundImage as BackgroundImage } from '../components/atoms/bg-image'
 import {
   Arrow,
   BrushStroke,
   HubLogo,
   InfoIcon,
 } from '../components/atoms/icons'
-import { basicStagger, basicStaggerChild, basicStaggerChildLeft, basicStaggerChildDown, basicStaggerChildRight, basicStaggerChildStatic } from '../components/atoms/animation'
+import {
+  basicStagger,
+  basicStaggerChild,
+  basicStaggerChildLeft,
+  basicStaggerChildDown,
+  basicStaggerChildRight,
+  basicStaggerChildStatic,
+} from '../components/atoms/animation'
 
 import heroImage1 from '../images/home_hero1.png'
 import heroImage2 from '../images/home_hero2.png'
@@ -40,7 +47,6 @@ const HomeHero = ({ pageData }) => {
             lg={{ size: 4, offset: 1 }}
             xl={{ size: 4, offset: 1 }}
           >
-            {/* <Image className="w-100" filename={pageData.frontmatter.heroImage} /> */}
             <motion.div
               variants={basicStagger}
               animate={inView ? 'show' : 'hide'}
@@ -91,8 +97,12 @@ const HomeHero = ({ pageData }) => {
             >
               <h1 className="sr-only">NTX Social Mobility Hub</h1>
               <h2>
-                <motion.span variants={basicStaggerChild}>The neighborhoods</motion.span>
-                <motion.span variants={basicStaggerChild}>you live in have a major impact on</motion.span>
+                <motion.span variants={basicStaggerChild}>
+                  The neighborhoods
+                </motion.span>
+                <motion.span variants={basicStaggerChild}>
+                  you live in have a major impact on
+                </motion.span>
                 <motion.span variants={basicStaggerChild}>
                   <Link to="/research-library/" className="highlight">
                     social mobility
@@ -103,7 +113,7 @@ const HomeHero = ({ pageData }) => {
                       Click on the highlighted words to go to the library
                     </span>
                   </span>
-                  </motion.span>
+                </motion.span>
               </h2>
               <motion.p variants={basicStaggerChild}>
                 {pageData.frontmatter.heroSubheading}
@@ -179,9 +189,9 @@ const HomeGraph = ({ pageData }) => {
             </motion.div>
           </Col>
           <Col className="home-graph__image" xs={{ size: 12, offset: 0 }}>
-            <Image
+            <Img
               className="w-100"
-              filename={pageData.frontmatter.graphImage}
+              fluid={pageData.frontmatter.graphImage.childImageSharp.fluid}
             />
             <div className="home-graph__image-source">
               <div className="bg-gray">
@@ -227,14 +237,20 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
               className="knockout-bold text-uppercase"
             >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
-              <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
+              <h4>
+                <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+              </h4>
             </motion.div>
             <motion.p variants={basicStaggerChild}>
               {cardData.cardSubheading}
             </motion.p>
             <motion.p variants={basicStaggerChild} className="caslon">
               {cardData.cardLinks.map((link, i) => (
-                <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
+                <Link
+                  to={link.linkUrl}
+                  className={`btn-orange${i > 0 ? ' secondary' : ''}`}
+                  key={i}
+                >
                   {link.linkText}
                 </Link>
               ))}
@@ -248,9 +264,12 @@ const HomeLibraryCard = ({ cardData, index, topics }) => {
           >
             <motion.ul variants={basicStaggerChild}>
               {topics.map(({ label }, i) => (
-                <li className={i < topics.length - 1 ? "dotted-bottom" : ""} key={i}>
+                <li
+                  className={i < topics.length - 1 ? 'dotted-bottom' : ''}
+                  key={i}
+                >
                   <Link to={`/research-library/${slugify(label)}/`}>
-                    <span className="caslon">{ label }</span>
+                    <span className="caslon">{label}</span>
                   </Link>
                 </li>
               ))}
@@ -275,7 +294,12 @@ const HomeExplorerCard = ({ cardData, index }) => {
         lg={{ size: 11, offset: index % 2 > 0 ? 2 : 0 }}
         className="py-5"
       >
-        <BackgroundImage alt="Explorer" filename={cardData.cardImage}>
+        <BackgroundImage
+          alt="Explorer"
+          Tag="div"
+          fluid={cardData.cardImage.childImageSharp.fluid}
+          backgroundColor={`#F0F5F2`}
+        >
           <div
             className={`${
               index % 2 > 0 ? '' : 'home-engage__card--left'
@@ -293,14 +317,20 @@ const HomeExplorerCard = ({ cardData, index }) => {
                 className="knockout-bold text-uppercase"
               >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
               <motion.div variants={basicStaggerChild}>
-                <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
+                <h4>
+                  <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+                </h4>
               </motion.div>
               <motion.p variants={basicStaggerChild}>
                 {cardData.cardSubheading}
               </motion.p>
               <motion.p variants={basicStaggerChild} className="caslon">
                 {cardData.cardLinks.map((link, i) => (
-                  <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
+                  <Link
+                    to={link.linkUrl}
+                    className={`btn-orange${i > 0 ? ' secondary' : ''}`}
+                    key={i}
+                  >
                     {link.linkText}
                   </Link>
                 ))}
@@ -344,14 +374,20 @@ const HomeCard = ({ cardData, index }) => {
               className="knockout-bold text-uppercase"
             >{`${index + 1}. ${cardData.cardTitle}`}</motion.h2>
             <motion.div variants={basicStaggerChild}>
-              <h4><MDXRenderer>{cardData.cardHeading}</MDXRenderer></h4>
+              <h4>
+                <MDXRenderer>{cardData.cardHeading}</MDXRenderer>
+              </h4>
             </motion.div>
             <motion.p variants={basicStaggerChild}>
               {cardData.cardSubheading}
             </motion.p>
             <motion.p variants={basicStaggerChild} className="caslon">
               {cardData.cardLinks.map((link, i) => (
-                <Link to={link.linkUrl} className={`btn-orange${i > 0 ? ' secondary' : ''}`} key={i}>
+                <Link
+                  to={link.linkUrl}
+                  className={`btn-orange${i > 0 ? ' secondary' : ''}`}
+                  key={i}
+                >
                   {link.linkText}
                 </Link>
               ))}
@@ -364,7 +400,10 @@ const HomeCard = ({ cardData, index }) => {
             animate={inView ? 'show' : 'hide'}
           >
             <motion.div variants={basicStaggerChild}>
-              <Image className="h-100 w-100" filename={cardData.cardImage} />
+              <Img
+                className="w-100"
+                fluid={cardData.cardImage.childImageSharp.fluid}
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -400,7 +439,12 @@ const HomeEngage = ({ pageData, topics }) => {
         </Row>
         {pageData.frontmatter.engageCards.map((card, index) =>
           card.isLibraryCallout ? (
-            <HomeLibraryCard cardData={card} index={index} key={index} topics={topics} />
+            <HomeLibraryCard
+              cardData={card}
+              index={index}
+              key={index}
+              topics={topics}
+            />
           ) : index === 1 ? (
             <HomeExplorerCard cardData={card} index={index} key={index} />
           ) : (
@@ -425,9 +469,14 @@ const IndexPage = ({ location }) => {
               title
               description
               keywords
-              heroImage
               heroSubheading
-              graphImage
+              graphImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               graphCitation
               graphHeading
               graphSubheading
@@ -436,7 +485,13 @@ const IndexPage = ({ location }) => {
                 cardTitle
                 cardHeading
                 cardSubheading
-                cardImage
+                cardImage {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 isLibraryCallout
                 cardLinks {
                   linkText
@@ -447,7 +502,9 @@ const IndexPage = ({ location }) => {
           }
         }
       }
-      libraryTopics: allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
+      libraryTopics: allMdx(
+        filter: { fileAbsolutePath: { regex: "/research-library/" } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -471,7 +528,9 @@ const IndexPage = ({ location }) => {
   `)
 
   const pageData = getPageData.allMdx.edges[0].node
-  const libraryTopics = getPageData.libraryTopics.edges[0].node.frontmatter.researchItems.filter(item => item.displayOnHomePage)
+  const libraryTopics = getPageData.libraryTopics.edges[0].node.frontmatter.researchItems.filter(
+    item => item.displayOnHomePage
+  )
 
   const pageMeta = getPageMeta('home', pageData, location)
   pageMeta.image = getPageData.metaImage.childImageSharp.original.src

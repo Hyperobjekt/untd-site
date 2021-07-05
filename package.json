@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Lou Groshek <lou@lougroshek.com>",
   "dependencies": {
-    "@hyperobjekt/untd-map": "^1.0.2",
+    "@hyperobjekt/untd-map": "^1.0.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@reach/skip-nav": "^0.15.0",

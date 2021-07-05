@@ -6,7 +6,7 @@ backend:
 local_backend: false # Switch off when deployed.
 publish_mode: editorial_workflow
 media_folder: /src/content/uploads
-public_folder: /uploads
+public_folder: ../uploads
 
 collections:
   - label: 'Content pages'
@@ -43,6 +43,7 @@ collections:
       - name: 'about'
         label: 'About'
         file: '/src/content/pages/about.mdx'
+        public_folder: '../uploads'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -157,6 +158,7 @@ collections:
       - name: 'faq'
         label: 'FAQ'
         file: '/src/content/pages/faq.mdx'
+        public_folder: '../uploads'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -189,6 +191,7 @@ collections:
       - name: 'home'
         label: 'Home'
         file: '/src/content/pages/home.mdx'
+        public_folder: '../uploads'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -206,7 +209,6 @@ collections:
               widget: list,
               default: ['page', 'keywords', 'listed', 'here'],
             }
-          - { name: 'heroImage', label: 'Hero Module Image', widget: 'image' }
           - {
               name: 'heroSubheading',
               label: 'Hero Subheading',
@@ -283,6 +285,7 @@ collections:
       - name: 'research-library'
         label: 'Research Library'
         file: '/src/content/pages/research-library.mdx'
+        public_folder: '../uploads'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }
@@ -393,6 +396,7 @@ collections:
       - name: 'pathways-to-mobility'
         label: 'Pathways to Mobility'
         file: '/src/content/pages/pathways-to-mobility.mdx'
+        public_folder: '../uploads'
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'subtitle', label: 'Page subtitle', widget: 'string' }

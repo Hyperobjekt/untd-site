@@ -1,26 +1,22 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useRef } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { animate, motion, useMotionValue } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { MdKeyboardArrowDown } from 'react-icons/md'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import SEO from '../components/atoms/seo'
 import { getPageMeta, slugify } from './../utils/utils'
-import Image from '../components/atoms/image'
 import { BrushStroke, HubLogo } from '../components/atoms/icons'
 import {
   basicStagger,
   basicStaggerChild,
-  basicStaggerChildLeft, 
-  basicStaggerChildDown, 
-  basicStaggerChildRight, 
+  basicStaggerChildLeft,
+  basicStaggerChildDown,
+  basicStaggerChildRight,
   basicStaggerChildStatic,
-  libraryEntry,
-  topicsDropdown,
 } from '../components/atoms/animation'
 
 import heroImage1 from '../images/untd-library1.png'
@@ -144,9 +140,12 @@ const LibraryDescription = ({ pageData }) => {
               className="library-description__image"
             >
               <motion.div variants={basicStaggerChild}>
-                <Image
-                  className="h-100 w-100"
-                  filename={pageData.frontmatter.libraryDescriptionImage}
+                <Img
+                  className="w-100"
+                  fluid={
+                    pageData.frontmatter.libraryDescriptionImage.childImageSharp
+                      .fluid
+                  }
                 />
               </motion.div>
             </motion.div>
@@ -165,25 +164,41 @@ const LibraryGrid = ({ pageData }) => {
         <BrushStroke />
       </div>
       {pageData.frontmatter.researchItems.map((item, i) => (
-        <div
-          className="library-grid__entry"
-          key={i}
-          style={{backgroundColor: item.item_color}}
-        >
-          <h3>{item.label}</h3>
-          <p>{item.item_description}</p>
-          <Link to={`/research-library/${slugify(item.label)}/`} className="dotted-bottom">Learn more</Link>
-          {item.item_image && 
-          <div className="library-grid__entry-image">
-              <Image
-                  className="h-100 w-100"
-                  filename={item.item_image}
-              />
-          </div>
-          }
-          
-        </div>
+        <LibraryGridCard key={i} item={item} />
       ))}
+    </div>
+  )
+}
+
+const LibraryGridCard = ({ item }) => {
+  return (
+    <div
+      className="library-grid__entry"
+      style={{ backgroundColor: item.item_color }}
+    >
+      <h3>
+        <Link
+          to={`/research-library/${slugify(item.label)}/`}
+          className="library-grid__entry-link"
+        >
+          {item.label}
+        </Link>
+      </h3>
+      <p>{item.item_description}</p>
+      <span className="dotted-bottom">Learn more</span>
+      {item.item_image && (
+        <div className="library-grid__entry-image">
+          {item.item_image.childImageSharp ? (
+            <Img
+              className="w-100"
+              fluid={item.item_image.childImageSharp.fluid}
+            />
+          ) : (
+            <img src={item.item_image.publicURL} />
+          )}
+        </div>
+      )}
+      <div className="library-grid__entry-bg"></div>
     </div>
   )
 }
@@ -272,9 +287,12 @@ const LibraryTopics = ({ pageData }) => {
                 className="library-topics__heading-image"
               >
                 <motion.div variants={basicStaggerChild}>
-                  <Image
-                    className="h-100 w-100"
-                    filename={pageData.frontmatter.libraryTopicsHeadingImage}
+                  <Img
+                    className="w-100"
+                    fluid={
+                      pageData.frontmatter.libraryTopicsHeadingImage
+                        .childImageSharp.fluid
+                    }
                   />
                 </motion.div>
               </motion.div>
@@ -297,8 +315,6 @@ const LibraryTopics = ({ pageData }) => {
   )
 }
 
-
-
 const SessionsPage = ({ location }) => {
   const getPageData = useStaticQuery(graphql`
     {
@@ -314,13 +330,32 @@ const SessionsPage = ({ location }) => {
               keywords
               libraryHeroText
               libraryDescription
-              libraryDescriptionImage
+              libraryDescriptionImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               libraryTopicsHeading
-              libraryTopicsHeadingImage
+              libraryTopicsHeadingImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               researchItems {
                 label
                 item_color
-                item_image
+                item_image {
+                  childImageSharp {
+                    fluid(maxWidth: 1200, quality: 80) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                  publicURL
+                }
                 item_description
               }
             }
@@ -352,98 +387,5 @@ const SessionsPage = ({ location }) => {
     </Layout>
   )
 }
-
-// const LegacyTopicsBody = () => {
-//   return (
-//     <div className="library-topics__body" ref={boundsRef}>
-//         <Container fluid="sm">
-//           <Row className="flex-column flex-sm-row">
-//             <Col
-//               sm={{ size: 5, offset: 0 }}
-//               md={{ size: 4, offset: 0 }}
-//               lg={{ size: 3, offset: 0 }}
-//               xl={{ size: 3, offset: 0 }}
-//               className="library-topics__sidebar"
-//             >
-//               <div>
-//                 <h3 className="knockout-bold">Topics</h3>
-//                 <button
-//                   className="library-topics__sidebar-toggle"
-//                   aria-label="expand dropdown"
-//                   onClick={toggleDropdown}
-//                 >
-//                   <h4 className="knockout-bold">
-//                     Choose Topic{' '}
-//                     <MdKeyboardArrowDown
-//                       className={`${dropdownOpen ? 'open' : ''}`}
-//                     />
-//                   </h4>
-//                 </button>
-//                 <BrushStroke />
-//                 <motion.div
-//                   variants={topicsDropdown}
-//                   initial={dropdownOpen ? 'show' : 'hide'}
-//                   animate={dropdownOpen ? 'show' : 'hide'}
-//                   className="library-topics__sidebar-links"
-//                 >
-//                   <div>
-//                     {pageData.frontmatter.researchItems.map((item, i) => (
-//                       <button
-//                         aria-label={`set topic to ${item.label}`}
-//                         onClick={() => {
-//                           setActiveTopic(i)
-//                           setHash(`#${slugify(item.label)}`)
-//                         }}
-//                         className={`library-topics__topic ${
-//                           i === activeTopic
-//                             ? 'library-topics__topic--active'
-//                             : ''
-//                         }`}
-//                         key={i}
-//                       >
-//                         <div style={{ '--color': item.item_color }}></div>
-//                         <span className="caslon">{item.label}</span>
-//                       </button>
-//                     ))}
-//                   </div>
-//                 </motion.div>
-//               </div>
-//             </Col>
-//             <Col
-//               sm={{ size: 7, offset: 0 }}
-//               md={{ size: 7, offset: 1 }}
-//               lg={{ size: 6, offset: 2 }}
-//               xl={{ size: 6, offset: 2 }}
-//               className="library-topics__entries"
-//             >
-//               {pageData.frontmatter.researchItems.map((item, i) => (
-//                 <motion.div
-//                   className="library-topics__entry"
-//                   key={i}
-//                   name={slugify(item.label)}
-//                   variants={libraryEntry}
-//                   style={{
-//                     position: i === activeTopic ? 'relative' : 'absolute',
-//                   }}
-//                   animate={i === activeTopic ? 'show' : 'hide'}
-//                 >
-//                   <MDXProvider
-//                     components={{
-//                       img: CustomImage,
-//                     }}
-//                   >
-//                     <MDXRenderer>{item.item_content}</MDXRenderer>
-//                     <div className="library-topics__entry-refs">
-//                       <MDXRenderer>{item.item_references}</MDXRenderer>
-//                     </div>
-//                   </MDXProvider>
-//                 </motion.div>
-//               ))}
-//             </Col>
-//           </Row>
-//         </Container>
-//       </div>
-//   )
-// }
 
 export default SessionsPage

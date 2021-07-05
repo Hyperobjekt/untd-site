@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import { HomeIcon, HubLogo, TopicNavArrow } from '../components/atoms/icons'
 import { Col, Container, Row } from 'reactstrap'
+import Img from 'gatsby-image'
 import Image from '../components/atoms/image'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -160,7 +161,6 @@ const TopicNext = ({ pageData }) => {
     nextTopicIndex + 1 === pageData.researchItems.length
       ? pageData.researchItems[0]
       : pageData.researchItems[nextTopicIndex + 1]
-  // console.log(nextTopic)
 
   return (
     <div className="topic-next">
@@ -178,22 +178,29 @@ const TopicNext = ({ pageData }) => {
               style={{ backgroundColor: nextTopic.item_color }}
             >
               <h2>Next topic</h2>
-              <h3>{nextTopic.label}</h3>
+              <h3>
+                <Link
+                  to={`/research-library/${slugify(nextTopic.label)}/`}
+                  className="topic-next__card-link"
+                >
+                  {nextTopic.label}
+                </Link>
+              </h3>
               <p>{nextTopic.item_description}</p>
-              <Link
-                to={`/research-library/${slugify(nextTopic.label)}/`}
-                className="dotted-bottom"
-              >
-                Learn more
-              </Link>
+              <span className="dotted-bottom">Learn more</span>
               {nextTopic.item_image && (
                 <div className="topic-next__card-image">
-                  <Image
-                    className="h-100 w-100"
-                    filename={nextTopic.item_image}
-                  />
+                  {nextTopic.item_image.childImageSharp ? (
+                    <Img
+                      className="h-100 w-100"
+                      fluid={nextTopic.item_image.childImageSharp.fluid}
+                    />
+                  ) : (
+                    <img src={nextTopic.item_image.publicURL} />
+                  )}
                 </div>
               )}
+              <div className="topic-next__card-bg"></div>
             </div>
           </Col>
         </Row>
@@ -202,15 +209,53 @@ const TopicNext = ({ pageData }) => {
   )
 }
 
-function ResearchItemTemplate(props) {
+function ResearchItemTemplate({ data, pageContext, location }) {
+  const pageData = {
+    ...data.allMdx.edges[0].node.frontmatter.researchItems.find(
+      item => item.label === pageContext.label
+    ),
+    ...data.allMdx.edges[0].node.frontmatter,
+  }
+
   return (
-    <Layout location={props.location} pageType="research-topic">
-      <TopicHero pageData={props.pageContext} />
-      <TopicContent pageData={props.pageContext} />
-      <TopicNav pageData={props.pageContext} />
-      <TopicNext pageData={props.pageContext} />
+    <Layout location={location} pageType="research-topic">
+      <TopicHero pageData={pageData} />
+      <TopicContent pageData={pageData} />
+      <TopicNav pageData={pageData} />
+      <TopicNext pageData={pageData} />
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
+      edges {
+        node {
+          frontmatter {
+            researchItems {
+              label
+              item_description
+              item_color
+              item_image {
+                childImageSharp {
+                  fluid(maxWidth: 1200, quality: 80) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+                publicURL
+              }
+              item_references
+              item_content_sections {
+                section_title
+                section_content
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default ResearchItemTemplate
