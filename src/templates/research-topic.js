@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 import { HomeIcon, HubLogo, TopicNavArrow } from '../components/atoms/icons'
 import { Col, Container, Row } from 'reactstrap'
@@ -161,7 +161,6 @@ const TopicNext = ({ pageData }) => {
     nextTopicIndex + 1 === pageData.researchItems.length
       ? pageData.researchItems[0]
       : pageData.researchItems[nextTopicIndex + 1]
-  
 
   return (
     <div className="topic-next">
@@ -178,7 +177,7 @@ const TopicNext = ({ pageData }) => {
               className="topic-next__card"
               style={{ backgroundColor: nextTopic.item_color }}
             >
-              <h5>Next topic</h5>
+              <h2>Next topic</h2>
               <h3>
                 <Link
                   to={`/research-library/${slugify(nextTopic.label)}/`}
@@ -189,16 +188,18 @@ const TopicNext = ({ pageData }) => {
               </h3>
               <p>{nextTopic.item_description}</p>
               <span className="dotted-bottom">Learn more</span>
-              {
-                nextTopic.item_image && 
+              {nextTopic.item_image && (
                 <div className="topic-next__card-image">
-                  {
-                  nextTopic.item_image.childImageSharp
-                    ? <Img className="h-100 w-100" fluid={nextTopic.item_image.childImageSharp.fluid} />
-                    : <img src={nextTopic.item_image.publicURL} />
-                  }
+                  {nextTopic.item_image.childImageSharp ? (
+                    <Img
+                      className="h-100 w-100"
+                      fluid={nextTopic.item_image.childImageSharp.fluid}
+                    />
+                  ) : (
+                    <img src={nextTopic.item_image.publicURL} />
+                  )}
                 </div>
-              }
+              )}
               <div className="topic-next__card-bg"></div>
             </div>
           </Col>
@@ -210,8 +211,10 @@ const TopicNext = ({ pageData }) => {
 
 function ResearchItemTemplate({ data, pageContext, location }) {
   const pageData = {
-    ...data.allMdx.edges[0].node.frontmatter.researchItems.find(item => item.label === pageContext.label),
-    ...data.allMdx.edges[0].node.frontmatter
+    ...data.allMdx.edges[0].node.frontmatter.researchItems.find(
+      item => item.label === pageContext.label
+    ),
+    ...data.allMdx.edges[0].node.frontmatter,
   }
 
   return (
@@ -244,8 +247,8 @@ export const query = graphql`
               }
               item_references
               item_content_sections {
-                  section_title
-                  section_content
+                section_title
+                section_content
               }
             }
           }

@@ -8,6 +8,7 @@
     "@hyperobjekt/untd-map": "^1.0.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@reach/skip-nav": "^0.15.0",
     "bootstrap": "^4.6.0",
     "clean-react-props": "^0.3.4",
     "clsx": "^1.1.1",

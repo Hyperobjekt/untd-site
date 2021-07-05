@@ -160,7 +160,7 @@ const LibraryGrid = ({ pageData }) => {
   return (
     <div className="library-grid">
       <div className="library-grid__eyebrow">
-        <h3>Research library topics</h3>
+        <h2>Research library topics</h2>
         <BrushStroke />
       </div>
       {pageData.frontmatter.researchItems.map((item, i) => (
@@ -176,14 +176,14 @@ const LibraryGridCard = ({ item }) => {
       className="library-grid__entry"
       style={{ backgroundColor: item.item_color }}
     >
-      <h2>
+      <h3>
         <Link
           to={`/research-library/${slugify(item.label)}/`}
           className="library-grid__entry-link"
         >
           {item.label}
         </Link>
-      </h2>
+      </h3>
       <p>{item.item_description}</p>
       <span className="dotted-bottom">Learn more</span>
       {item.item_image && (

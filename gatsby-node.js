@@ -5,7 +5,7 @@ const slugify = string =>
     .join('-')
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-    createTypes(`
+  createTypes(`
       type Mdx implements Node {
         frontmatter: MdxFrontmatter
       }
@@ -57,11 +57,18 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   
       type EngageCard {
         cardHeading: String @mdx
+        cardLinks: [CardLink]
+        cardImage: File @fileByRelativePath
       }
-    `);
-};
 
-exports.createPages = async function ({ actions, graphql }) {
+      type CardLink {
+        linkText: String
+        linkUrl: String
+      }
+    `)
+}
+
+exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`
     query {
       allMdx(filter: { fileAbsolutePath: { regex: "/research-library/" } }) {
@@ -82,7 +89,7 @@ exports.createPages = async function ({ actions, graphql }) {
       path: `/research-library/${slugify(node.label)}/`,
       component: require.resolve(`./src/templates/research-topic.js`),
       context: {
-        label: node.label
+        label: node.label,
       },
     })
   })

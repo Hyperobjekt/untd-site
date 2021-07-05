@@ -18,7 +18,7 @@
     grid-column: -1/1;
     margin: 0 0 10px;
 
-    h3 {
+    h2 {
       text-transform: uppercase;
       font-family: $knockoutBold;
       font-size: 1.6rem;
@@ -41,7 +41,9 @@
       padding: 7.5rem 9.5rem;
     }
 
-    h2 {
+    h3 {
+      position: relative;
+      z-index: 1;
       font-family: $caslon !important;
       font-size: 3rem;
       line-height: 3.4rem;

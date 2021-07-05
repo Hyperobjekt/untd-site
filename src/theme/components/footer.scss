@@ -111,6 +111,8 @@
 
   &__links {
     margin-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
 
     a {
       color: $black;

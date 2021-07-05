@@ -30,6 +30,7 @@ export const HubLogo = props => (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>NTX Social Mobility Hub</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

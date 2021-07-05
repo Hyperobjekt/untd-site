@@ -39,24 +39,7 @@ const CasesHero = ({ pageData }) => {
               animate={inView ? 'show' : 'hide'}
               initial="hide"
             >
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Pathways
-              </motion.h1>
-              <motion.h2
-                variants={basicStaggerChild}
-                className="text-uppercase knockout"
-              >
-                To
-              </motion.h2>
-              <motion.h1
-                variants={basicStaggerChild}
-                className="text-uppercase knockout-bold"
-              >
-                Mobility
-              </motion.h1>
+              <h1><motion.span variants={basicStaggerChild}>Pathways</motion.span> <motion.span variants={basicStaggerChild}>To</motion.span> <motion.span variants={basicStaggerChild}>Mobility</motion.span></h1>
               <motion.div variants={basicStaggerChild}>
                 <MDXRenderer>{pageData.frontmatter.heroText}</MDXRenderer>
               </motion.div>
@@ -202,8 +185,10 @@ const Worksheet = ({ sheetData }) => {
           <Img className="w-100" fluid={sheetData.sheetImage.childImageSharp.fluid} />
         </div>
         <div className="worksheet__body">
-          <h6>{sheetData.sheetEyebrow}</h6>
-          <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+          <h3 className="worksheet__body-eyebrow">{sheetData.sheetEyebrow}</h3>
+          <div>
+            <MDXRenderer>{sheetData.sheetText}</MDXRenderer>
+          </div>
           <a href={sheetData.sheetFile} className="btn-orange">
             Download worksheet
           </a>
